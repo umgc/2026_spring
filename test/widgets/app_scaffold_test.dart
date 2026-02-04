@@ -233,6 +233,6 @@ class MockGoRouterDelegate extends GoRouterDelegate {
 class MockGoRouteInformationParser extends GoRouteInformationParser {
   @override
   Future<RouteMatchList> parseRouteInformation(RouteInformation routeInformation) async {
-    return RouteMatchList(matches: [], uri: Uri.parse('/'));
+    return RouteMatchList(matches: [], uri: Uri.parse('/'), pathParameters: {});
   }
 }
