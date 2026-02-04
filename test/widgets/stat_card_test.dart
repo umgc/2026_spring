@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:edulense_flutter/widgets/stat_card.dart';
+import 'package:edulense_flutter_new/widgets/stat_card.dart';
 
 void main() {
   group('StatCard Widget', () {

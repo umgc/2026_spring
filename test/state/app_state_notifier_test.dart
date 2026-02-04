@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:edulense_flutter/state/app_state.dart';
-import 'package:edulense_flutter/state/app_state_notifier.dart';
-import 'package:edulense_flutter/services/storage_service.dart';
+import 'package:edulense_flutter_new/state/app_state.dart';
+import 'package:edulense_flutter_new/state/app_state_notifier.dart';
+import 'package:edulense_flutter_new/services/storage_service.dart';
 
 class FakeStorageService implements StorageService {
   final _data = <String, int>{};

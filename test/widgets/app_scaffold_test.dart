@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
-import 'package:edulense_flutter/widgets/app_scaffold.dart';
+import 'package:edulense_flutter_new/widgets/app_scaffold.dart';
 
 void main() {
   group('AppScaffold Widget', () {

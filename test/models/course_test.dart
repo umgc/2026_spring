@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:edulense_flutter/models/course.dart';
+import 'package:edulense_flutter_new/models/course.dart';
 
 void main() {
   group('Course Model', () {

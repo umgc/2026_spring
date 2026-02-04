@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:edulense_flutter/models/schedule_event.dart';
+import 'package:edulense_flutter_new/models/schedule_event.dart';
 
 void main() {
   group('ScheduleEvent Model', () {

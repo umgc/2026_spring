@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:edulense_flutter/widgets/event_card.dart';
+import 'package:edulense_flutter_new/widgets/event_card.dart';
 
 void main() {
   group('EventCard Widget', () {

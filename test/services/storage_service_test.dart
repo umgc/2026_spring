@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:edulense_flutter/services/storage_service.dart';
+import 'package:edulense_flutter_new/services/storage_service.dart';
 
 void main() {
   group('StorageService', () {

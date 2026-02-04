@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:edulense_flutter/models/progress_metrics.dart';
+import 'package:edulense_flutter_new/models/progress_metrics.dart';
 
 void main() {
   group('ProgressMetrics Model', () {

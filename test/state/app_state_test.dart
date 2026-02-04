@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:edulense_flutter/state/app_state.dart';
+import 'package:edulense_flutter_new/state/app_state.dart';
 
 void main() {
   group('AppState', () {

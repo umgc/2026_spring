@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:edulense_flutter/utils/validation_utils.dart';
+import 'package:edulense_flutter_new/utils/validation_utils.dart';
 
 void main() {
   group('ValidationUtils', () {

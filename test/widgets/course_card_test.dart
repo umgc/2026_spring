@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:edulense_flutter/widgets/course_card.dart';
+import 'package:edulense_flutter_new/widgets/course_card.dart';
 
 void main() {
   group('CourseCard Widget', () {
