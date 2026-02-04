@@ -34,7 +34,10 @@ class CalculationUtils {
 
   /// Calculates total study hours from individual session durations
   static int calculateTotalStudyHours(List<int> sessionMinutes) {
-    final totalMinutes = sessionMinutes.fold(0, (sum, minutes) => sum + minutes);
+    final totalMinutes = sessionMinutes.fold(
+      0,
+      (sum, minutes) => sum + minutes,
+    );
     final hours = totalMinutes / 60.0;
     final whole = hours.floor();
     final frac = hours - whole;
@@ -47,7 +50,7 @@ class CalculationUtils {
   static String formatDuration(int minutes) {
     final hours = minutes ~/ 60;
     final remainingMinutes = minutes % 60;
-    
+
     if (hours == 0) {
       return '${remainingMinutes}m';
     } else if (remainingMinutes == 0) {

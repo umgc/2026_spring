@@ -68,7 +68,10 @@ void main() {
       test('calculates days correctly', () {
         expect(DateTimeUtils.daysBetween(today, tomorrow), 1);
         expect(DateTimeUtils.daysBetween(yesterday, today), 1);
-        expect(DateTimeUtils.daysBetween(today, today.add(const Duration(days: 7))), 7);
+        expect(
+          DateTimeUtils.daysBetween(today, today.add(const Duration(days: 7))),
+          7,
+        );
       });
 
       test('handles same date', () {
@@ -232,7 +235,15 @@ void main() {
       });
 
       test('handles all days of the week', () {
-        final days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+        final days = [
+          'Monday',
+          'Tuesday',
+          'Wednesday',
+          'Thursday',
+          'Friday',
+          'Saturday',
+          'Sunday',
+        ];
         for (var i = 0; i < days.length; i++) {
           final date = DateTime(2026, 1, 12 + i);
           expect(DateTimeUtils.getDayOfWeek(date), days[i]);

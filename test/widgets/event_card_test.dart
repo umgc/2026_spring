@@ -4,7 +4,9 @@ import 'package:edulense_flutter_new/widgets/event_card.dart';
 
 void main() {
   group('EventCard Widget', () {
-    testWidgets('renders correctly with required properties', (WidgetTester tester) async {
+    testWidgets('renders correctly with required properties', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -23,7 +25,9 @@ void main() {
       expect(find.text('Room 101'), findsOneWidget);
     });
 
-    testWidgets('displays title with correct content', (WidgetTester tester) async {
+    testWidgets('displays title with correct content', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -71,15 +75,13 @@ void main() {
       expect(find.text('Library Room 5'), findsOneWidget);
     });
 
-    testWidgets('renders Container with proper styling', (WidgetTester tester) async {
+    testWidgets('renders Container with proper styling', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
-            body: EventCard(
-              title: 'Test',
-              time: 'Now',
-              location: 'Here',
-            ),
+            body: EventCard(title: 'Test', time: 'Now', location: 'Here'),
           ),
         ),
       );
@@ -87,7 +89,9 @@ void main() {
       expect(find.byType(Container), findsWidgets);
     });
 
-    testWidgets('displays all event details together', (WidgetTester tester) async {
+    testWidgets('displays all event details together', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -110,7 +114,8 @@ void main() {
         MaterialApp(
           home: Scaffold(
             body: EventCard(
-              title: 'Advanced Data Structures and Algorithms Deep Dive Workshop',
+              title:
+                  'Advanced Data Structures and Algorithms Deep Dive Workshop',
               time: '10:00 AM - 4:00 PM',
               location: 'Computer Science Building Room 301',
             ),
@@ -118,7 +123,10 @@ void main() {
         ),
       );
 
-      expect(find.text('Advanced Data Structures and Algorithms Deep Dive Workshop'), findsOneWidget);
+      expect(
+        find.text('Advanced Data Structures and Algorithms Deep Dive Workshop'),
+        findsOneWidget,
+      );
     });
 
     testWidgets('renders in a scrollable context', (WidgetTester tester) async {
@@ -151,10 +159,7 @@ void main() {
     testWidgets('applies theme colors correctly', (WidgetTester tester) async {
       await tester.pumpWidget(
         MaterialApp(
-          theme: ThemeData(
-            useMaterial3: true,
-            cardColor: Colors.purple,
-          ),
+          theme: ThemeData(useMaterial3: true, cardColor: Colors.purple),
           home: Scaffold(
             body: EventCard(
               title: 'Themed Event',
@@ -168,15 +173,13 @@ void main() {
       expect(find.text('Themed Event'), findsOneWidget);
     });
 
-    testWidgets('displays event with minimal information', (WidgetTester tester) async {
+    testWidgets('displays event with minimal information', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
-            body: EventCard(
-              title: 'X',
-              time: 'Y',
-              location: 'Z',
-            ),
+            body: EventCard(title: 'X', time: 'Y', location: 'Z'),
           ),
         ),
       );
@@ -186,7 +189,9 @@ void main() {
       expect(find.text('Z'), findsOneWidget);
     });
 
-    testWidgets('event card maintains proper layout', (WidgetTester tester) async {
+    testWidgets('event card maintains proper layout', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -216,7 +221,9 @@ void main() {
       expect(find.text('Lunch Meeting'), findsOneWidget);
     });
 
-    testWidgets('handles special characters in text', (WidgetTester tester) async {
+    testWidgets('handles special characters in text', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -233,7 +240,9 @@ void main() {
       expect(find.text('Lab #3 (A/B)'), findsOneWidget);
     });
 
-    testWidgets('multiple events can be displayed in grid', (WidgetTester tester) async {
+    testWidgets('multiple events can be displayed in grid', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(

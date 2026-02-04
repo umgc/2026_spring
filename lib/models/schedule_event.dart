@@ -102,5 +102,6 @@ class ScheduleEvent {
   }
 
   @override
-  String toString() => 'ScheduleEvent(id: $id, title: $title, duration: $durationMinutes minutes)';
+  String toString() =>
+      'ScheduleEvent(id: $id, title: $title, duration: $durationMinutes minutes)';
 }

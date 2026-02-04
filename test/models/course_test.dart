@@ -84,10 +84,7 @@ void main() {
     });
 
     test('copyWith creates new instance with updated values', () {
-      final updated = course.copyWith(
-        completedLessons: 18,
-        rating: 4.8,
-      );
+      final updated = course.copyWith(completedLessons: 18, rating: 4.8);
       expect(updated.completedLessons, 18);
       expect(updated.rating, 4.8);
       expect(updated.title, course.title);

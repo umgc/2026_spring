@@ -170,10 +170,7 @@ void main() {
     });
 
     test('completion rate calculation with many courses', () {
-      final many = metrics.copyWith(
-        coursesCompleted: 8,
-        coursesInProgress: 2,
-      );
+      final many = metrics.copyWith(coursesCompleted: 8, coursesInProgress: 2);
       expect(many.completionRate, 80.0); // 8 out of 10
     });
 
@@ -183,10 +180,7 @@ void main() {
     });
 
     test('tracks improvement with streak updates', () {
-      final improved = metrics.copyWith(
-        currentStreak: 25,
-        longestStreak: 40,
-      );
+      final improved = metrics.copyWith(currentStreak: 25, longestStreak: 40);
       expect(improved.currentStreak, 25);
       expect(improved.longestStreak, 40);
     });

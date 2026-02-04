@@ -3,19 +3,25 @@ class DateTimeUtils {
   /// Checks if a date is today
   static bool isToday(DateTime date) {
     final now = DateTime.now();
-    return date.year == now.year && date.month == now.month && date.day == now.day;
+    return date.year == now.year &&
+        date.month == now.month &&
+        date.day == now.day;
   }
 
   /// Checks if a date is tomorrow
   static bool isTomorrow(DateTime date) {
     final tomorrow = DateTime.now().add(const Duration(days: 1));
-    return date.year == tomorrow.year && date.month == tomorrow.month && date.day == tomorrow.day;
+    return date.year == tomorrow.year &&
+        date.month == tomorrow.month &&
+        date.day == tomorrow.day;
   }
 
   /// Checks if a date is yesterday
   static bool isYesterday(DateTime date) {
     final yesterday = DateTime.now().subtract(const Duration(days: 1));
-    return date.year == yesterday.year && date.month == yesterday.month && date.day == yesterday.day;
+    return date.year == yesterday.year &&
+        date.month == yesterday.month &&
+        date.day == yesterday.day;
   }
 
   /// Returns the number of days between two dates
@@ -33,8 +39,18 @@ class DateTimeUtils {
   /// Returns formatted date string (e.g., "Jan 15, 2026")
   static String formatDate(DateTime date) {
     const months = [
-      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
     ];
     return '${months[date.month - 1]} ${date.day}, ${date.year}';
   }
@@ -53,16 +69,18 @@ class DateTimeUtils {
     if (isToday(date)) return 'Today';
     if (isTomorrow(date)) return 'Tomorrow';
     if (isYesterday(date)) return 'Yesterday';
-    
+
     final daysAgo = daysSince(date);
     if (daysAgo > 0 && daysAgo <= 7) return '$daysAgo days ago';
-    
+
     return formatDate(date);
   }
 
   /// Checks if two dates are on the same day
   static bool isSameDay(DateTime date1, DateTime date2) {
-    return date1.year == date2.year && date1.month == date2.month && date1.day == date2.day;
+    return date1.year == date2.year &&
+        date1.month == date2.month &&
+        date1.day == date2.day;
   }
 
   /// Returns the start of the day (00:00:00)
@@ -97,7 +115,15 @@ class DateTimeUtils {
 
   /// Returns the day of week as string
   static String getDayOfWeek(DateTime date) {
-    const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    const days = [
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+      'Sunday',
+    ];
     return days[date.weekday - 1];
   }
 }

@@ -27,17 +27,14 @@ class CourseCard extends StatelessWidget {
         children: [
           Text(
             title,
-            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
+            style: Theme.of(
+              context,
+            ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
           ),
           const SizedBox(height: 6),
-          Text(
-            instructor,
-            style: Theme.of(context).textTheme.bodySmall,
-          ),
+          Text(instructor, style: Theme.of(context).textTheme.bodySmall),
           const SizedBox(height: 10),
           if (description != null)
             Padding(
@@ -61,10 +58,7 @@ class CourseCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 8),
-              Text(
-                '$progress%',
-                style: Theme.of(context).textTheme.labelSmall,
-              ),
+              Text('$progress%', style: Theme.of(context).textTheme.labelSmall),
             ],
           ),
         ],
