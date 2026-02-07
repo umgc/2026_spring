@@ -4,7 +4,9 @@ import 'package:edulense_flutter_new/widgets/stat_card.dart';
 
 void main() {
   group('StatCard Widget', () {
-    testWidgets('renders correctly with required properties', (WidgetTester tester) async {
+    testWidgets('renders correctly with required properties', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -23,7 +25,9 @@ void main() {
       expect(find.byIcon(Icons.local_fire_department), findsOneWidget);
     });
 
-    testWidgets('renders Container with correct styling', (WidgetTester tester) async {
+    testWidgets('renders Container with correct styling', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -39,24 +43,25 @@ void main() {
       expect(find.byType(Container), findsWidgets);
     });
 
-    testWidgets('displays value with correct style', (WidgetTester tester) async {
+    testWidgets('displays value with correct style', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
-            body: StatCard(
-              value: '100',
-              label: 'Points',
-              icon: Icons.star,
-            ),
+            body: StatCard(value: '100', label: 'Points', icon: Icons.star),
           ),
         ),
       );
 
       final valueFinder = find.text('100');
       expect(valueFinder, findsOneWidget);
-      expect(find.byWidgetPredicate((widget) {
-        return widget is Text && widget.data == '100';
-      }), findsOneWidget);
+      expect(
+        find.byWidgetPredicate((widget) {
+          return widget is Text && widget.data == '100';
+        }),
+        findsOneWidget,
+      );
     });
 
     testWidgets('displays label correctly', (WidgetTester tester) async {
@@ -91,7 +96,9 @@ void main() {
       expect(find.byIcon(Icons.timer), findsOneWidget);
     });
 
-    testWidgets('renders as non-interactive without onTap callback', (WidgetTester tester) async {
+    testWidgets('renders as non-interactive without onTap callback', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -108,7 +115,9 @@ void main() {
       expect(find.byType(GestureDetector), findsNothing);
     });
 
-    testWidgets('renders as interactive with onTap callback', (WidgetTester tester) async {
+    testWidgets('renders as interactive with onTap callback', (
+      WidgetTester tester,
+    ) async {
       bool tapped = false;
 
       await tester.pumpWidget(
@@ -130,7 +139,9 @@ void main() {
       expect(tapped, false);
     });
 
-    testWidgets('responds to tap when onTap is provided', (WidgetTester tester) async {
+    testWidgets('responds to tap when onTap is provided', (
+      WidgetTester tester,
+    ) async {
       bool tapped = false;
 
       await tester.pumpWidget(
@@ -154,7 +165,9 @@ void main() {
       expect(tapped, true);
     });
 
-    testWidgets('displays content in correct order', (WidgetTester tester) async {
+    testWidgets('displays content in correct order', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -171,7 +184,9 @@ void main() {
       expect(columnFinder, findsWidgets);
     });
 
-    testWidgets('has proper spacing between elements', (WidgetTester tester) async {
+    testWidgets('has proper spacing between elements', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -187,7 +202,9 @@ void main() {
       expect(find.byType(SizedBox), findsWidgets);
     });
 
-    testWidgets('handles long text values gracefully', (WidgetTester tester) async {
+    testWidgets('handles long text values gracefully', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -207,10 +224,7 @@ void main() {
     testWidgets('applies theme colors correctly', (WidgetTester tester) async {
       await tester.pumpWidget(
         MaterialApp(
-          theme: ThemeData(
-            useMaterial3: true,
-            cardColor: Colors.blue,
-          ),
+          theme: ThemeData(useMaterial3: true, cardColor: Colors.blue),
           home: Scaffold(
             body: StatCard(
               value: '12',
@@ -225,7 +239,9 @@ void main() {
       expect(find.text('12'), findsOneWidget);
     });
 
-    testWidgets('multiple stat cards can be displayed together', (WidgetTester tester) async {
+    testWidgets('multiple stat cards can be displayed together', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -257,7 +273,9 @@ void main() {
       expect(find.text('8'), findsOneWidget);
     });
 
-    testWidgets('is accessible with proper semantics', (WidgetTester tester) async {
+    testWidgets('is accessible with proper semantics', (
+      WidgetTester tester,
+    ) async {
       bool tapped = false;
 
       await tester.pumpWidget(

@@ -25,9 +25,9 @@ class EventCard extends StatelessWidget {
         children: [
           Text(
             title,
-            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
+            style: Theme.of(
+              context,
+            ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 8),
           Row(
@@ -43,7 +43,10 @@ class EventCard extends StatelessWidget {
               Icon(Icons.location_on, size: 16),
               const SizedBox(width: 6),
               Expanded(
-                child: Text(location, style: Theme.of(context).textTheme.bodySmall),
+                child: Text(
+                  location,
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
               ),
             ],
           ),

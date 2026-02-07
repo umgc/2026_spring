@@ -75,7 +75,10 @@ void main() {
 
     group('calculateAverageGrade', () {
       test('calculates average grade correctly', () {
-        expect(CalculationUtils.calculateAverageGrade([85.0, 90.0, 95.0]), 90.0);
+        expect(
+          CalculationUtils.calculateAverageGrade([85.0, 90.0, 95.0]),
+          90.0,
+        );
       });
 
       test('returns 0 for empty list', () {
@@ -87,11 +90,17 @@ void main() {
       });
 
       test('handles decimal grades', () {
-        expect(CalculationUtils.calculateAverageGrade([85.5, 90.5, 95.5]), 90.5);
+        expect(
+          CalculationUtils.calculateAverageGrade([85.5, 90.5, 95.5]),
+          90.5,
+        );
       });
 
       test('handles perfect grades', () {
-        expect(CalculationUtils.calculateAverageGrade([100.0, 100.0, 100.0]), 100.0);
+        expect(
+          CalculationUtils.calculateAverageGrade([100.0, 100.0, 100.0]),
+          100.0,
+        );
       });
     });
 
@@ -113,7 +122,10 @@ void main() {
       });
 
       test('handles large numbers', () {
-        expect(CalculationUtils.calculateEstimatedDaysToComplete(10000, 100), 100);
+        expect(
+          CalculationUtils.calculateEstimatedDaysToComplete(10000, 100),
+          100,
+        );
       });
     });
 

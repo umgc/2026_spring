@@ -100,5 +100,6 @@ class Course {
   }
 
   @override
-  String toString() => 'Course(id: $id, title: $title, progress: $progressPercentage%)';
+  String toString() =>
+      'Course(id: $id, title: $title, progress: $progressPercentage%)';
 }

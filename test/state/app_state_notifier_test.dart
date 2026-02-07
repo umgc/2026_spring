@@ -53,17 +53,20 @@ void main() {
       expect(appStateNotifier.state.studyHoursThisWeek, 24);
     });
 
-    test('loadFromStorage should update state with values from storage', () async {
-      await fakeStorageService.saveDayStreak(20);
-      await fakeStorageService.saveGoals(15);
-      await fakeStorageService.saveStudyHours(30);
+    test(
+      'loadFromStorage should update state with values from storage',
+      () async {
+        await fakeStorageService.saveDayStreak(20);
+        await fakeStorageService.saveGoals(15);
+        await fakeStorageService.saveStudyHours(30);
 
-      await appStateNotifier.loadFromStorage();
+        await appStateNotifier.loadFromStorage();
 
-      expect(appStateNotifier.state.dayStreak, 20);
-      expect(appStateNotifier.state.goalsCompleted, 15);
-      expect(appStateNotifier.state.studyHoursThisWeek, 30);
-    });
+        expect(appStateNotifier.state.dayStreak, 20);
+        expect(appStateNotifier.state.goalsCompleted, 15);
+        expect(appStateNotifier.state.studyHoursThisWeek, 30);
+      },
+    );
 
     test('incrementStreak should increase dayStreak by 1', () async {
       await appStateNotifier.incrementStreak();

@@ -97,5 +97,6 @@ class ProgressMetrics {
   }
 
   @override
-  String toString() => 'ProgressMetrics($totalHoursLearned/$goalHours hours, $completionRate% courses complete)';
+  String toString() =>
+      'ProgressMetrics($totalHoursLearned/$goalHours hours, $completionRate% courses complete)';
 }
