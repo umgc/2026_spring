@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import '../features/auth/auth_entry_screen.dart';
 import '../features/dashboard/dashboard_screen.dart';
 import '../features/courses/courses_list_screen.dart';
 import '../features/courses/course_detail_screen.dart';
@@ -11,8 +12,9 @@ import '../features/profile/settings_screen.dart';
 import '../features/profile/notifications_screen.dart';
 
 final appRouter = GoRouter(
-  initialLocation: '/home',
+  initialLocation: '/auth',
   routes: [
+    GoRoute(path: '/auth', builder: (_, __) => const AuthEntryScreen()),
     GoRoute(path: '/home', builder: (_, __) => const DashboardScreen()),
     GoRoute(path: '/courses', builder: (_, __) => const CoursesListScreen()),
     GoRoute(
