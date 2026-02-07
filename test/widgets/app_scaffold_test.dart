@@ -5,7 +5,9 @@ import 'package:edulense_flutter_new/widgets/app_scaffold.dart';
 
 void main() {
   group('AppScaffold Widget', () {
-    testWidgets('renders scaffold with navigation bar', (WidgetTester tester) async {
+    testWidgets('renders scaffold with navigation bar', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           home: AppScaffold(
@@ -32,13 +34,12 @@ void main() {
       expect(find.text('Test Content'), findsOneWidget);
     });
 
-    testWidgets('renders all navigation destinations', (WidgetTester tester) async {
+    testWidgets('renders all navigation destinations', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
-          home: AppScaffold(
-            currentIndex: 0,
-            child: const SizedBox.shrink(),
-          ),
+          home: AppScaffold(currentIndex: 0, child: const SizedBox.shrink()),
         ),
       );
 
@@ -49,52 +50,48 @@ void main() {
       expect(find.text('Home'), findsOneWidget);
     });
 
-    testWidgets('highlights correct navigation item', (WidgetTester tester) async {
+    testWidgets('highlights correct navigation item', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
-          home: AppScaffold(
-            currentIndex: 0,
-            child: const SizedBox.shrink(),
-          ),
+          home: AppScaffold(currentIndex: 0, child: const SizedBox.shrink()),
         ),
       );
 
       expect(find.byType(NavigationBar), findsOneWidget);
     });
 
-    testWidgets('displays home destination when currentIndex is 4', (WidgetTester tester) async {
+    testWidgets('displays home destination when currentIndex is 4', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
-          home: AppScaffold(
-            currentIndex: 4,
-            child: const SizedBox.shrink(),
-          ),
+          home: AppScaffold(currentIndex: 4, child: const SizedBox.shrink()),
         ),
       );
 
       expect(find.text('Home'), findsOneWidget);
     });
 
-    testWidgets('displays profile destination when currentIndex is 0', (WidgetTester tester) async {
+    testWidgets('displays profile destination when currentIndex is 0', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
-          home: AppScaffold(
-            currentIndex: 0,
-            child: const SizedBox.shrink(),
-          ),
+          home: AppScaffold(currentIndex: 0, child: const SizedBox.shrink()),
         ),
       );
 
       expect(find.text('Profile'), findsOneWidget);
     });
 
-    testWidgets('has proper icons for each destination', (WidgetTester tester) async {
+    testWidgets('has proper icons for each destination', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
-          home: AppScaffold(
-            currentIndex: 4,
-            child: const SizedBox.shrink(),
-          ),
+          home: AppScaffold(currentIndex: 4, child: const SizedBox.shrink()),
         ),
       );
 
@@ -108,10 +105,7 @@ void main() {
     testWidgets('wraps child in SafeArea', (WidgetTester tester) async {
       await tester.pumpWidget(
         MaterialApp(
-          home: AppScaffold(
-            currentIndex: 4,
-            child: const Text('Content'),
-          ),
+          home: AppScaffold(currentIndex: 4, child: const Text('Content')),
         ),
       );
 
@@ -119,20 +113,21 @@ void main() {
       expect(find.text('Content'), findsOneWidget);
     });
 
-    testWidgets('displays navigation bar at bottom', (WidgetTester tester) async {
+    testWidgets('displays navigation bar at bottom', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
-          home: AppScaffold(
-            currentIndex: 4,
-            child: const SizedBox.shrink(),
-          ),
+          home: AppScaffold(currentIndex: 4, child: const SizedBox.shrink()),
         ),
       );
 
       expect(find.byType(NavigationBar), findsOneWidget);
     });
 
-    testWidgets('can display different content for each screen', (WidgetTester tester) async {
+    testWidgets('can display different content for each screen', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           home: AppScaffold(

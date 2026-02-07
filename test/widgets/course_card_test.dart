@@ -4,7 +4,9 @@ import 'package:edulense_flutter_new/widgets/course_card.dart';
 
 void main() {
   group('CourseCard Widget', () {
-    testWidgets('renders correctly with required properties', (WidgetTester tester) async {
+    testWidgets('renders correctly with required properties', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -102,7 +104,9 @@ void main() {
       expect(find.text('Completed Course'), findsOneWidget);
     });
 
-    testWidgets('displays with optional description', (WidgetTester tester) async {
+    testWidgets('displays with optional description', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -120,7 +124,9 @@ void main() {
       expect(find.text('Learn Dart from scratch'), findsOneWidget);
     });
 
-    testWidgets('renders without optional description', (WidgetTester tester) async {
+    testWidgets('renders without optional description', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -141,7 +147,8 @@ void main() {
         MaterialApp(
           home: Scaffold(
             body: CourseCard(
-              title: 'Advanced Machine Learning and Deep Neural Networks for Production Systems',
+              title:
+                  'Advanced Machine Learning and Deep Neural Networks for Production Systems',
               instructor: 'Dr. Smith',
               progress: 55,
             ),
@@ -149,7 +156,12 @@ void main() {
         ),
       );
 
-      expect(find.text('Advanced Machine Learning and Deep Neural Networks for Production Systems'), findsOneWidget);
+      expect(
+        find.text(
+          'Advanced Machine Learning and Deep Neural Networks for Production Systems',
+        ),
+        findsOneWidget,
+      );
     });
 
     testWidgets('handles long instructor name', (WidgetTester tester) async {
@@ -168,7 +180,9 @@ void main() {
       expect(find.text('Professor Alexander Von Neumann III'), findsOneWidget);
     });
 
-    testWidgets('multiple course cards can be displayed', (WidgetTester tester) async {
+    testWidgets('multiple course cards can be displayed', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -224,10 +238,7 @@ void main() {
     testWidgets('applies theme colors correctly', (WidgetTester tester) async {
       await tester.pumpWidget(
         MaterialApp(
-          theme: ThemeData(
-            useMaterial3: true,
-            cardColor: Colors.green,
-          ),
+          theme: ThemeData(useMaterial3: true, cardColor: Colors.green),
           home: Scaffold(
             body: CourseCard(
               title: 'Themed Course',
@@ -241,7 +252,9 @@ void main() {
       expect(find.text('Themed Course'), findsOneWidget);
     });
 
-    testWidgets('displays progress value correctly', (WidgetTester tester) async {
+    testWidgets('displays progress value correctly', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -257,7 +270,9 @@ void main() {
       expect(find.text('Progress Test'), findsOneWidget);
     });
 
-    testWidgets('handles edge case progress values', (WidgetTester tester) async {
+    testWidgets('handles edge case progress values', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -282,7 +297,9 @@ void main() {
       expect(find.byType(CourseCard), findsWidgets);
     });
 
-    testWidgets('displays description with special formatting', (WidgetTester tester) async {
+    testWidgets('displays description with special formatting', (
+      WidgetTester tester,
+    ) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
