@@ -27,6 +27,11 @@ void main() {
     semantics.dispose();
   }
 
+  Future<void> pumpHomeScreen(WidgetTester tester) async {
+    await tester.pumpWidget(const MaterialApp(home: HomeScreen()));
+    await tester.pumpAndSettle();
+  }
+
   group('Accessibility guidelines', () {
     testWidgets('Auth entry screen passes tap target labeling guideline', (
       WidgetTester tester,
@@ -63,10 +68,7 @@ void main() {
     ) async {
       await expectGuidelinePasses(
         tester,
-        pump: () async {
-          await tester.pumpWidget(const MaterialApp(home: HomeScreen()));
-          await tester.pumpAndSettle();
-        },
+        pump: () => pumpHomeScreen(tester),
         guideline: androidTapTargetGuideline,
       );
     });
@@ -76,10 +78,7 @@ void main() {
     ) async {
       await expectGuidelinePasses(
         tester,
-        pump: () async {
-          await tester.pumpWidget(const MaterialApp(home: HomeScreen()));
-          await tester.pumpAndSettle();
-        },
+        pump: () => pumpHomeScreen(tester),
         guideline: iOSTapTargetGuideline,
       );
     });
@@ -89,10 +88,7 @@ void main() {
     ) async {
       await expectGuidelinePasses(
         tester,
-        pump: () async {
-          await tester.pumpWidget(const MaterialApp(home: HomeScreen()));
-          await tester.pumpAndSettle();
-        },
+        pump: () => pumpHomeScreen(tester),
         guideline: labeledTapTargetGuideline,
       );
     });
@@ -102,10 +98,7 @@ void main() {
     ) async {
       await expectGuidelinePasses(
         tester,
-        pump: () async {
-          await tester.pumpWidget(const MaterialApp(home: HomeScreen()));
-          await tester.pumpAndSettle();
-        },
+        pump: () => pumpHomeScreen(tester),
         guideline: textContrastGuideline,
       );
     });
