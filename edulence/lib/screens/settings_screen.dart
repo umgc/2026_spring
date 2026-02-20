@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import '../theme/colors.dart';
-import '../theme/text_styles.dart';
+import 'package:provider/provider.dart';
+
 import '../constants/app_constants.dart';
+import '../main.dart';
+import '../theme/colors.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -12,21 +14,15 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  late ThemeMode _themeMode;
   bool _leftHandedMode = true;
   bool _largeText = false;
   bool _highContrast = false;
 
   @override
-  void initState() {
-    super.initState();
-    // Initialize with system theme
-    _themeMode = ThemeMode.system;
-  }
-
-  @override
   Widget build(BuildContext context) {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    final textTheme = Theme.of(context).textTheme;
+    final themeProvider = context.watch<ThemeProvider>();
 
     return FocusTraversalGroup(
       policy: OrderedTraversalPolicy(),
@@ -48,13 +44,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Theme Settings Section
-                Text(
-                  'Appearance',
-                  style: isDarkMode
-                      ? EduLenseDarkTextStyles.h3
-                      : EduLenseTextStyles.h3,
-                ),
+                Text('Appearance', style: textTheme.headlineSmall),
                 const Gap(AppConstants.spacingMD),
                 Card(
                   child: Padding(
@@ -68,6 +58,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                               'Optimized for daytime use with white backgrounds',
                           icon: Icons.light_mode,
                           optionValue: ThemeMode.light,
+                          selectedTheme: themeProvider.themeMode,
                         ),
                         const Divider(height: 24),
                         _buildThemeOption(
@@ -77,6 +68,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                               'Easier on the eyes in low-light environments',
                           icon: Icons.dark_mode,
                           optionValue: ThemeMode.dark,
+                          selectedTheme: themeProvider.themeMode,
                         ),
                         const Divider(height: 24),
                         _buildThemeOption(
@@ -85,20 +77,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           subtitle: 'Follow device theme settings',
                           icon: Icons.brightness_auto,
                           optionValue: ThemeMode.system,
+                          selectedTheme: themeProvider.themeMode,
                         ),
                       ],
                     ),
                   ),
                 ),
                 const Gap(AppConstants.spacingLG),
-
-                // Accessibility Section
-                Text(
-                  'Accessibility',
-                  style: isDarkMode
-                      ? EduLenseDarkTextStyles.h3
-                      : EduLenseTextStyles.h3,
-                ),
+                Text('Accessibility', style: textTheme.headlineSmall),
                 const Gap(AppConstants.spacingMD),
                 Card(
                   child: Padding(
@@ -141,14 +127,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
                 ),
                 const Gap(AppConstants.spacingLG),
-
-                // About Section
-                Text(
-                  'About',
-                  style: isDarkMode
-                      ? EduLenseDarkTextStyles.h3
-                      : EduLenseTextStyles.h3,
-                ),
+                Text('About', style: textTheme.headlineSmall),
                 const Gap(AppConstants.spacingMD),
                 Card(
                   child: Padding(
@@ -156,25 +135,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          'EduLense',
-                          style: isDarkMode
-                              ? EduLenseDarkTextStyles.bodyLarge
-                              : EduLenseTextStyles.bodyLarge,
-                        ),
+                        Text(AppConstants.appName, style: textTheme.bodyLarge),
                         const Gap(AppConstants.spacingSM),
                         Text(
-                          'Version 1.0.0',
-                          style: isDarkMode
-                              ? EduLenseDarkTextStyles.bodySmall
-                              : EduLenseTextStyles.bodySmall,
+                          'Version ${AppConstants.appVersion}',
+                          style: textTheme.bodySmall,
                         ),
                         const Gap(AppConstants.spacingMD),
                         Text(
-                          'A mobile-first design system optimized for left-handed users in educational productivity.',
-                          style: isDarkMode
-                              ? EduLenseDarkTextStyles.bodyMedium
-                              : EduLenseTextStyles.bodyMedium,
+                          AppConstants.appDescription,
+                          style: textTheme.bodyMedium,
                         ),
                         const Gap(AppConstants.spacingMD),
                         Wrap(
@@ -207,9 +177,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
     required String subtitle,
     required IconData icon,
     required ThemeMode optionValue,
+    required ThemeMode selectedTheme,
   }) {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
-    final isSelected = _themeMode == optionValue;
+    final textTheme = Theme.of(context).textTheme;
+    final isSelected = selectedTheme == optionValue;
 
     return MergeSemantics(
       child: Semantics(
@@ -218,7 +190,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         label: '$title. $subtitle',
         child: ListTile(
           contentPadding: EdgeInsets.zero,
-          onTap: () => setState(() => _themeMode = optionValue),
+          onTap: () => context.read<ThemeProvider>().setThemeMode(optionValue),
           leading: Container(
             padding: const EdgeInsets.all(AppConstants.spacingMD),
             decoration: BoxDecoration(
@@ -237,18 +209,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
               size: 28,
             ),
           ),
-          title: Text(
-            title,
-            style: isDarkMode
-                ? EduLenseDarkTextStyles.bodyLarge
-                : EduLenseTextStyles.bodyLarge,
-          ),
-          subtitle: Text(
-            subtitle,
-            style: isDarkMode
-                ? EduLenseDarkTextStyles.bodySmall
-                : EduLenseTextStyles.bodySmall,
-          ),
+          title: Text(title, style: textTheme.bodyLarge),
+          subtitle: Text(subtitle, style: textTheme.bodySmall),
           trailing: Icon(
             isSelected ? Icons.check_circle : Icons.radio_button_unchecked,
             color: isSelected
@@ -265,27 +227,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
     required String title,
     required String subtitle,
     required bool value,
-    required Function(bool) onChanged,
+    required ValueChanged<bool> onChanged,
   }) {
-    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
+    final textTheme = Theme.of(context).textTheme;
 
     return MergeSemantics(
       child: SwitchListTile(
         value: value,
         onChanged: onChanged,
         activeThumbColor: EduLenseColors.primary,
-        title: Text(
-          title,
-          style: isDarkMode
-              ? EduLenseDarkTextStyles.bodyLarge
-              : EduLenseTextStyles.bodyLarge,
-        ),
-        subtitle: Text(
-          subtitle,
-          style: isDarkMode
-              ? EduLenseDarkTextStyles.bodySmall
-              : EduLenseTextStyles.bodySmall,
-        ),
+        title: Text(title, style: textTheme.bodyLarge),
+        subtitle: Text(subtitle, style: textTheme.bodySmall),
         contentPadding: EdgeInsets.zero,
       ),
     );
