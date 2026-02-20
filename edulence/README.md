@@ -42,7 +42,7 @@ Run all tests:
 flutter test
 ```
 
-Run Maestro flows (example):
+Run Maestro flows:
 
 ```bash
 maestro test maestro/signin.yaml
