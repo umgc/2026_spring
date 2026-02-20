@@ -18,11 +18,32 @@ class _SettingsScreenState extends State<SettingsScreen> {
   bool _largeText = false;
   bool _highContrast = false;
 
+  static const List<_ThemeOptionData> _themeOptions = [
+    _ThemeOptionData(
+      title: 'Light Mode',
+      subtitle: 'Optimized for daytime use with white backgrounds',
+      icon: Icons.light_mode,
+      mode: ThemeMode.light,
+    ),
+    _ThemeOptionData(
+      title: 'Dark Mode',
+      subtitle: 'Easier on the eyes in low-light environments',
+      icon: Icons.dark_mode,
+      mode: ThemeMode.dark,
+    ),
+    _ThemeOptionData(
+      title: 'System Default',
+      subtitle: 'Follow device theme settings',
+      icon: Icons.brightness_auto,
+      mode: ThemeMode.system,
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     final textTheme = Theme.of(context).textTheme;
-    final themeProvider = context.watch<ThemeProvider>();
+    final selectedTheme = context.watch<ThemeProvider>().themeMode;
 
     return FocusTraversalGroup(
       policy: OrderedTraversalPolicy(),
@@ -50,36 +71,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   child: Padding(
                     padding: const EdgeInsets.all(AppConstants.spacingMD),
                     child: Column(
-                      children: [
-                        _buildThemeOption(
-                          context,
-                          title: 'Light Mode',
-                          subtitle:
-                              'Optimized for daytime use with white backgrounds',
-                          icon: Icons.light_mode,
-                          optionValue: ThemeMode.light,
-                          selectedTheme: themeProvider.themeMode,
-                        ),
-                        const Divider(height: 24),
-                        _buildThemeOption(
-                          context,
-                          title: 'Dark Mode',
-                          subtitle:
-                              'Easier on the eyes in low-light environments',
-                          icon: Icons.dark_mode,
-                          optionValue: ThemeMode.dark,
-                          selectedTheme: themeProvider.themeMode,
-                        ),
-                        const Divider(height: 24),
-                        _buildThemeOption(
-                          context,
-                          title: 'System Default',
-                          subtitle: 'Follow device theme settings',
-                          icon: Icons.brightness_auto,
-                          optionValue: ThemeMode.system,
-                          selectedTheme: themeProvider.themeMode,
-                        ),
-                      ],
+                      children: _withDividers(
+                        _themeOptions
+                            .map(
+                              (option) => _buildThemeOption(
+                                context,
+                                option: option,
+                                selectedTheme: selectedTheme,
+                              ),
+                            )
+                            .toList(),
+                      ),
                     ),
                   ),
                 ),
@@ -90,7 +92,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   child: Padding(
                     padding: const EdgeInsets.all(AppConstants.spacingMD),
                     child: Column(
-                      children: [
+                      children: _withDividers([
                         _buildSwitchOption(
                           context,
                           title: 'Left-Handed Mode',
@@ -101,7 +103,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             setState(() => _leftHandedMode = value);
                           },
                         ),
-                        const Divider(height: 24),
                         _buildSwitchOption(
                           context,
                           title: 'Large Text',
@@ -112,7 +113,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             setState(() => _largeText = value);
                           },
                         ),
-                        const Divider(height: 24),
                         _buildSwitchOption(
                           context,
                           title: 'High Contrast',
@@ -122,7 +122,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             setState(() => _highContrast = value);
                           },
                         ),
-                      ],
+                      ]),
                     ),
                   ),
                 ),
@@ -149,13 +149,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         const Gap(AppConstants.spacingMD),
                         Wrap(
                           spacing: 8,
-                          children: [
-                            _buildInfoChip('WCAG AA', EduLenseColors.success),
-                            _buildInfoChip('Accessible', EduLenseColors.info),
-                            _buildInfoChip(
-                              'Left-Friendly',
-                              EduLenseColors.primary,
-                            ),
+                          children: const [
+                            _InfoChip('WCAG AA', EduLenseColors.success),
+                            _InfoChip('Accessible', EduLenseColors.info),
+                            _InfoChip('Left-Friendly', EduLenseColors.primary),
                           ],
                         ),
                       ],
@@ -171,26 +168,36 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
+  List<Widget> _withDividers(List<Widget> children) {
+    final result = <Widget>[];
+
+    for (var i = 0; i < children.length; i++) {
+      result.add(children[i]);
+      if (i < children.length - 1) {
+        result.add(const Divider(height: 24));
+      }
+    }
+
+    return result;
+  }
+
   Widget _buildThemeOption(
     BuildContext context, {
-    required String title,
-    required String subtitle,
-    required IconData icon,
-    required ThemeMode optionValue,
+    required _ThemeOptionData option,
     required ThemeMode selectedTheme,
   }) {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
     final textTheme = Theme.of(context).textTheme;
-    final isSelected = selectedTheme == optionValue;
+    final isSelected = selectedTheme == option.mode;
 
     return MergeSemantics(
       child: Semantics(
         button: true,
         selected: isSelected,
-        label: '$title. $subtitle',
+        label: '${option.title}. ${option.subtitle}',
         child: ListTile(
           contentPadding: EdgeInsets.zero,
-          onTap: () => context.read<ThemeProvider>().setThemeMode(optionValue),
+          onTap: () => context.read<ThemeProvider>().setThemeMode(option.mode),
           leading: Container(
             padding: const EdgeInsets.all(AppConstants.spacingMD),
             decoration: BoxDecoration(
@@ -202,15 +209,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
               borderRadius: BorderRadius.circular(AppConstants.radiusMD),
             ),
             child: Icon(
-              icon,
+              option.icon,
               color: isSelected
                   ? EduLenseColors.primary
                   : EduLenseColors.tertiaryText,
               size: 28,
             ),
           ),
-          title: Text(title, style: textTheme.bodyLarge),
-          subtitle: Text(subtitle, style: textTheme.bodySmall),
+          title: Text(option.title, style: textTheme.bodyLarge),
+          subtitle: Text(option.subtitle, style: textTheme.bodySmall),
           trailing: Icon(
             isSelected ? Icons.check_circle : Icons.radio_button_unchecked,
             color: isSelected
@@ -242,8 +249,30 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
     );
   }
+}
 
-  Widget _buildInfoChip(String label, Color color) {
+class _ThemeOptionData {
+  const _ThemeOptionData({
+    required this.title,
+    required this.subtitle,
+    required this.icon,
+    required this.mode,
+  });
+
+  final String title;
+  final String subtitle;
+  final IconData icon;
+  final ThemeMode mode;
+}
+
+class _InfoChip extends StatelessWidget {
+  const _InfoChip(this.label, this.color);
+
+  final String label;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(
         horizontal: AppConstants.spacingMD,

@@ -45,14 +45,9 @@ class ExploreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Explore'), elevation: 0),
-      body: Center(
-        child: Text(
-          'Explore Screen - Coming Soon',
-          style: Theme.of(context).textTheme.headlineSmall,
-        ),
-      ),
+    return const _PlaceholderScreen(
+      title: 'Explore',
+      showSettingsAction: false,
     );
   }
 }
@@ -62,30 +57,49 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return const _PlaceholderScreen(title: 'Profile', showSettingsAction: true);
+  }
+}
+
+class _PlaceholderScreen extends StatelessWidget {
+  const _PlaceholderScreen({
+    required this.title,
+    required this.showSettingsAction,
+  });
+
+  final String title;
+  final bool showSettingsAction;
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Profile'),
+        title: Text(title),
         elevation: 0,
-        actions: [
-          Semantics(
-            button: true,
-            label: 'Open settings',
-            child: IconButton(
-              tooltip: 'Settings',
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (_) => const SettingsScreen()),
-                );
-              },
-              icon: const Icon(Icons.settings),
-            ),
-          ),
-        ],
+        actions: showSettingsAction
+            ? [
+                Semantics(
+                  button: true,
+                  label: 'Open settings',
+                  child: IconButton(
+                    tooltip: 'Settings',
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const SettingsScreen(),
+                        ),
+                      );
+                    },
+                    icon: const Icon(Icons.settings),
+                  ),
+                ),
+              ]
+            : null,
       ),
       body: Center(
         child: Text(
-          'Profile Screen - Coming Soon',
+          '$title Screen - Coming Soon',
           style: Theme.of(context).textTheme.headlineSmall,
         ),
       ),
