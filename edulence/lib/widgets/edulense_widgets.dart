@@ -13,7 +13,7 @@ class EduLenseCard extends StatelessWidget {
   final BorderRadius borderRadius;
 
   const EduLenseCard({
-    Key? key,
+    super.key,
     required this.child,
     this.padding = const EdgeInsets.all(AppConstants.spacingMD),
     this.onTap,
@@ -21,19 +21,17 @@ class EduLenseCard extends StatelessWidget {
     this.borderRadius = const BorderRadius.all(
       Radius.circular(AppConstants.radiusLG),
     ),
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Card(
-        elevation: elevation,
-        shape: RoundedRectangleBorder(borderRadius: borderRadius),
-        child: Padding(
-          padding: padding,
-          child: child,
-        ),
+    return Card(
+      elevation: elevation,
+      shape: RoundedRectangleBorder(borderRadius: borderRadius),
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: borderRadius,
+        child: Padding(padding: padding, child: child),
       ),
     );
   }
@@ -46,11 +44,11 @@ class SectionHeader extends StatelessWidget {
   final Widget? action;
 
   const SectionHeader({
-    Key? key,
+    super.key,
     required this.title,
     this.subtitle,
     this.action,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +93,7 @@ class EduLenseBadge extends StatelessWidget {
   final EdgeInsetsGeometry padding;
 
   const EduLenseBadge({
-    Key? key,
+    super.key,
     required this.label,
     this.backgroundColor = EduLenseColors.primary,
     this.textColor = Colors.white,
@@ -103,7 +101,7 @@ class EduLenseBadge extends StatelessWidget {
       horizontal: AppConstants.spacingMD,
       vertical: AppConstants.spacingSM,
     ),
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -134,12 +132,12 @@ class EmptyStateWidget extends StatelessWidget {
   final Widget? action;
 
   const EmptyStateWidget({
-    Key? key,
+    super.key,
     required this.icon,
     required this.title,
     required this.description,
     this.action,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -151,11 +149,7 @@ class EmptyStateWidget extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              icon,
-              size: 64,
-              color: EduLenseColors.tertiaryText,
-            ),
+            Icon(icon, size: 64, color: EduLenseColors.tertiaryText),
             const Gap(AppConstants.spacingLG),
             Text(
               title,
@@ -172,10 +166,7 @@ class EmptyStateWidget extends StatelessWidget {
                   : EduLenseTextStyles.bodyMedium,
               textAlign: TextAlign.center,
             ),
-            if (action != null) ...[
-              const Gap(AppConstants.spacingLG),
-              action!,
-            ],
+            if (action != null) ...[const Gap(AppConstants.spacingLG), action!],
           ],
         ),
       ),

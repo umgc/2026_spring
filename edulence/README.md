@@ -85,10 +85,61 @@ The app includes support for both light and dark themes:
 
 ## Accessibility Features
 
-1. **WCAG AA Compliance** - All color combinations meet accessibility standards
-2. **Left-Handed Optimization** - UI elements positioned for left-handed users
-3. **Large Text Support** - Option to increase font sizes
-4. **High Contrast Mode** - Alternative color scheme for better visibility
+EduLense implements accessibility across auth, home, navigation, and settings flows.
+
+### Semantics and Screen Reader Support
+- Meaningful semantics labels are applied to primary interactive controls (for example: sign in, sign up, settings, quick actions).
+- Semantic headers are used for major section titles.
+- Interactive controls expose button/switch/selected state so TalkBack and VoiceOver can announce behavior correctly.
+
+### Focus Management and Navigation Order
+- Ordered focus traversal is enabled at app and screen level using `FocusTraversalGroup` + `OrderedTraversalPolicy`.
+- Primary actions use explicit focus order where needed (for example auth actions and home quick actions).
+
+### Keyboard Navigation
+- Buttons, list tiles, and switches are keyboard-operable.
+- Tab traversal and Enter activation are covered by widget tests.
+
+### Touch Target Size
+- Interactive controls use accessible widgets (`IconButton`, `InkWell`, `ListTile`, `SwitchListTile`) to maintain minimum target sizes.
+- Guideline tests validate Android and iOS tap target constraints.
+
+### Color Contrast
+- Text colors are tuned to satisfy WCAG contrast thresholds.
+- Automated contrast guideline tests validate visible text on key screens.
+
+### Dynamic Text Scaling
+- App-level text scaling support is enabled up to `200%` (`maxScaleFactor: 2.0`).
+- Auth entry layout supports high text scale without overflow.
+
+## Accessibility Testing
+
+### Automated Flutter Accessibility Guideline Tests
+Run:
+
+```bash
+flutter test
+```
+
+Current suite includes:
+- `labeledTapTargetGuideline`
+- `androidTapTargetGuideline`
+- `iOSTapTargetGuideline`
+- `textContrastGuideline`
+- 200% text scaling behavior test
+- keyboard navigation behavior test
+
+### Manual Assistive Technology Testing
+
+#### Android (TalkBack)
+1. Enable TalkBack in Android Accessibility settings.
+2. Navigate Auth, Home, Profile, and Settings screens.
+3. Verify labels, roles, selected state, and logical swipe focus order.
+
+#### iOS (VoiceOver)
+1. Enable VoiceOver in iOS Accessibility settings.
+2. Navigate the same screens and actions.
+3. Verify announcements, rotor navigation behavior, and control activation feedback.
 
 ## Screens
 
