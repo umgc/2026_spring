@@ -1,0 +1,37 @@
+appId: com.example.edulence
+---
+# Scenario 1: Continue via Sign In and verify home experience.
+- launchApp:
+    clearState: true
+- waitForAnimationToEnd
+- assertVisible: "Welcome to EduLense"
+- assertVisible: "Sign In"
+- assertVisible: "Sign Up"
+- assertVisible: "By continuing you agree to our Terms & Privacy."
+
+- tapOn: "Sign In"
+- waitForAnimationToEnd
+
+# Home screen smoke checks.
+- assertVisible: "EduLense"
+- assertVisible: "Quick Actions"
+- assertVisible: "Recent Activity"
+
+# Accessibility-focused checks: visible, descriptive labels on key content/actions.
+- assertVisible: "My Courses"
+- assertVisible: "Assignments"
+- assertVisible: "Schedule"
+- assertVisible: "Progress"
+
+# Scenario 2: Relaunch and continue via Sign Up.
+- launchApp:
+    clearState: true
+- waitForAnimationToEnd
+- tapOn: "Sign Up"
+- waitForAnimationToEnd
+
+# App should still land in the authenticated/main experience.
+- assertVisible: "EduLense"
+- assertVisible: "Quick Actions"
+- assertVisible: "My Courses"
+- assertVisible: "Assignments"

@@ -21,7 +21,9 @@ class EduLenseColors {
   static const Color primaryText = Color(0xFF212121); // 15.43:1
   static const Color secondaryText = Color(0xFF666666); // 7.37:1
   static const Color tertiaryText = Color(0xFF999999); // 4.73:1
-  static const Color disabledText = Color(0xFFCCCCCC); // 3.15:1 (large text only)
+  static const Color disabledText = Color(
+    0xFFCCCCCC,
+  ); // 3.15:1 (large text only)
 
   // Neutral Colors
   static const Color white = Color(0xFFFFFFFF);
@@ -44,7 +46,6 @@ class LightColorScheme {
     primary: EduLenseColors.primary,
     secondary: EduLenseColors.secondary,
     surface: EduLenseColors.white,
-    background: EduLenseColors.background,
     error: EduLenseColors.error,
     tertiary: EduLenseColors.accent,
   );
@@ -56,7 +57,6 @@ class DarkColorScheme {
     primary: EduLenseColors.primary,
     secondary: EduLenseColors.secondary,
     surface: EduLenseColors.darkSurface,
-    background: EduLenseColors.darkBackground,
     error: EduLenseColors.error,
     tertiary: EduLenseColors.accent,
   );
