@@ -10,7 +10,7 @@ Welcome to the EduLense Flutter project! This is your complete guide to the appl
    - Common customization examples
    - Perfect for getting started immediately
 
-### 2. **[README.md](README.md)** 📖 FULL OVERVIEW
+### 2. **[README.md](../README.md)** 📖 FULL OVERVIEW
    - Complete project overview
    - Features and capabilities
    - Project structure explanation
@@ -50,11 +50,12 @@ edulence/
 │   └── widgets/
 │       └── edulense_widgets.dart         # Components
 ├── pubspec.yaml                           # Dependencies
-├── QUICKSTART.md                          # ← Quick reference
 ├── README.md                              # ← Full docs
-├── IMPLEMENTATION_GUIDE.md                # ← Technical details
-├── COMPLETION_SUMMARY.md                  # ← Status summary
-└── INDEX.md                               # ← You are here
+└── docs/
+    ├── QUICKSTART.md                      # ← Quick reference
+    ├── IMPLEMENTATION_GUIDE.md            # ← Technical details
+    ├── COMPLETION_SUMMARY.md              # ← Status summary
+    └── INDEX.md                           # ← You are here
 ```
 
 ---
@@ -67,7 +68,7 @@ edulence/
 → Go to [QUICKSTART.md](QUICKSTART.md)
 
 **📚 Understand the project**
-→ Go to [README.md](README.md)
+→ Go to [README.md](../README.md)
 
 **🔧 Customize colors/fonts**
 → Go to [IMPLEMENTATION_GUIDE.md](IMPLEMENTATION_GUIDE.md) → Customization Guide
@@ -84,7 +85,7 @@ edulence/
 
 ```bash
 # 1. Navigate to project
-cd /Users/kwameduodu/EdulenseAI/2026_spring/edulence
+cd edulence
 
 # 2. Get dependencies
 flutter pub get
@@ -213,7 +214,7 @@ main.dart
 | Question | Answer Location |
 |----------|-----------------|
 | "Where do I start?" | [QUICKSTART.md](QUICKSTART.md) |
-| "How does it work?" | [README.md](README.md) |
+| "How does it work?" | [README.md](../README.md) |
 | "How do I customize X?" | [IMPLEMENTATION_GUIDE.md](IMPLEMENTATION_GUIDE.md) |
 | "What was completed?" | [COMPLETION_SUMMARY.md](COMPLETION_SUMMARY.md) |
 | "How do I run it?" | [QUICKSTART.md](QUICKSTART.md#-getting-started) |

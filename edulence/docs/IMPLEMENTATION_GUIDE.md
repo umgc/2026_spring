@@ -135,7 +135,7 @@ dependencies:
 
 1. **Navigate to project:**
    ```bash
-   cd /Users/kwameduodu/EdulenseAI/2026_spring/edulence
+   cd edulence
    ```
 
 2. **Get dependencies:**

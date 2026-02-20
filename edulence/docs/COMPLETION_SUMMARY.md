@@ -101,7 +101,7 @@ Your complete Flutter application is ready to use. Here's what has been built:
 ## 📂 Project Location
 
 ```
-/Users/kwameduodu/EdulenseAI/2026_spring/edulence
+edulence/
 ```
 
 ---
@@ -110,7 +110,7 @@ Your complete Flutter application is ready to use. Here's what has been built:
 
 ### To Run the App
 ```bash
-cd /Users/kwameduodu/EdulenseAI/2026_spring/edulence
+cd edulence
 flutter pub get
 flutter run
 ```
