@@ -115,7 +115,7 @@ class EduLenseBadge extends StatelessWidget {
       child: Text(
         label,
         style: TextStyle(
-          color: backgroundColor,
+          color: textColor,
           fontSize: 12,
           fontWeight: FontWeight.w500,
         ),

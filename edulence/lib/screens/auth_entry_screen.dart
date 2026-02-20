@@ -12,6 +12,35 @@ class AuthEntryScreen extends StatelessWidget {
     );
   }
 
+  Widget _buildAuthActionButton({
+    required double focusOrder,
+    required String semanticsLabel,
+    required String buttonText,
+    required Key buttonKey,
+    required VoidCallback onPressed,
+    required bool outlined,
+  }) {
+    final buttonChild = SizedBox(
+      width: double.infinity,
+      child: outlined
+          ? OutlinedButton(
+              key: buttonKey,
+              onPressed: onPressed,
+              child: Text(buttonText),
+            )
+          : ElevatedButton(
+              key: buttonKey,
+              onPressed: onPressed,
+              child: Text(buttonText),
+            ),
+    );
+
+    return FocusTraversalOrder(
+      order: NumericFocusOrder(focusOrder),
+      child: Semantics(button: true, label: semanticsLabel, child: buttonChild),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -114,36 +143,22 @@ class AuthEntryScreen extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(height: 20),
-                            FocusTraversalOrder(
-                              order: const NumericFocusOrder(1),
-                              child: Semantics(
-                                button: true,
-                                label: 'Sign in to EduLense',
-                                child: SizedBox(
-                                  width: double.infinity,
-                                  child: ElevatedButton(
-                                    key: const Key('auth_sign_in_button'),
-                                    onPressed: () => _enterApp(context),
-                                    child: const Text('Sign In'),
-                                  ),
-                                ),
-                              ),
+                            _buildAuthActionButton(
+                              focusOrder: 1,
+                              semanticsLabel: 'Sign in to EduLense',
+                              buttonText: 'Sign In',
+                              buttonKey: const Key('auth_sign_in_button'),
+                              onPressed: () => _enterApp(context),
+                              outlined: false,
                             ),
                             const SizedBox(height: 12),
-                            FocusTraversalOrder(
-                              order: const NumericFocusOrder(2),
-                              child: Semantics(
-                                button: true,
-                                label: 'Create a new EduLense account',
-                                child: SizedBox(
-                                  width: double.infinity,
-                                  child: OutlinedButton(
-                                    key: const Key('auth_sign_up_button'),
-                                    onPressed: () => _enterApp(context),
-                                    child: const Text('Sign Up'),
-                                  ),
-                                ),
-                              ),
+                            _buildAuthActionButton(
+                              focusOrder: 2,
+                              semanticsLabel: 'Create a new EduLense account',
+                              buttonText: 'Sign Up',
+                              buttonKey: const Key('auth_sign_up_button'),
+                              onPressed: () => _enterApp(context),
+                              outlined: true,
                             ),
                             const SizedBox(height: 16),
                             Center(

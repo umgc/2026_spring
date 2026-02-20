@@ -16,78 +16,98 @@ void main() {
     await tester.pumpAndSettle();
   }
 
+  Future<void> expectGuidelinePasses(
+    WidgetTester tester, {
+    required Future<void> Function() pump,
+    required AccessibilityGuideline guideline,
+  }) async {
+    final semantics = tester.ensureSemantics();
+    await pump();
+    await expectLater(tester, meetsGuideline(guideline));
+    semantics.dispose();
+  }
+
   group('Accessibility guidelines', () {
     testWidgets('Auth entry screen passes tap target labeling guideline', (
       WidgetTester tester,
     ) async {
-      final semantics = tester.ensureSemantics();
-      await pumpApp(tester);
-
-      await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
-
-      semantics.dispose();
+      await expectGuidelinePasses(
+        tester,
+        pump: () => pumpApp(tester),
+        guideline: labeledTapTargetGuideline,
+      );
     });
 
     testWidgets('Auth entry screen passes Android tap target size guideline', (
       WidgetTester tester,
     ) async {
-      final semantics = tester.ensureSemantics();
-      await pumpApp(tester);
-
-      await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
-
-      semantics.dispose();
+      await expectGuidelinePasses(
+        tester,
+        pump: () => pumpApp(tester),
+        guideline: androidTapTargetGuideline,
+      );
     });
 
     testWidgets('Auth entry screen passes text contrast guideline', (
       WidgetTester tester,
     ) async {
-      final semantics = tester.ensureSemantics();
-      await pumpApp(tester);
-
-      await expectLater(tester, meetsGuideline(textContrastGuideline));
-
-      semantics.dispose();
+      await expectGuidelinePasses(
+        tester,
+        pump: () => pumpApp(tester),
+        guideline: textContrastGuideline,
+      );
     });
 
     testWidgets('HomeScreen meets androidTapTargetGuideline', (
       WidgetTester tester,
     ) async {
-      final SemanticsHandle handle = tester.ensureSemantics();
-      await tester.pumpWidget(const MaterialApp(home: HomeScreen()));
-      await tester.pumpAndSettle();
-      await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
-      handle.dispose();
+      await expectGuidelinePasses(
+        tester,
+        pump: () async {
+          await tester.pumpWidget(const MaterialApp(home: HomeScreen()));
+          await tester.pumpAndSettle();
+        },
+        guideline: androidTapTargetGuideline,
+      );
     });
 
     testWidgets('HomeScreen meets iOS tap target size guideline', (
       WidgetTester tester,
     ) async {
-      final SemanticsHandle handle = tester.ensureSemantics();
-      await tester.pumpWidget(const MaterialApp(home: HomeScreen()));
-      await tester.pumpAndSettle();
-      await expectLater(tester, meetsGuideline(iOSTapTargetGuideline));
-      handle.dispose();
+      await expectGuidelinePasses(
+        tester,
+        pump: () async {
+          await tester.pumpWidget(const MaterialApp(home: HomeScreen()));
+          await tester.pumpAndSettle();
+        },
+        guideline: iOSTapTargetGuideline,
+      );
     });
 
     testWidgets('HomeScreen passes tap target labeling guideline', (
       WidgetTester tester,
     ) async {
-      final SemanticsHandle handle = tester.ensureSemantics();
-      await tester.pumpWidget(const MaterialApp(home: HomeScreen()));
-      await tester.pumpAndSettle();
-      await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
-      handle.dispose();
+      await expectGuidelinePasses(
+        tester,
+        pump: () async {
+          await tester.pumpWidget(const MaterialApp(home: HomeScreen()));
+          await tester.pumpAndSettle();
+        },
+        guideline: labeledTapTargetGuideline,
+      );
     });
 
     testWidgets('HomeScreen passes text contrast guideline', (
       WidgetTester tester,
     ) async {
-      final SemanticsHandle handle = tester.ensureSemantics();
-      await tester.pumpWidget(const MaterialApp(home: HomeScreen()));
-      await tester.pumpAndSettle();
-      await expectLater(tester, meetsGuideline(textContrastGuideline));
-      handle.dispose();
+      await expectGuidelinePasses(
+        tester,
+        pump: () async {
+          await tester.pumpWidget(const MaterialApp(home: HomeScreen()));
+          await tester.pumpAndSettle();
+        },
+        guideline: textContrastGuideline,
+      );
     });
   });
 
