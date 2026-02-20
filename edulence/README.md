@@ -1,6 +1,6 @@
 # EduLense
 
-EduLense is a Flutter app with accessible, mobile-first learning workflows.
+EduLense is a cross-platform educational productivity application designed with a left-handed–first user interface. 
 
 ## Quick Start
 
