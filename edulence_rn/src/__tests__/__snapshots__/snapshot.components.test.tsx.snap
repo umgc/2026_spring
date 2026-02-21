@@ -775,10 +775,34 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
         accessibilityRole="switch"
         accessibilityState={
           {
+            "busy": undefined,
             "checked": true,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
           }
         }
         accessible={true}
+        collapsable={false}
+        focusable={true}
+        hitSlop={4}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
         style={
           {
             "alignItems": "center",
@@ -807,20 +831,25 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
         >
           Left-Handed Mode
         </Text>
-        <RCTSwitch
-          accessibilityRole="switch"
-          onChange={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            {
-              "height": 31,
-              "width": 51,
+        <View
+          accessible={false}
+          importantForAccessibility="no-hide-descendants"
+        >
+          <RCTSwitch
+            accessibilityRole="switch"
+            onChange={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "height": 31,
+                "width": 51,
+              }
             }
-          }
-          thumbTintColor="#5E3AEE"
-          value={true}
-        />
+            thumbTintColor="#5E3AEE"
+            value={true}
+          />
+        </View>
       </View>
       <View
         accessibilityHint="Increases text size for improved readability"
@@ -828,10 +857,34 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
         accessibilityRole="switch"
         accessibilityState={
           {
+            "busy": undefined,
             "checked": false,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
           }
         }
         accessible={true}
+        collapsable={false}
+        focusable={true}
+        hitSlop={4}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
         style={
           {
             "alignItems": "center",
@@ -860,19 +913,24 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
         >
           Large Text
         </Text>
-        <RCTSwitch
-          accessibilityRole="switch"
-          onChange={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            {
-              "height": 31,
-              "width": 51,
+        <View
+          accessible={false}
+          importantForAccessibility="no-hide-descendants"
+        >
+          <RCTSwitch
+            accessibilityRole="switch"
+            onChange={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "height": 31,
+                "width": 51,
+              }
             }
-          }
-          value={false}
-        />
+            value={false}
+          />
+        </View>
       </View>
       <View
         accessibilityHint="Enables stronger contrast for readability"
@@ -880,10 +938,34 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
         accessibilityRole="switch"
         accessibilityState={
           {
+            "busy": undefined,
             "checked": false,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
           }
         }
         accessible={true}
+        collapsable={false}
+        focusable={true}
+        hitSlop={4}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
         style={
           {
             "alignItems": "center",
@@ -912,19 +994,24 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
         >
           High Contrast
         </Text>
-        <RCTSwitch
-          accessibilityRole="switch"
-          onChange={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            {
-              "height": 31,
-              "width": 51,
+        <View
+          accessible={false}
+          importantForAccessibility="no-hide-descendants"
+        >
+          <RCTSwitch
+            accessibilityRole="switch"
+            onChange={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "height": 31,
+                "width": 51,
+              }
             }
-          }
-          value={false}
-        />
+            value={false}
+          />
+        </View>
       </View>
     </View>
     <Text
@@ -1366,10 +1453,34 @@ exports[`Snapshot coverage matches shared component snapshots 5`] = `
   accessibilityRole="switch"
   accessibilityState={
     {
+      "busy": undefined,
       "checked": false,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
     }
   }
   accessible={true}
+  collapsable={false}
+  focusable={true}
+  hitSlop={4}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
   style={
     {
       "alignItems": "center",
@@ -1398,19 +1509,24 @@ exports[`Snapshot coverage matches shared component snapshots 5`] = `
   >
     Large Text
   </Text>
-  <RCTSwitch
-    accessibilityRole="switch"
-    onChange={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      {
-        "height": 31,
-        "width": 51,
+  <View
+    accessible={false}
+    importantForAccessibility="no-hide-descendants"
+  >
+    <RCTSwitch
+      accessibilityRole="switch"
+      onChange={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "height": 31,
+          "width": 51,
+        }
       }
-    }
-    value={false}
-  />
+      value={false}
+    />
+  </View>
 </View>
 `;
 
