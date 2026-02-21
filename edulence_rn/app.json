@@ -1,0 +1,17 @@
+{
+  "expo": {
+    "name": "EduLense RN",
+    "slug": "edulence-rn",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.edulence.rn"
+    },
+    "android": {
+      "package": "com.edulence.rn"
+    }
+  }
+}
