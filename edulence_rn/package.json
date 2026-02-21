@@ -1,0 +1,52 @@
+{
+  "name": "edulence-rn",
+  "version": "1.0.0",
+  "private": true,
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "start:safe": "mkdir -p /tmp/edulence_home && HOME=/tmp/edulence_home expo start -c",
+    "start:safe:android": "mkdir -p /tmp/edulence_home && HOME=/tmp/edulence_home ANDROID_HOME=/Users/kwameduodu/Library/Android/sdk ANDROID_SDK_ROOT=/Users/kwameduodu/Library/Android/sdk PATH=/Users/kwameduodu/Library/Android/sdk/platform-tools:/Users/kwameduodu/Library/Android/sdk/emulator:$PATH expo start -c",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "lint": "eslint . --ext .ts,.tsx",
+    "test": "jest",
+    "typecheck": "tsc --noEmit",
+    "analyze:security": "eslint . --ext .ts,.tsx --rule 'security/detect-object-injection: error'",
+    "build:android:release": "npx eas-cli build --platform android --profile production-android",
+    "build:ios:release": "npx eas-cli build --platform ios --profile production-ios",
+    "build:release": "npx eas-cli build --platform all --profile production",
+    "submit:android:production": "npx eas-cli submit --platform android --profile production",
+    "submit:ios:production": "npx eas-cli submit --platform ios --profile production"
+  },
+  "dependencies": {
+    "@expo/vector-icons": "^14.0.2",
+    "@react-navigation/bottom-tabs": "^6.6.1",
+    "@react-navigation/native": "^6.1.18",
+    "@react-navigation/native-stack": "^6.11.0",
+    "expo": "~53.0.0",
+    "expo-asset": "~11.1.7",
+    "expo-status-bar": "~2.2.3",
+    "react": "19.0.0",
+    "react-native": "0.79.6",
+    "react-native-safe-area-context": "5.4.0",
+    "react-native-screens": "~4.11.1",
+    "zustand": "^4.5.5"
+  },
+  "devDependencies": {
+    "@testing-library/jest-native": "^5.4.3",
+    "@testing-library/react-native": "^12.7.2",
+    "@types/jest": "^29.5.14",
+    "@types/react": "~19.0.10",
+    "@types/react-test-renderer": "^19.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.8.0",
+    "@typescript-eslint/parser": "^8.8.0",
+    "eslint": "^8.57.1",
+    "eslint-config-universe": "^15.0.3",
+    "eslint-plugin-security": "^3.0.1",
+    "jest": "^29.7.0",
+    "jest-expo": "~53.0.0",
+    "react-test-renderer": "19.0.0",
+    "typescript": "~5.8.3"
+  }
+}

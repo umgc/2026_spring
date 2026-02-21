@@ -1,0 +1,1569 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot coverage matches screen snapshots 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    [
+      [
+        {
+          "flex": 1,
+        },
+        {
+          "backgroundColor": "#FAFAFA",
+        },
+      ],
+      {
+        "paddingBottom": 0,
+      },
+    ]
+  }
+>
+  <RCTScrollView
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessible={false}
+    automaticallyAdjustKeyboardInsets={true}
+    contentContainerStyle={
+      {
+        "flexGrow": 1,
+        "justifyContent": "center",
+        "padding": 24,
+      }
+    }
+    focusable={true}
+    keyboardDismissMode="interactive"
+    keyboardShouldPersistTaps="handled"
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+  >
+    <View>
+      <Text
+        accessibilityRole="header"
+        style={
+          [
+            {
+              "fontWeight": "700",
+            },
+            {
+              "color": "#212121",
+              "fontSize": 32,
+              "textAlign": "right",
+            },
+          ]
+        }
+      >
+        Welcome to EduLense
+      </Text>
+      <Text
+        style={
+          [
+            {
+              "lineHeight": 24,
+              "marginBottom": 24,
+              "marginTop": 16,
+            },
+            {
+              "color": "#4F4F4F",
+              "fontSize": 16,
+              "textAlign": "right",
+            },
+          ]
+        }
+      >
+        Sign in to continue your learning journey.
+      </Text>
+      <View
+        style={
+          [
+            {
+              "borderRadius": 16,
+              "borderWidth": 1,
+              "gap": 16,
+              "padding": 24,
+            },
+            {
+              "backgroundColor": "#FFFFFF",
+              "borderColor": "#E6E6E6",
+            },
+          ]
+        }
+      >
+        <TextInput
+          accessibilityHint="Enter your full name for sign up"
+          accessibilityLabel="Name"
+          accessible={true}
+          onChangeText={[Function]}
+          placeholder="Full name"
+          placeholderTextColor="#4F4F4F"
+          returnKeyType="next"
+          style={
+            [
+              {
+                "borderRadius": 10,
+                "borderWidth": 1,
+                "minHeight": 44,
+                "paddingHorizontal": 16,
+              },
+              {
+                "borderColor": "#E6E6E6",
+                "color": "#212121",
+                "fontSize": 15,
+                "textAlign": "right",
+              },
+            ]
+          }
+          value=""
+        />
+        <TextInput
+          accessibilityHint="Enter your email address"
+          accessibilityLabel="Email"
+          accessible={true}
+          autoCapitalize="none"
+          keyboardType="email-address"
+          onChangeText={[Function]}
+          placeholder="Email"
+          placeholderTextColor="#4F4F4F"
+          returnKeyType="next"
+          style={
+            [
+              {
+                "borderRadius": 10,
+                "borderWidth": 1,
+                "minHeight": 44,
+                "paddingHorizontal": 16,
+              },
+              {
+                "borderColor": "#E6E6E6",
+                "color": "#212121",
+                "fontSize": 15,
+                "textAlign": "right",
+              },
+            ]
+          }
+          textContentType="emailAddress"
+          value="demo@edulence.app"
+        />
+        <TextInput
+          accessibilityHint="Enter your password"
+          accessibilityLabel="Password"
+          accessible={true}
+          onChangeText={[Function]}
+          onSubmitEditing={[Function]}
+          placeholder="Password"
+          placeholderTextColor="#4F4F4F"
+          returnKeyType="go"
+          secureTextEntry={true}
+          style={
+            [
+              {
+                "borderRadius": 10,
+                "borderWidth": 1,
+                "minHeight": 44,
+                "paddingHorizontal": 16,
+              },
+              {
+                "borderColor": "#E6E6E6",
+                "color": "#212121",
+                "fontSize": 15,
+                "textAlign": "right",
+              },
+            ]
+          }
+          textContentType="password"
+          value="demo1234"
+        />
+        <Text
+          style={
+            [
+              {
+                "marginTop": -4,
+              },
+              {
+                "color": "#4F4F4F",
+                "fontSize": 12,
+                "textAlign": "right",
+              },
+            ]
+          }
+        >
+          Demo account: demo@edulence.app / demo1234
+        </Text>
+        <View
+          accessibilityHint="Opens your learning dashboard"
+          accessibilityLabel="Sign in to EduLense"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              {
+                "alignItems": "center",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "minHeight": 44,
+                "overflow": "hidden",
+                "paddingHorizontal": 16,
+              },
+              {
+                "backgroundColor": "#5E3AEE",
+                "opacity": 1,
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#FFFFFF",
+                  "fontWeight": "700",
+                },
+                {
+                  "fontSize": 16,
+                },
+              ]
+            }
+          >
+            Sign In
+          </Text>
+        </View>
+        <View
+          accessibilityHint="Starts account registration"
+          accessibilityLabel="Create a new EduLense account"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              {
+                "alignItems": "center",
+                "borderRadius": 10,
+                "borderWidth": 1,
+                "justifyContent": "center",
+                "minHeight": 44,
+                "overflow": "hidden",
+                "paddingHorizontal": 16,
+              },
+              {
+                "borderColor": "#5E3AEE",
+                "opacity": 1,
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "fontWeight": "700",
+                },
+                {
+                  "color": "#5E3AEE",
+                  "fontSize": 16,
+                },
+              ]
+            }
+          >
+            Sign Up
+          </Text>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
+`;
+
+exports[`Snapshot coverage matches screen snapshots 2`] = `
+<RCTScrollView
+  contentContainerStyle={
+    {
+      "gap": 16,
+      "padding": 16,
+    }
+  }
+  keyboardDismissMode="interactive"
+  keyboardShouldPersistTaps="handled"
+  style={
+    [
+      {
+        "flex": 1,
+      },
+      {
+        "backgroundColor": "#FAFAFA",
+      },
+    ]
+  }
+>
+  <View>
+    <Text
+      accessibilityRole="header"
+      style={
+        [
+          {
+            "fontWeight": "700",
+          },
+          {
+            "color": "#212121",
+            "fontSize": 22,
+            "textAlign": "right",
+          },
+          undefined,
+        ]
+      }
+    >
+      Appearance
+    </Text>
+    <View
+      style={
+        [
+          {
+            "borderRadius": 12,
+            "borderWidth": 1,
+            "gap": 8,
+            "padding": 16,
+          },
+          {
+            "backgroundColor": "#FFFFFF",
+            "borderColor": "#E6E6E6",
+          },
+          undefined,
+        ]
+      }
+    >
+      <View
+        accessibilityHint="Optimized for VoiceOver. Double tap to select Light Mode"
+        accessibilityLabel="Light Mode. Optimized for daytime use with bright surfaces"
+        accessibilityRole="radio"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": false,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "borderRadius": 8,
+            "flexDirection": "row",
+            "gap": 8,
+            "minHeight": 56,
+            "paddingHorizontal": 8,
+            "paddingVertical": 8,
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "alignItems": "center",
+                "borderRadius": 20,
+                "borderWidth": 1,
+                "height": 40,
+                "justifyContent": "center",
+                "width": 40,
+              },
+              {
+                "backgroundColor": "transparent",
+                "borderColor": "#E6E6E6",
+              },
+            ]
+          }
+        >
+          <Text>
+            light-mode
+          </Text>
+        </View>
+        <View
+          style={
+            {
+              "flex": 1,
+              "gap": 2,
+            }
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "fontWeight": "600",
+                },
+                {
+                  "color": "#212121",
+                  "fontSize": 15,
+                  "textAlign": "right",
+                },
+              ]
+            }
+          >
+            Light Mode
+          </Text>
+          <Text
+            style={
+              [
+                {
+                  "lineHeight": 18,
+                },
+                {
+                  "color": "#4F4F4F",
+                  "fontSize": 13,
+                  "textAlign": "right",
+                },
+              ]
+            }
+          >
+            Optimized for daytime use with bright surfaces
+          </Text>
+        </View>
+        <Text>
+          radio-button-unchecked
+        </Text>
+      </View>
+      <View
+        accessibilityHint="Optimized for VoiceOver. Double tap to select Dark Mode"
+        accessibilityLabel="Dark Mode. Easier on the eyes in low-light environments"
+        accessibilityRole="radio"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": false,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "borderRadius": 8,
+            "flexDirection": "row",
+            "gap": 8,
+            "minHeight": 56,
+            "paddingHorizontal": 8,
+            "paddingVertical": 8,
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "alignItems": "center",
+                "borderRadius": 20,
+                "borderWidth": 1,
+                "height": 40,
+                "justifyContent": "center",
+                "width": 40,
+              },
+              {
+                "backgroundColor": "transparent",
+                "borderColor": "#E6E6E6",
+              },
+            ]
+          }
+        >
+          <Text>
+            dark-mode
+          </Text>
+        </View>
+        <View
+          style={
+            {
+              "flex": 1,
+              "gap": 2,
+            }
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "fontWeight": "600",
+                },
+                {
+                  "color": "#212121",
+                  "fontSize": 15,
+                  "textAlign": "right",
+                },
+              ]
+            }
+          >
+            Dark Mode
+          </Text>
+          <Text
+            style={
+              [
+                {
+                  "lineHeight": 18,
+                },
+                {
+                  "color": "#4F4F4F",
+                  "fontSize": 13,
+                  "textAlign": "right",
+                },
+              ]
+            }
+          >
+            Easier on the eyes in low-light environments
+          </Text>
+        </View>
+        <Text>
+          radio-button-unchecked
+        </Text>
+      </View>
+      <View
+        accessibilityHint="Optimized for VoiceOver. Double tap to select System Default"
+        accessibilityLabel="System Default. Follow device theme settings"
+        accessibilityRole="radio"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": true,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "borderRadius": 8,
+            "flexDirection": "row",
+            "gap": 8,
+            "minHeight": 56,
+            "paddingHorizontal": 8,
+            "paddingVertical": 8,
+          }
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "alignItems": "center",
+                "borderRadius": 20,
+                "borderWidth": 1,
+                "height": 40,
+                "justifyContent": "center",
+                "width": 40,
+              },
+              {
+                "backgroundColor": "#5E3AEE20",
+                "borderColor": "#E6E6E6",
+              },
+            ]
+          }
+        >
+          <Text>
+            brightness-auto
+          </Text>
+        </View>
+        <View
+          style={
+            {
+              "flex": 1,
+              "gap": 2,
+            }
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "fontWeight": "600",
+                },
+                {
+                  "color": "#212121",
+                  "fontSize": 15,
+                  "textAlign": "right",
+                },
+              ]
+            }
+          >
+            System Default
+          </Text>
+          <Text
+            style={
+              [
+                {
+                  "lineHeight": 18,
+                },
+                {
+                  "color": "#4F4F4F",
+                  "fontSize": 13,
+                  "textAlign": "right",
+                },
+              ]
+            }
+          >
+            Follow device theme settings
+          </Text>
+        </View>
+        <Text>
+          check-circle
+        </Text>
+      </View>
+    </View>
+    <Text
+      accessibilityRole="header"
+      style={
+        [
+          {
+            "fontWeight": "700",
+          },
+          {
+            "color": "#212121",
+            "fontSize": 22,
+            "textAlign": "right",
+          },
+          undefined,
+        ]
+      }
+    >
+      Accessibility
+    </Text>
+    <View
+      style={
+        [
+          {
+            "borderRadius": 12,
+            "borderWidth": 1,
+            "gap": 8,
+            "padding": 16,
+          },
+          {
+            "backgroundColor": "#FFFFFF",
+            "borderColor": "#E6E6E6",
+          },
+          undefined,
+        ]
+      }
+    >
+      <View
+        accessibilityHint="Moves key controls to left-optimized positions"
+        accessibilityLabel="Left-Handed Mode"
+        accessibilityRole="switch"
+        accessibilityState={
+          {
+            "checked": true,
+          }
+        }
+        accessible={true}
+        style={
+          {
+            "alignItems": "center",
+            "borderRadius": 8,
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "minHeight": 44,
+            "paddingHorizontal": 8,
+            "paddingVertical": 8,
+          }
+        }
+      >
+        <Text
+          style={
+            [
+              {
+                "fontWeight": "600",
+              },
+              {
+                "color": "#212121",
+                "fontSize": 15,
+                "textAlign": "right",
+              },
+            ]
+          }
+        >
+          Left-Handed Mode
+        </Text>
+        <RCTSwitch
+          accessibilityRole="switch"
+          onChange={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "height": 31,
+              "width": 51,
+            }
+          }
+          thumbTintColor="#5E3AEE"
+          value={true}
+        />
+      </View>
+      <View
+        accessibilityHint="Increases text size for improved readability"
+        accessibilityLabel="Large Text"
+        accessibilityRole="switch"
+        accessibilityState={
+          {
+            "checked": false,
+          }
+        }
+        accessible={true}
+        style={
+          {
+            "alignItems": "center",
+            "borderRadius": 8,
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "minHeight": 44,
+            "paddingHorizontal": 8,
+            "paddingVertical": 8,
+          }
+        }
+      >
+        <Text
+          style={
+            [
+              {
+                "fontWeight": "600",
+              },
+              {
+                "color": "#212121",
+                "fontSize": 15,
+                "textAlign": "right",
+              },
+            ]
+          }
+        >
+          Large Text
+        </Text>
+        <RCTSwitch
+          accessibilityRole="switch"
+          onChange={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "height": 31,
+              "width": 51,
+            }
+          }
+          value={false}
+        />
+      </View>
+      <View
+        accessibilityHint="Enables stronger contrast for readability"
+        accessibilityLabel="High Contrast"
+        accessibilityRole="switch"
+        accessibilityState={
+          {
+            "checked": false,
+          }
+        }
+        accessible={true}
+        style={
+          {
+            "alignItems": "center",
+            "borderRadius": 8,
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "minHeight": 44,
+            "paddingHorizontal": 8,
+            "paddingVertical": 8,
+          }
+        }
+      >
+        <Text
+          style={
+            [
+              {
+                "fontWeight": "600",
+              },
+              {
+                "color": "#212121",
+                "fontSize": 15,
+                "textAlign": "right",
+              },
+            ]
+          }
+        >
+          High Contrast
+        </Text>
+        <RCTSwitch
+          accessibilityRole="switch"
+          onChange={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "height": 31,
+              "width": 51,
+            }
+          }
+          value={false}
+        />
+      </View>
+    </View>
+    <Text
+      accessibilityRole="header"
+      style={
+        [
+          {
+            "fontWeight": "700",
+          },
+          {
+            "color": "#212121",
+            "fontSize": 22,
+            "textAlign": "right",
+          },
+          undefined,
+        ]
+      }
+    >
+      About
+    </Text>
+    <View
+      style={
+        [
+          {
+            "borderRadius": 12,
+            "borderWidth": 1,
+            "gap": 8,
+            "padding": 16,
+          },
+          {
+            "backgroundColor": "#FFFFFF",
+            "borderColor": "#E6E6E6",
+          },
+          undefined,
+        ]
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "fontWeight": "700",
+            },
+            {
+              "color": "#212121",
+              "fontSize": 18,
+              "textAlign": "right",
+            },
+          ]
+        }
+      >
+        EduLense
+      </Text>
+      <Text
+        style={
+          [
+            {
+              "lineHeight": 20,
+            },
+            {
+              "color": "#4F4F4F",
+              "fontSize": 14,
+              "textAlign": "right",
+            },
+          ]
+        }
+      >
+        Version 
+        1.0.0
+      </Text>
+      <Text
+        style={
+          [
+            {
+              "lineHeight": 20,
+            },
+            {
+              "color": "#4F4F4F",
+              "fontSize": 14,
+              "textAlign": "right",
+            },
+          ]
+        }
+      >
+        A mobile-first design system optimized for left-handed users in educational productivity.
+      </Text>
+      <View
+        style={
+          {
+            "flexDirection": "row",
+            "flexWrap": "wrap",
+            "gap": 8,
+          }
+        }
+      >
+        <View
+          accessibilityLabel="WCAG AA"
+          accessibilityRole="text"
+          accessible={true}
+          style={
+            [
+              {
+                "borderRadius": 999,
+                "borderWidth": 1,
+                "justifyContent": "center",
+                "minHeight": 44,
+                "paddingHorizontal": 16,
+                "paddingVertical": 8,
+              },
+              {
+                "borderColor": "#4CAF50",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "fontSize": 12,
+                  "fontWeight": "600",
+                },
+                {
+                  "color": "#4CAF50",
+                },
+              ]
+            }
+          >
+            WCAG AA
+          </Text>
+        </View>
+        <View
+          accessibilityLabel="Accessible"
+          accessibilityRole="text"
+          accessible={true}
+          style={
+            [
+              {
+                "borderRadius": 999,
+                "borderWidth": 1,
+                "justifyContent": "center",
+                "minHeight": 44,
+                "paddingHorizontal": 16,
+                "paddingVertical": 8,
+              },
+              {
+                "borderColor": "#2196F3",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "fontSize": 12,
+                  "fontWeight": "600",
+                },
+                {
+                  "color": "#2196F3",
+                },
+              ]
+            }
+          >
+            Accessible
+          </Text>
+        </View>
+        <View
+          accessibilityLabel="Left-Friendly"
+          accessibilityRole="text"
+          accessible={true}
+          style={
+            [
+              {
+                "borderRadius": 999,
+                "borderWidth": 1,
+                "justifyContent": "center",
+                "minHeight": 44,
+                "paddingHorizontal": 16,
+                "paddingVertical": 8,
+              },
+              {
+                "borderColor": "#5E3AEE",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "fontSize": 12,
+                  "fontWeight": "600",
+                },
+                {
+                  "color": "#5E3AEE",
+                },
+              ]
+            }
+          >
+            Left-Friendly
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</RCTScrollView>
+`;
+
+exports[`Snapshot coverage matches shared component snapshots 1`] = `
+<View
+  accessibilityHint="Opens My Courses"
+  accessibilityLabel="My Courses"
+  accessibilityRole="button"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    [
+      {
+        "alignItems": "center",
+        "borderRadius": 12,
+        "borderWidth": 1,
+        "flex": 1,
+        "gap": 8,
+        "justifyContent": "center",
+        "minHeight": 120,
+        "overflow": "hidden",
+        "padding": 16,
+      },
+      {
+        "backgroundColor": "#FFFFFF",
+        "borderColor": "#E6E6E6",
+        "opacity": 1,
+      },
+    ]
+  }
+>
+  <Text>
+    menu-book
+  </Text>
+  <Text
+    style={
+      [
+        {
+          "fontWeight": "600",
+        },
+        {
+          "color": "#212121",
+          "fontSize": 14,
+          "textAlign": "right",
+        },
+      ]
+    }
+  >
+    My Courses
+  </Text>
+</View>
+`;
+
+exports[`Snapshot coverage matches shared component snapshots 2`] = `
+<View
+  accessibilityLabel="WCAG AA"
+  accessibilityRole="text"
+  accessible={true}
+  style={
+    [
+      {
+        "borderRadius": 999,
+        "borderWidth": 1,
+        "justifyContent": "center",
+        "minHeight": 44,
+        "paddingHorizontal": 16,
+        "paddingVertical": 8,
+      },
+      {
+        "borderColor": "#4CAF50",
+      },
+    ]
+  }
+>
+  <Text
+    style={
+      [
+        {
+          "fontSize": 12,
+          "fontWeight": "600",
+        },
+        {
+          "color": "#4CAF50",
+        },
+      ]
+    }
+  >
+    WCAG AA
+  </Text>
+</View>
+`;
+
+exports[`Snapshot coverage matches shared component snapshots 3`] = `
+<View
+  style={
+    [
+      {
+        "alignItems": "center",
+        "justifyContent": "space-between",
+        "marginBottom": 16,
+      },
+      {
+        "flexDirection": "row-reverse",
+      },
+    ]
+  }
+>
+  <Text
+    accessibilityRole="header"
+    style={
+      [
+        {
+          "fontWeight": "700",
+        },
+        {
+          "color": "#212121",
+          "fontSize": 28,
+          "textAlign": "right",
+        },
+      ]
+    }
+  >
+    EduLense
+  </Text>
+  <View
+    accessibilityHint="Navigates to settings screen"
+    accessibilityLabel="Open settings"
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      [
+        {
+          "alignItems": "center",
+          "borderRadius": 22,
+          "justifyContent": "center",
+          "minHeight": 44,
+          "minWidth": 44,
+          "overflow": "hidden",
+        },
+        {
+          "opacity": 1,
+        },
+      ]
+    }
+  >
+    <Text>
+      settings
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`Snapshot coverage matches shared component snapshots 4`] = `
+<Text
+  accessibilityRole="header"
+  style={
+    [
+      {
+        "fontWeight": "700",
+      },
+      {
+        "color": "#212121",
+        "fontSize": 22,
+        "textAlign": "right",
+      },
+      undefined,
+    ]
+  }
+>
+  Appearance
+</Text>
+`;
+
+exports[`Snapshot coverage matches shared component snapshots 5`] = `
+<View
+  accessibilityHint="Increases text size"
+  accessibilityLabel="Large Text"
+  accessibilityRole="switch"
+  accessibilityState={
+    {
+      "checked": false,
+    }
+  }
+  accessible={true}
+  style={
+    {
+      "alignItems": "center",
+      "borderRadius": 8,
+      "flexDirection": "row",
+      "justifyContent": "space-between",
+      "minHeight": 44,
+      "paddingHorizontal": 8,
+      "paddingVertical": 8,
+    }
+  }
+>
+  <Text
+    style={
+      [
+        {
+          "fontWeight": "600",
+        },
+        {
+          "color": "#212121",
+          "fontSize": 15,
+          "textAlign": "right",
+        },
+      ]
+    }
+  >
+    Large Text
+  </Text>
+  <RCTSwitch
+    accessibilityRole="switch"
+    onChange={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "height": 31,
+        "width": 51,
+      }
+    }
+    value={false}
+  />
+</View>
+`;
+
+exports[`Snapshot coverage matches shared component snapshots 6`] = `
+<View
+  style={
+    [
+      {
+        "borderRadius": 12,
+        "borderWidth": 1,
+        "gap": 8,
+        "padding": 16,
+      },
+      {
+        "backgroundColor": "#FFFFFF",
+        "borderColor": "#E6E6E6",
+      },
+      undefined,
+    ]
+  }
+>
+  <Text
+    accessibilityRole="header"
+    style={
+      [
+        {
+          "fontWeight": "700",
+        },
+        {
+          "color": "#212121",
+          "fontSize": 22,
+          "textAlign": "right",
+        },
+        undefined,
+      ]
+    }
+  >
+    Card Content
+  </Text>
+</View>
+`;
+
+exports[`Snapshot coverage matches shared component snapshots 7`] = `
+<View
+  accessibilityHint="Optimized for VoiceOver. Double tap to select Dark Mode"
+  accessibilityLabel="Dark Mode. Easier on the eyes in low-light environments"
+  accessibilityRole="radio"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": true,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "alignItems": "center",
+      "borderRadius": 8,
+      "flexDirection": "row",
+      "gap": 8,
+      "minHeight": 56,
+      "paddingHorizontal": 8,
+      "paddingVertical": 8,
+    }
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "borderRadius": 20,
+          "borderWidth": 1,
+          "height": 40,
+          "justifyContent": "center",
+          "width": 40,
+        },
+        {
+          "backgroundColor": "#5E3AEE20",
+          "borderColor": "#E6E6E6",
+        },
+      ]
+    }
+  >
+    <Text>
+      dark-mode
+    </Text>
+  </View>
+  <View
+    style={
+      {
+        "flex": 1,
+        "gap": 2,
+      }
+    }
+  >
+    <Text
+      style={
+        [
+          {
+            "fontWeight": "600",
+          },
+          {
+            "color": "#212121",
+            "fontSize": 15,
+            "textAlign": "right",
+          },
+        ]
+      }
+    >
+      Dark Mode
+    </Text>
+    <Text
+      style={
+        [
+          {
+            "lineHeight": 18,
+          },
+          {
+            "color": "#4F4F4F",
+            "fontSize": 13,
+            "textAlign": "right",
+          },
+        ]
+      }
+    >
+      Easier on the eyes in low-light environments
+    </Text>
+  </View>
+  <Text>
+    check-circle
+  </Text>
+</View>
+`;
