@@ -1,6 +1,6 @@
 import { fireEvent, render } from "@testing-library/react-native";
 import React from "react";
-import { AccessibilityInfo, Platform, Pressable, Text } from "react-native";
+import { AccessibilityInfo, Pressable, Text } from "react-native";
 
 import { useAccessibilityAnnouncement } from "../hooks/useAccessibilityAnnouncement";
 
@@ -21,7 +21,7 @@ function TestHarness(): React.JSX.Element {
 }
 
 describe("useAccessibilityAnnouncement", () => {
-  it("announces using the platform prefix", () => {
+  it("announces clear messages without platform-prefixed noise", () => {
     const spy = jest
       .spyOn(AccessibilityInfo, "announceForAccessibility")
       .mockImplementation(jest.fn());
@@ -29,7 +29,6 @@ describe("useAccessibilityAnnouncement", () => {
     const { getByLabelText } = render(<TestHarness />);
     fireEvent.press(getByLabelText("announce"));
 
-    const expectedPrefix = Platform.OS === "ios" ? "VoiceOver" : "TalkBack";
-    expect(spy).toHaveBeenCalledWith(`${expectedPrefix}: Theme changed`);
+    expect(spy).toHaveBeenCalledWith("Theme changed");
   });
 });

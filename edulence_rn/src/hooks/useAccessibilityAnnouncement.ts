@@ -1,10 +1,17 @@
-import { AccessibilityInfo, Platform } from "react-native";
+import type { RefObject } from "react";
+import { AccessibilityInfo, findNodeHandle } from "react-native";
 
 export function useAccessibilityAnnouncement() {
   const announce = (message: string): void => {
-    const platformPrefix = Platform.OS === "ios" ? "VoiceOver" : "TalkBack";
-    AccessibilityInfo.announceForAccessibility(`${platformPrefix}: ${message}`);
+    AccessibilityInfo.announceForAccessibility(message);
   };
 
-  return { announce };
+  const focusRef = (ref: RefObject<any>): void => {
+    const handle = findNodeHandle(ref.current);
+    if (handle != null) {
+      AccessibilityInfo.setAccessibilityFocus(handle);
+    }
+  };
+
+  return { announce, focusRef };
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Switch, Text, View } from "react-native";
+import { Pressable, StyleSheet, Switch, Text, View } from "react-native";
 
 import { spacing } from "../theme/spacing";
 import { useAppTheme } from "../theme/useAppTheme";
@@ -20,13 +20,15 @@ export function SettingSwitchRow({
   const { palette, fontScale, textAlign } = useAppTheme();
 
   return (
-    <View
+    <Pressable
       accessible
       accessibilityRole="switch"
       accessibilityLabel={label}
       accessibilityHint={hint}
       accessibilityState={{ checked: value }}
+      onPress={() => onValueChange(!value)}
       style={styles.row}
+      hitSlop={4}
     >
       <Text
         style={[
@@ -40,12 +42,17 @@ export function SettingSwitchRow({
       >
         {label}
       </Text>
-      <Switch
-        value={value}
-        onValueChange={onValueChange}
-        thumbColor={value ? palette.accent : undefined}
-      />
-    </View>
+      <View
+        accessible={false}
+        importantForAccessibility="no-hide-descendants"
+      >
+        <Switch
+          value={value}
+          onValueChange={onValueChange}
+          thumbColor={value ? palette.accent : undefined}
+        />
+      </View>
+    </Pressable>
   );
 }
 
