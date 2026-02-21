@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/semantics.dart';
 import 'package:gap/gap.dart';
-import 'package:provider/provider.dart';
-
-import '../constants/app_constants.dart';
-import '../main.dart';
 import '../theme/colors.dart';
+import '../theme/text_styles.dart';
+import '../constants/app_constants.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -14,36 +13,21 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
+  late ThemeMode _themeMode;
   bool _leftHandedMode = true;
   bool _largeText = false;
   bool _highContrast = false;
 
-  static const List<_ThemeOptionData> _themeOptions = [
-    _ThemeOptionData(
-      title: 'Light Mode',
-      subtitle: 'Optimized for daytime use with white backgrounds',
-      icon: Icons.light_mode,
-      mode: ThemeMode.light,
-    ),
-    _ThemeOptionData(
-      title: 'Dark Mode',
-      subtitle: 'Easier on the eyes in low-light environments',
-      icon: Icons.dark_mode,
-      mode: ThemeMode.dark,
-    ),
-    _ThemeOptionData(
-      title: 'System Default',
-      subtitle: 'Follow device theme settings',
-      icon: Icons.brightness_auto,
-      mode: ThemeMode.system,
-    ),
-  ];
+  @override
+  void initState() {
+    super.initState();
+    // Initialize with system theme
+    _themeMode = ThemeMode.system;
+  }
 
   @override
   Widget build(BuildContext context) {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
-    final textTheme = Theme.of(context).textTheme;
-    final selectedTheme = context.watch<ThemeProvider>().themeMode;
 
     return FocusTraversalGroup(
       policy: OrderedTraversalPolicy(),
@@ -54,9 +38,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
           backgroundColor: isDarkMode
               ? EduLenseColors.darkSurface
               : EduLenseColors.white,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () => Navigator.pop(context),
+          leading: Semantics(
+            button: true,
+            label: 'Back',
+            hint: 'Return to previous screen',
+            child: IconButton(
+              tooltip: 'Back',
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () => Navigator.pop(context),
+            ),
           ),
         ),
         body: SingleChildScrollView(
@@ -65,69 +55,143 @@ class _SettingsScreenState extends State<SettingsScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Appearance', style: textTheme.headlineSmall),
+                // Theme Settings Section
+                Text(
+                  'Appearance',
+                  style: isDarkMode
+                      ? EduLenseDarkTextStyles.h3
+                      : EduLenseTextStyles.h3,
+                ),
                 const Gap(AppConstants.spacingMD),
                 Card(
                   child: Padding(
                     padding: const EdgeInsets.all(AppConstants.spacingMD),
                     child: Column(
-                      children: _withDividers(
-                        _themeOptions
-                            .map(
-                              (option) => _buildThemeOption(
-                                context,
-                                option: option,
-                                selectedTheme: selectedTheme,
-                              ),
-                            )
-                            .toList(),
-                      ),
+                      children: [
+                        FocusTraversalOrder(
+                          order: const NumericFocusOrder(1),
+                          child: _buildThemeOption(
+                            context,
+                            title: 'Light Mode',
+                            subtitle:
+                                'Optimized for daytime use with white backgrounds',
+                            icon: Icons.light_mode,
+                            optionValue: ThemeMode.light,
+                          ),
+                        ),
+                        const Divider(height: 24),
+                        FocusTraversalOrder(
+                          order: const NumericFocusOrder(2),
+                          child: _buildThemeOption(
+                            context,
+                            title: 'Dark Mode',
+                            subtitle:
+                                'Easier on the eyes in low-light environments',
+                            icon: Icons.dark_mode,
+                            optionValue: ThemeMode.dark,
+                          ),
+                        ),
+                        const Divider(height: 24),
+                        FocusTraversalOrder(
+                          order: const NumericFocusOrder(3),
+                          child: _buildThemeOption(
+                            context,
+                            title: 'System Default',
+                            subtitle: 'Follow device theme settings',
+                            icon: Icons.brightness_auto,
+                            optionValue: ThemeMode.system,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
                 const Gap(AppConstants.spacingLG),
-                Text('Accessibility', style: textTheme.headlineSmall),
+
+                // Accessibility Section
+                Text(
+                  'Accessibility',
+                  style: isDarkMode
+                      ? EduLenseDarkTextStyles.h3
+                      : EduLenseTextStyles.h3,
+                ),
                 const Gap(AppConstants.spacingMD),
                 Card(
                   child: Padding(
                     padding: const EdgeInsets.all(AppConstants.spacingMD),
                     child: Column(
-                      children: _withDividers([
-                        _buildSwitchOption(
-                          context,
-                          title: 'Left-Handed Mode',
-                          subtitle:
-                              'Optimize layout for left-handed users with controls on the left',
-                          value: _leftHandedMode,
-                          onChanged: (value) {
-                            setState(() => _leftHandedMode = value);
-                          },
+                      children: [
+                        FocusTraversalOrder(
+                          order: const NumericFocusOrder(4),
+                          child: _buildSwitchOption(
+                            context,
+                            title: 'Left-Handed Mode',
+                            subtitle:
+                                'Optimize layout for left-handed users with controls on the left',
+                            value: _leftHandedMode,
+                            onChanged: (value) {
+                              setState(() => _leftHandedMode = value);
+                              SemanticsService.announce(
+                                value
+                                    ? 'Left-handed mode enabled'
+                                    : 'Left-handed mode disabled',
+                                Directionality.of(context),
+                              );
+                            },
+                          ),
                         ),
-                        _buildSwitchOption(
-                          context,
-                          title: 'Large Text',
-                          subtitle:
-                              'Increase font sizes for better readability',
-                          value: _largeText,
-                          onChanged: (value) {
-                            setState(() => _largeText = value);
-                          },
+                        const Divider(height: 24),
+                        FocusTraversalOrder(
+                          order: const NumericFocusOrder(5),
+                          child: _buildSwitchOption(
+                            context,
+                            title: 'Large Text',
+                            subtitle:
+                                'Increase font sizes for better readability',
+                            value: _largeText,
+                            onChanged: (value) {
+                              setState(() => _largeText = value);
+                              SemanticsService.announce(
+                                value
+                                    ? 'Large text enabled'
+                                    : 'Large text disabled',
+                                Directionality.of(context),
+                              );
+                            },
+                          ),
                         ),
-                        _buildSwitchOption(
-                          context,
-                          title: 'High Contrast',
-                          subtitle: 'Use higher contrast colors (WCAG AAA)',
-                          value: _highContrast,
-                          onChanged: (value) {
-                            setState(() => _highContrast = value);
-                          },
+                        const Divider(height: 24),
+                        FocusTraversalOrder(
+                          order: const NumericFocusOrder(6),
+                          child: _buildSwitchOption(
+                            context,
+                            title: 'High Contrast',
+                            subtitle: 'Use higher contrast colors (WCAG AAA)',
+                            value: _highContrast,
+                            onChanged: (value) {
+                              setState(() => _highContrast = value);
+                              SemanticsService.announce(
+                                value
+                                    ? 'High contrast enabled'
+                                    : 'High contrast disabled',
+                                Directionality.of(context),
+                              );
+                            },
+                          ),
                         ),
-                      ]),
+                      ],
                     ),
                   ),
                 ),
                 const Gap(AppConstants.spacingLG),
-                Text('About', style: textTheme.headlineSmall),
+
+                // About Section
+                Text(
+                  'About',
+                  style: isDarkMode
+                      ? EduLenseDarkTextStyles.h3
+                      : EduLenseTextStyles.h3,
+                ),
                 const Gap(AppConstants.spacingMD),
                 Card(
                   child: Padding(
@@ -135,24 +199,36 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(AppConstants.appName, style: textTheme.bodyLarge),
+                        Text(
+                          'EduLense',
+                          style: isDarkMode
+                              ? EduLenseDarkTextStyles.bodyLarge
+                              : EduLenseTextStyles.bodyLarge,
+                        ),
                         const Gap(AppConstants.spacingSM),
                         Text(
-                          'Version ${AppConstants.appVersion}',
-                          style: textTheme.bodySmall,
+                          'Version 1.0.0',
+                          style: isDarkMode
+                              ? EduLenseDarkTextStyles.bodySmall
+                              : EduLenseTextStyles.bodySmall,
                         ),
                         const Gap(AppConstants.spacingMD),
                         Text(
-                          AppConstants.appDescription,
-                          style: textTheme.bodyMedium,
+                          'A mobile-first design system optimized for left-handed users in educational productivity.',
+                          style: isDarkMode
+                              ? EduLenseDarkTextStyles.bodyMedium
+                              : EduLenseTextStyles.bodyMedium,
                         ),
                         const Gap(AppConstants.spacingMD),
                         Wrap(
                           spacing: 8,
-                          children: const [
-                            _InfoChip('WCAG AA', EduLenseColors.success),
-                            _InfoChip('Accessible', EduLenseColors.info),
-                            _InfoChip('Left-Friendly', EduLenseColors.primary),
+                          children: [
+                            _buildInfoChip('WCAG AA', EduLenseColors.success),
+                            _buildInfoChip('Accessible', EduLenseColors.info),
+                            _buildInfoChip(
+                              'Left-Friendly',
+                              EduLenseColors.primary,
+                            ),
                           ],
                         ),
                       ],
@@ -168,36 +244,30 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
-  List<Widget> _withDividers(List<Widget> children) {
-    final result = <Widget>[];
-
-    for (var i = 0; i < children.length; i++) {
-      result.add(children[i]);
-      if (i < children.length - 1) {
-        result.add(const Divider(height: 24));
-      }
-    }
-
-    return result;
-  }
-
   Widget _buildThemeOption(
     BuildContext context, {
-    required _ThemeOptionData option,
-    required ThemeMode selectedTheme,
+    required String title,
+    required String subtitle,
+    required IconData icon,
+    required ThemeMode optionValue,
   }) {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
-    final textTheme = Theme.of(context).textTheme;
-    final isSelected = selectedTheme == option.mode;
+    final isSelected = _themeMode == optionValue;
 
     return MergeSemantics(
       child: Semantics(
         button: true,
         selected: isSelected,
-        label: '${option.title}. ${option.subtitle}',
+        label: '$title. $subtitle',
         child: ListTile(
           contentPadding: EdgeInsets.zero,
-          onTap: () => context.read<ThemeProvider>().setThemeMode(option.mode),
+          onTap: () {
+            setState(() => _themeMode = optionValue);
+            SemanticsService.announce(
+              '$title selected',
+              Directionality.of(context),
+            );
+          },
           leading: Container(
             padding: const EdgeInsets.all(AppConstants.spacingMD),
             decoration: BoxDecoration(
@@ -209,15 +279,25 @@ class _SettingsScreenState extends State<SettingsScreen> {
               borderRadius: BorderRadius.circular(AppConstants.radiusMD),
             ),
             child: Icon(
-              option.icon,
+              icon,
               color: isSelected
                   ? EduLenseColors.primary
                   : EduLenseColors.tertiaryText,
               size: 28,
             ),
           ),
-          title: Text(option.title, style: textTheme.bodyLarge),
-          subtitle: Text(option.subtitle, style: textTheme.bodySmall),
+          title: Text(
+            title,
+            style: isDarkMode
+                ? EduLenseDarkTextStyles.bodyLarge
+                : EduLenseTextStyles.bodyLarge,
+          ),
+          subtitle: Text(
+            subtitle,
+            style: isDarkMode
+                ? EduLenseDarkTextStyles.bodySmall
+                : EduLenseTextStyles.bodySmall,
+          ),
           trailing: Icon(
             isSelected ? Icons.check_circle : Icons.radio_button_unchecked,
             color: isSelected
@@ -234,45 +314,33 @@ class _SettingsScreenState extends State<SettingsScreen> {
     required String title,
     required String subtitle,
     required bool value,
-    required ValueChanged<bool> onChanged,
+    required Function(bool) onChanged,
   }) {
-    final textTheme = Theme.of(context).textTheme;
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
     return MergeSemantics(
       child: SwitchListTile(
         value: value,
         onChanged: onChanged,
         activeThumbColor: EduLenseColors.primary,
-        title: Text(title, style: textTheme.bodyLarge),
-        subtitle: Text(subtitle, style: textTheme.bodySmall),
+        title: Text(
+          title,
+          style: isDarkMode
+              ? EduLenseDarkTextStyles.bodyLarge
+              : EduLenseTextStyles.bodyLarge,
+        ),
+        subtitle: Text(
+          subtitle,
+          style: isDarkMode
+              ? EduLenseDarkTextStyles.bodySmall
+              : EduLenseTextStyles.bodySmall,
+        ),
         contentPadding: EdgeInsets.zero,
       ),
     );
   }
-}
 
-class _ThemeOptionData {
-  const _ThemeOptionData({
-    required this.title,
-    required this.subtitle,
-    required this.icon,
-    required this.mode,
-  });
-
-  final String title;
-  final String subtitle;
-  final IconData icon;
-  final ThemeMode mode;
-}
-
-class _InfoChip extends StatelessWidget {
-  const _InfoChip(this.label, this.color);
-
-  final String label;
-  final Color color;
-
-  @override
-  Widget build(BuildContext context) {
+  Widget _buildInfoChip(String label, Color color) {
     return Container(
       padding: const EdgeInsets.symmetric(
         horizontal: AppConstants.spacingMD,
