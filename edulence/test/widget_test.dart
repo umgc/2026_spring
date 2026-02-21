@@ -1,5 +1,7 @@
 import 'package:edulence/main.dart';
 import 'package:edulence/screens/home_screen.dart';
+import 'package:edulence/screens/main_navigation_screen.dart';
+import 'package:edulence/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -102,6 +104,32 @@ void main() {
         guideline: textContrastGuideline,
       );
     });
+
+    testWidgets('MainNavigationScreen passes core accessibility guidelines', (
+      WidgetTester tester,
+    ) async {
+      final SemanticsHandle handle = tester.ensureSemantics();
+      await tester.pumpWidget(const MaterialApp(home: MainNavigationScreen()));
+      await tester.pumpAndSettle();
+
+      await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
+      await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
+      await expectLater(tester, meetsGuideline(textContrastGuideline));
+      handle.dispose();
+    });
+
+    testWidgets('SettingsScreen passes core accessibility guidelines', (
+      WidgetTester tester,
+    ) async {
+      final SemanticsHandle handle = tester.ensureSemantics();
+      await tester.pumpWidget(const MaterialApp(home: SettingsScreen()));
+      await tester.pumpAndSettle();
+
+      await expectLater(tester, meetsGuideline(labeledTapTargetGuideline));
+      await expectLater(tester, meetsGuideline(androidTapTargetGuideline));
+      await expectLater(tester, meetsGuideline(textContrastGuideline));
+      handle.dispose();
+    });
   });
 
   group('Accessibility behavior', () {
@@ -136,6 +164,54 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.text('Quick Actions'), findsOneWidget);
+    });
+
+    testWidgets('Settings supports keyboard navigation', (
+      WidgetTester tester,
+    ) async {
+      await tester.pumpWidget(const MaterialApp(home: SettingsScreen()));
+      await tester.pumpAndSettle();
+
+      await tester.sendKeyEvent(LogicalKeyboardKey.tab);
+      await tester.pump();
+      await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+      await tester.pumpAndSettle();
+
+      expect(tester.takeException(), isNull);
+    });
+  });
+
+  group('Main navigation behavior', () {
+    testWidgets('Bottom navigation opens Explore and Profile tabs', (
+      WidgetTester tester,
+    ) async {
+      await tester.pumpWidget(const MaterialApp(home: MainNavigationScreen()));
+      await tester.pumpAndSettle();
+
+      expect(find.text('Quick Actions'), findsOneWidget);
+
+      await tester.tap(find.text('Explore'));
+      await tester.pumpAndSettle();
+      expect(find.text('Flutter Fundamentals'), findsOneWidget);
+
+      await tester.tap(find.text('Profile'));
+      await tester.pumpAndSettle();
+      expect(find.text('Student User'), findsOneWidget);
+    });
+
+    testWidgets('Explore topic tap shows feedback snackbar', (
+      WidgetTester tester,
+    ) async {
+      await tester.pumpWidget(const MaterialApp(home: MainNavigationScreen()));
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.text('Explore'));
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.text('Flutter Fundamentals'));
+      await tester.pump();
+
+      expect(find.text('Opened: Flutter Fundamentals'), findsOneWidget);
     });
   });
 }

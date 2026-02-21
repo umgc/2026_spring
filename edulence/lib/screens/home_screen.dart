@@ -1,42 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-
-import '../constants/app_constants.dart';
 import '../theme/colors.dart';
+import '../theme/text_styles.dart';
+import '../constants/app_constants.dart';
 import 'settings_screen.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
-  static const List<_QuickAction> _quickActions = [
-    _QuickAction(icon: Icons.book, label: 'My Courses'),
-    _QuickAction(icon: Icons.assignment, label: 'Assignments'),
-    _QuickAction(icon: Icons.calendar_today, label: 'Schedule'),
-    _QuickAction(icon: Icons.bar_chart, label: 'Progress'),
-  ];
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
 
-  static const List<_ActivityItem> _recentActivities = [
-    _ActivityItem(
-      title: 'Flutter Basics - Lesson 3',
-      subtitle: 'Completed 2 hours ago',
-      icon: Icons.check_circle,
-    ),
-    _ActivityItem(
-      title: 'Assignment: State Management',
-      subtitle: 'Due in 2 days',
-      icon: Icons.pending_actions,
-    ),
-    _ActivityItem(
-      title: 'Quiz: Dart Fundamentals',
-      subtitle: 'Score: 92/100',
-      icon: Icons.assessment,
-    ),
-  ];
-
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
-    final textTheme = Theme.of(context).textTheme;
 
     return FocusTraversalGroup(
       policy: OrderedTraversalPolicy(),
@@ -54,7 +33,6 @@ class HomeScreen extends StatelessWidget {
                 button: true,
                 label: 'Open settings',
                 child: IconButton(
-                  tooltip: 'Settings',
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -62,6 +40,7 @@ class HomeScreen extends StatelessWidget {
                     );
                   },
                   icon: const Icon(Icons.settings),
+                  tooltip: 'Settings',
                 ),
               ),
             ),
@@ -73,24 +52,39 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Welcome Section
                 Card(
                   child: Padding(
                     padding: const EdgeInsets.all(AppConstants.spacingLG),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Welcome Back!', style: textTheme.headlineMedium),
+                        Text(
+                          'Welcome Back!',
+                          style: isDarkMode
+                              ? EduLenseDarkTextStyles.h2
+                              : EduLenseTextStyles.h2,
+                        ),
                         const Gap(AppConstants.spacingSM),
                         Text(
                           'Your educational journey continues here',
-                          style: textTheme.bodyMedium,
+                          style: isDarkMode
+                              ? EduLenseDarkTextStyles.bodyMedium
+                              : EduLenseTextStyles.bodyMedium,
                         ),
                       ],
                     ),
                   ),
                 ),
                 const Gap(AppConstants.spacingLG),
-                Text('Quick Actions', style: textTheme.headlineSmall),
+
+                // Quick Actions Section
+                Text(
+                  'Quick Actions',
+                  style: isDarkMode
+                      ? EduLenseDarkTextStyles.h3
+                      : EduLenseTextStyles.h3,
+                ),
                 const Gap(AppConstants.spacingMD),
                 GridView.count(
                   crossAxisCount: 2,
@@ -99,18 +93,66 @@ class HomeScreen extends StatelessWidget {
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   children: [
-                    for (var i = 0; i < _quickActions.length; i++)
-                      _buildActionCard(
-                        context,
-                        action: _quickActions[i],
-                        focusOrder: i + 2,
-                      ),
+                    _buildActionCard(
+                      context,
+                      icon: Icons.book,
+                      label: 'My Courses',
+                      onTap: () {},
+                      focusOrder: 2,
+                    ),
+                    _buildActionCard(
+                      context,
+                      icon: Icons.assignment,
+                      label: 'Assignments',
+                      onTap: () {},
+                      focusOrder: 3,
+                    ),
+                    _buildActionCard(
+                      context,
+                      icon: Icons.calendar_today,
+                      label: 'Schedule',
+                      onTap: () {},
+                      focusOrder: 4,
+                    ),
+                    _buildActionCard(
+                      context,
+                      icon: Icons.bar_chart,
+                      label: 'Progress',
+                      onTap: () {},
+                      focusOrder: 5,
+                    ),
                   ],
                 ),
                 const Gap(AppConstants.spacingLG),
-                Text('Recent Activity', style: textTheme.headlineSmall),
+
+                // Recent Activity Section
+                Text(
+                  'Recent Activity',
+                  style: isDarkMode
+                      ? EduLenseDarkTextStyles.h3
+                      : EduLenseTextStyles.h3,
+                ),
                 const Gap(AppConstants.spacingMD),
-                ..._buildActivityList(context),
+                _buildActivityItem(
+                  context,
+                  title: 'Flutter Basics - Lesson 3',
+                  subtitle: 'Completed 2 hours ago',
+                  icon: Icons.check_circle,
+                ),
+                const Gap(AppConstants.spacingSM),
+                _buildActivityItem(
+                  context,
+                  title: 'Assignment: State Management',
+                  subtitle: 'Due in 2 days',
+                  icon: Icons.pending_actions,
+                ),
+                const Gap(AppConstants.spacingSM),
+                _buildActivityItem(
+                  context,
+                  title: 'Quiz: Dart Fundamentals',
+                  subtitle: 'Score: 92/100',
+                  icon: Icons.assessment,
+                ),
               ],
             ),
           ),
@@ -119,48 +161,52 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  List<Widget> _buildActivityList(BuildContext context) {
-    final widgets = <Widget>[];
-
-    for (var i = 0; i < _recentActivities.length; i++) {
-      widgets.add(_buildActivityItem(context, item: _recentActivities[i]));
-      if (i < _recentActivities.length - 1) {
-        widgets.add(const Gap(AppConstants.spacingSM));
-      }
-    }
-
-    return widgets;
-  }
-
   Widget _buildActionCard(
     BuildContext context, {
-    required _QuickAction action,
+    required IconData icon,
+    required String label,
+    required VoidCallback onTap,
     required double focusOrder,
   }) {
-    final textTheme = Theme.of(context).textTheme;
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
     return FocusTraversalOrder(
       order: NumericFocusOrder(focusOrder),
       child: Semantics(
         button: true,
-        label: action.label,
+        label: label,
+        hint: 'Double tap to open $label',
         child: Card(
           child: InkWell(
-            onTap: () {},
-            child: Padding(
-              padding: const EdgeInsets.all(AppConstants.spacingMD),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(action.icon, size: 48, color: EduLenseColors.primary),
-                  const Gap(AppConstants.spacingMD),
-                  Text(
-                    action.label,
-                    style: textTheme.bodyMedium,
-                    textAlign: TextAlign.center,
+            onTap: onTap,
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                final iconSize = (constraints.maxHeight * 0.28).clamp(
+                  24.0,
+                  48.0,
+                );
+                return Padding(
+                  padding: const EdgeInsets.all(AppConstants.spacingMD),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(icon, size: iconSize, color: EduLenseColors.primary),
+                      const Gap(AppConstants.spacingSM),
+                      Flexible(
+                        child: Text(
+                          label,
+                          style: isDarkMode
+                              ? EduLenseDarkTextStyles.bodyMedium
+                              : EduLenseTextStyles.bodyMedium,
+                          textAlign: TextAlign.center,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                );
+              },
             ),
           ),
         ),
@@ -170,24 +216,36 @@ class HomeScreen extends StatelessWidget {
 
   Widget _buildActivityItem(
     BuildContext context, {
-    required _ActivityItem item,
+    required String title,
+    required String subtitle,
+    required IconData icon,
   }) {
-    final textTheme = Theme.of(context).textTheme;
+    final isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(AppConstants.spacingMD),
         child: Row(
           children: [
-            Icon(item.icon, color: EduLenseColors.primary, size: 32),
+            Icon(icon, color: EduLenseColors.primary, size: 32),
             const Gap(AppConstants.spacingMD),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(item.title, style: textTheme.bodyLarge),
+                  Text(
+                    title,
+                    style: isDarkMode
+                        ? EduLenseDarkTextStyles.bodyLarge
+                        : EduLenseTextStyles.bodyLarge,
+                  ),
                   const Gap(AppConstants.spacingSM),
-                  Text(item.subtitle, style: textTheme.bodySmall),
+                  Text(
+                    subtitle,
+                    style: isDarkMode
+                        ? EduLenseDarkTextStyles.bodySmall
+                        : EduLenseTextStyles.bodySmall,
+                  ),
                 ],
               ),
             ),
@@ -201,23 +259,4 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-class _QuickAction {
-  const _QuickAction({required this.icon, required this.label});
-
-  final IconData icon;
-  final String label;
-}
-
-class _ActivityItem {
-  const _ActivityItem({
-    required this.title,
-    required this.subtitle,
-    required this.icon,
-  });
-
-  final String title;
-  final String subtitle;
-  final IconData icon;
 }
