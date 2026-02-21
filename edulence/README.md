@@ -1,6 +1,6 @@
 # EduLense
 
-EduLense is a cross-platform educational productivity application designed with a left-handed–first user interface. 
+EduLense is a cross-platform educational productivity application designed with a left-handed-first user interface.
 
 ## Quick Start
 
@@ -9,6 +9,35 @@ cd edulence
 flutter pub get
 flutter run
 ```
+
+## Build Artifacts
+
+### Android APK
+
+```bash
+flutter build apk --release
+```
+
+Output:
+- `build/app/outputs/flutter-apk/app-release.apk`
+
+### iOS IPA
+
+```bash
+flutter build ipa --release
+```
+
+Output:
+- `build/ios/ipa/*.ipa`
+
+If iOS signing is not configured:
+
+```bash
+flutter build ipa --release --no-codesign
+```
+
+Output:
+- `build/ios/archive/Runner.xcarchive`
 
 ## Project Layout
 
@@ -42,11 +71,30 @@ Run all tests:
 flutter test
 ```
 
-Run Maestro flows:
+### UI and E2E Workflow Testing
+
+Critical workflow coverage is implemented across widget, integration, and Maestro layers.
+
+Files:
+- Widget/UI tests: `test/widget_test.dart`
+- Integration tests:
+  - `integration_test/critical_workflows_test.dart`
+  - `integration_test/accessibility_flows_test.dart`
+- Maestro suite:
+  - `maestro/flutter/run_all.yaml`
+  - `maestro/flutter/*.yaml`
+
+Run all Flutter UI tests:
 
 ```bash
-maestro test maestro/signin.yaml
+flutter test
+flutter test integration_test
+maestro test maestro/flutter/run_all.yaml
 ```
+
+For full cross-platform documentation (Flutter + React Native drop-in suite), see:
+- `../TEST_SUITE_UI_E2E.md`
+- `../BUILD_AND_TEST_ARTIFACTS.md`
 
 ## Documentation
 
