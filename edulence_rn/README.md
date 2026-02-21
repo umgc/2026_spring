@@ -214,3 +214,41 @@ npx eas-cli build --platform ios --profile production-ios
 - Prefer selector hooks over broad store reads for render performance
 - Add/extend tests with every new feature
 - Keep parity checklist updated when Flutter implementation changes
+
+## APK and IPA Build Artifacts
+
+### Android (APK/AAB via EAS)
+
+```bash
+npx eas-cli build --platform android --profile production-android
+```
+
+Artifact:
+- Download from EAS build URL printed by CLI.
+
+### iOS (IPA via EAS)
+
+```bash
+npx eas-cli build --platform ios --profile production-ios
+```
+
+Artifact:
+- Download from EAS build URL printed by CLI.
+
+### iOS Simulator testing artifact
+
+```bash
+npx eas-cli build --platform ios --profile ios-simulator
+```
+
+Artifact:
+- Simulator `.app` from EAS build URL.
+
+## Full Test + Build Quick Run
+
+```bash
+npm test -- --coverage
+maestro test --platform ios --udid <IOS_SIM_UDID> maestro/run_all.yaml
+npx eas-cli build --platform android --profile production-android
+npx eas-cli build --platform ios --profile production-ios
+```
