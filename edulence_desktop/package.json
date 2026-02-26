@@ -1,0 +1,58 @@
+{
+  "name": "edulence-desktop",
+  "version": "1.0.0",
+  "private": true,
+  "description": "EduLense Electron desktop application with React renderer",
+  "main": "electron/main.js",
+  "scripts": {
+    "dev:renderer": "vite",
+    "dev:main": "VITE_DEV_SERVER_URL=http://localhost:5173 electron .",
+    "dev": "concurrently -k \"npm:dev:renderer\" \"wait-on tcp:5173 && npm run dev:main\"",
+    "start": "electron .",
+    "build": "vite build",
+    "preview": "vite preview",
+    "dist": "npm run build && electron-builder"
+  },
+  "dependencies": {
+    "electron-updater": "^6.3.9",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.0",
+    "concurrently": "^9.0.1",
+    "electron": "^37.0.0",
+    "electron-builder": "^25.1.8",
+    "vite": "^7.0.0",
+    "wait-on": "^8.0.1"
+  },
+  "build": {
+    "appId": "com.edulense.desktop",
+    "productName": "EduLense Desktop",
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "index.html",
+      "package.json"
+    ],
+    "directories": {
+      "buildResources": "build"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "umgc",
+        "repo": "2026_spring"
+      }
+    ],
+    "mac": {
+      "category": "public.app-category.education"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  }
+}
