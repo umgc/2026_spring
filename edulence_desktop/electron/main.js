@@ -3,6 +3,7 @@ const {
   BrowserWindow,
   Menu,
   Tray,
+  Notification,
   dialog,
   ipcMain,
   shell,
@@ -12,6 +13,7 @@ const {
 const fs = require('node:fs/promises');
 const path = require('node:path');
 const { loadWindowState, saveWindowState } = require('./windowState');
+const { asString, asOptionalString, createIpcGuard } = require('./ipcUtils');
 
 const isMac = process.platform === 'darwin';
 const isDev = Boolean(process.env.VITE_DEV_SERVER_URL);
@@ -76,36 +78,36 @@ function isFromMainWindow(event) {
   );
 }
 
-function withIpcGuard(handler) {
-  return async (event, ...args) => {
-    if (!isFromMainWindow(event)) {
-      return { ok: false, error: 'Unauthorized IPC sender' };
-    }
-    try {
-      return await handler(event, ...args);
-    } catch (error) {
-      return { ok: false, error: error?.message || 'IPC handler error' };
-    }
-  };
-}
-
-function asString(value, fieldName) {
-  if (typeof value !== 'string' || value.length === 0) {
-    throw new Error(`${fieldName} must be a non-empty string`);
-  }
-  return value;
-}
-
-function asOptionalString(value, fieldName) {
-  if (value == null) return '';
-  if (typeof value !== 'string') throw new Error(`${fieldName} must be a string`);
-  return value;
-}
+const withIpcGuard = createIpcGuard(isFromMainWindow);
 
 function setUpdaterStatus(patch) {
   updaterStatus = { ...updaterStatus, ...patch };
   sendToRenderer('updater:status', updaterStatus);
   refreshTrayMenu();
+
+  // Platform-specific: on Windows, surface key updater milestones as native notifications.
+  if (process.platform === 'win32') {
+    if (updaterStatus.state === 'downloaded') {
+      try {
+        new Notification({
+          title: 'EduLense Desktop',
+          body: 'Update downloaded. Use Help → Install Update and Restart.',
+        }).show();
+      } catch {
+        // Notifications may be unavailable depending on OS policy.
+      }
+    }
+    if (updaterStatus.state === 'available') {
+      try {
+        new Notification({
+          title: 'EduLense Desktop',
+          body: 'An update is available. Use Help → Download Available Update.',
+        }).show();
+      } catch {
+        // ignore
+      }
+    }
+  }
 }
 
 function getDesktopStateFile() {
@@ -242,9 +244,9 @@ function buildMenu() {
     {
       label: 'View',
       submenu: [
-        { label: 'Home', accelerator: 'CmdOrCtrl+1', click: () => sendToRenderer('menu:command', 'nav:home') },
-        { label: 'Explore', accelerator: 'CmdOrCtrl+2', click: () => sendToRenderer('menu:command', 'nav:files') },
-        { label: 'Profile', accelerator: 'CmdOrCtrl+3', click: () => sendToRenderer('menu:command', 'nav:notes') },
+        { label: 'Dashboard', accelerator: 'CmdOrCtrl+1', click: () => sendToRenderer('menu:command', 'nav:home') },
+        { label: 'Courses', accelerator: 'CmdOrCtrl+2', click: () => sendToRenderer('menu:command', 'nav:files') },
+        { label: 'Notes', accelerator: 'CmdOrCtrl+3', click: () => sendToRenderer('menu:command', 'nav:notes') },
         { label: 'Settings', accelerator: 'CmdOrCtrl+,', click: () => sendToRenderer('menu:command', 'nav:settings') },
         { type: 'separator' },
         { label: 'Back', accelerator: 'Alt+Left', click: () => sendToRenderer('menu:command', 'nav:back') },
