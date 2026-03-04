@@ -70,6 +70,20 @@ npm install
 npm run dev
 ```
 
+## Lint
+```bash
+npm run lint
+```
+
+## Tests + Coverage (60%+)
+```bash
+npm test
+npm run test:coverage
+```
+
+After running coverage, open:
+`coverage/lcov-report/index.html`
+
 ## Production build (renderer)
 ```bash
 npm run build
