@@ -1,140 +1,139 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from "react";
 
 // Renderer-only routes. Electron menu commands still use nav:home/nav:files/nav:notes/nav:settings.
 const ROUTES = {
-  dashboard: 'dashboard',
-  courses: 'courses',
-  calendar: 'calendar',
-  notes: 'notes',
-  progress: 'progress',
-  achievements: 'achievements',
-  studySessions: 'studySessions',
-  notifications: 'notifications',
-  settings: 'settings',
-  help: 'help',
+  dashboard: "dashboard",
+  courses: "courses",
+  calendar: "calendar",
+  notes: "notes",
+  progress: "progress",
+  achievements: "achievements",
+  studySessions: "studySessions",
+  notifications: "notifications",
+  settings: "settings",
+  help: "help",
 };
 
 const MENU_TO_ROUTE = {
-  'nav:home': ROUTES.dashboard,
-  'nav:files': ROUTES.courses,
-  'nav:notes': ROUTES.notes,
-  'nav:settings': ROUTES.settings,
+  "nav:home": ROUTES.dashboard,
+  "nav:files": ROUTES.courses,
+  "nav:notes": ROUTES.notes,
+  "nav:settings": ROUTES.settings,
 };
 
 const SHORTCUTS = [
-  ['Cmd/Ctrl+N', 'New note'],
-  ['Cmd/Ctrl+O', 'Open note'],
-  ['Cmd/Ctrl+S', 'Save note'],
-  ['Cmd/Ctrl+Shift+S', 'Save note as…'],
-  ['Cmd/Ctrl+1', 'Dashboard'],
-  ['Cmd/Ctrl+2', 'Courses'],
-  ['Cmd/Ctrl+3', 'Notes'],
-  ['Cmd/Ctrl+,', 'Settings'],
-  ['Alt+Left / Alt+Right', 'Back / Forward'],
-  ['Cmd/Ctrl+/', 'Show shortcuts'],
+  ["Cmd/Ctrl+N", "New note"],
+  ["Cmd/Ctrl+O", "Open note"],
+  ["Cmd/Ctrl+S", "Save note"],
+  ["Cmd/Ctrl+Shift+S", "Save note as…"],
+  ["Cmd/Ctrl+1", "Dashboard"],
+  ["Cmd/Ctrl+2", "Courses"],
+  ["Cmd/Ctrl+3", "Notes"],
+  ["Cmd/Ctrl+,", "Settings"],
+  ["Alt+Left / Alt+Right", "Back / Forward"],
+  ["Cmd/Ctrl+/", "Show shortcuts"],
 ];
 
 const COURSES = [
   {
-    id: 'MATH-301',
-    title: 'Advanced Calculus',
-    code: 'MATH-301',
-    instructor: 'Dr. Jane Smith',
+    id: "MATH-301",
+    title: "Advanced Calculus",
+    code: "MATH-301",
+    instructor: "Dr. Jane Smith",
     credits: 3,
     progress: 75,
-    status: 'In Progress',
-    schedule: 'Mon, 9:00 AM',
-    accent: 'lavender',
+    status: "In Progress",
+    schedule: "Mon, 9:00 AM",
+    accent: "lavender",
   },
   {
-    id: 'PHYS-202',
-    title: 'Physics II',
-    code: 'PHYS-202',
-    instructor: 'Prof. John Davis',
+    id: "PHYS-202",
+    title: "Physics II",
+    code: "PHYS-202",
+    instructor: "Prof. John Davis",
     credits: 4,
     progress: 60,
-    status: 'In Progress',
-    schedule: 'Tue, 10:30 AM',
-    accent: 'mint',
+    status: "In Progress",
+    schedule: "Tue, 10:30 AM",
+    accent: "mint",
   },
   {
-    id: 'CS-101',
-    title: 'Computer Science',
-    code: 'CS-101',
-    instructor: 'Dr. Sarah Johnson',
+    id: "CS-101",
+    title: "Computer Science",
+    code: "CS-101",
+    instructor: "Dr. Sarah Johnson",
     credits: 3,
     progress: 85,
-    status: 'In Progress',
-    schedule: 'Wed, 2:00 PM',
-    accent: 'sand',
+    status: "In Progress",
+    schedule: "Wed, 2:00 PM",
+    accent: "sand",
   },
   {
-    id: 'ENG-250',
-    title: 'English Literature',
-    code: 'ENG-250',
-    instructor: 'Prof. Liam Carter',
+    id: "ENG-250",
+    title: "English Literature",
+    code: "ENG-250",
+    instructor: "Prof. Liam Carter",
     credits: 3,
     progress: 45,
-    status: 'In Progress',
-    schedule: 'Thu, 1:00 PM',
-    accent: 'sky',
+    status: "In Progress",
+    schedule: "Thu, 1:00 PM",
+    accent: "sky",
   },
   {
-    id: 'HIST-210',
-    title: 'World History',
-    code: 'HIST-210',
-    instructor: 'Dr. Elena Ruiz',
+    id: "HIST-210",
+    title: "World History",
+    code: "HIST-210",
+    instructor: "Dr. Elena Ruiz",
     credits: 3,
     progress: 20,
-    status: 'In Progress',
-    schedule: 'Fri, 11:00 AM',
-    accent: 'rose',
+    status: "In Progress",
+    schedule: "Fri, 11:00 AM",
+    accent: "rose",
   },
   {
-    id: 'BIO-110',
-    title: 'Biology',
-    code: 'BIO-110',
-    instructor: 'Prof. Ava Nguyen',
+    id: "BIO-110",
+    title: "Biology",
+    code: "BIO-110",
+    instructor: "Prof. Ava Nguyen",
     credits: 4,
     progress: 100,
-    status: 'Completed',
-    schedule: 'Self-paced',
-    accent: 'lime',
+    status: "Completed",
+    schedule: "Self-paced",
+    accent: "lime",
   },
 ];
 
 const UPCOMING = [
-  { title: 'Calculus Exam', meta: 'Today, 2:00 PM' },
-  { title: 'Physics Lab Report Due', meta: 'Tomorrow, 11:59 PM' },
-  { title: 'Study Group Meeting', meta: 'Wed, 4:00 PM' },
+  { title: "Calculus Exam", meta: "Today, 2:00 PM" },
+  { title: "Physics Lab Report Due", meta: "Tomorrow, 11:59 PM" },
+  { title: "Study Group Meeting", meta: "Wed, 4:00 PM" },
 ];
 
 const SAMPLE_NOTES = [
   {
-    id: 'calc-15',
-    title: 'Calculus Lecture 15',
-    course: 'MATH-301',
-    date: 'Feb 20, 2026',
-    tags: ['derivatives', 'limits'],
-    body:
-      '# Derivatives and Limits\n\n## Key Concepts\n\nToday\'s lecture covered the fundamental relationship between derivatives and limits.\n\n### Definition of Derivative\nThe derivative of a function f(x) at point x is defined as:\n\nf\'(x) = lim(h→0) [f(x+h) - f(x)] / h\n\n### Important Rules\n1. Power Rule: d/dx(x^n) = n x^(n-1)\n2. Product Rule: d/dx[f(x)g(x)] = f\'(x)g(x) + f(x)g\'(x)\n3. Chain Rule: d/dx[f(g(x))] = f\'(g(x))g\'(x)',
+    id: "calc-15",
+    title: "Calculus Lecture 15",
+    course: "MATH-301",
+    date: "Feb 20, 2026",
+    tags: ["derivatives", "limits"],
+    body: "# Derivatives and Limits\n\n## Key Concepts\n\nToday's lecture covered the fundamental relationship between derivatives and limits.\n\n### Definition of Derivative\nThe derivative of a function f(x) at point x is defined as:\n\nf'(x) = lim(h→0) [f(x+h) - f(x)] / h\n\n### Important Rules\n1. Power Rule: d/dx(x^n) = n x^(n-1)\n2. Product Rule: d/dx[f(x)g(x)] = f'(x)g(x) + f(x)g'(x)\n3. Chain Rule: d/dx[f(g(x))] = f'(g(x))g'(x)",
   },
   {
-    id: 'phys-lab',
-    title: 'Physics Lab Notes',
-    course: 'PHYS-202',
-    date: 'Feb 18, 2026',
-    tags: ['circuits', 'ohm'],
-    body: '# Lab Setup\n\n- Confirmed multimeter calibration\n- Measured resistance values\n\n## Reminder\nSubmit the report in the LMS before 11:59 PM.',
+    id: "phys-lab",
+    title: "Physics Lab Notes",
+    course: "PHYS-202",
+    date: "Feb 18, 2026",
+    tags: ["circuits", "ohm"],
+    body: "# Lab Setup\n\n- Confirmed multimeter calibration\n- Measured resistance values\n\n## Reminder\nSubmit the report in the LMS before 11:59 PM.",
   },
 ];
 
 function cn(...values) {
-  return values.filter(Boolean).join(' ');
+  return values.filter(Boolean).join(" ");
 }
 
 function formatTitle(filePath) {
-  if (!filePath) return 'Untitled Note';
+  if (!filePath) return "Untitled Note";
   return filePath.split(/[\\/]/).pop() || filePath;
 }
 
@@ -146,14 +145,20 @@ function Icon({ label }) {
   );
 }
 
-function Pill({ children, tone = 'neutral' }) {
-  return <span className={cn('pill', `pill--${tone}`)}>{children}</span>;
+function Pill({ children, tone = "neutral" }) {
+  return <span className={cn("pill", `pill--${tone}`)}>{children}</span>;
 }
 
 function ProgressBar({ value }) {
   const safe = Math.max(0, Math.min(100, Number(value) || 0));
   return (
-    <div className="progress" role="progressbar" aria-valuenow={safe} aria-valuemin={0} aria-valuemax={100}>
+    <div
+      className="progress"
+      role="progressbar"
+      aria-valuenow={safe}
+      aria-valuemin={0}
+      aria-valuemax={100}
+    >
       <div className="progress__fill" style={{ width: `${safe}%` }} />
     </div>
   );
@@ -181,7 +186,12 @@ function ShortcutModal({ open, onClose }) {
       >
         <header className="modal__header">
           <h2>Keyboard Shortcuts</h2>
-          <button type="button" className="btn btn--ghost" onClick={onClose} aria-label="Close shortcuts dialog">
+          <button
+            type="button"
+            className="btn btn--ghost"
+            onClick={onClose}
+            aria-label="Close shortcuts dialog"
+          >
             ✕
           </button>
         </header>
@@ -215,16 +225,19 @@ function StatCard({ icon, value, label }) {
 }
 
 function CourseCard({ course, onOpen }) {
-  const completed = course.status === 'Completed' || course.progress >= 100;
+  const completed = course.status === "Completed" || course.progress >= 100;
   return (
     <button type="button" className="course" onClick={() => onOpen?.(course)}>
-      <div className={cn('course__badge', `course__badge--${course.accent}`)} aria-hidden="true">
+      <div
+        className={cn("course__badge", `course__badge--${course.accent}`)}
+        aria-hidden="true"
+      >
         <span>📘</span>
       </div>
       <div className="course__meta">
         <div className="course__title-row">
           <h3 className="course__title">{course.title}</h3>
-          <Pill tone={completed ? 'success' : 'info'}>{course.code}</Pill>
+          <Pill tone={completed ? "success" : "info"}>{course.code}</Pill>
         </div>
         <p className="course__sub">
           {course.instructor} · {course.credits} Credits
@@ -235,7 +248,9 @@ function CourseCard({ course, onOpen }) {
         </div>
         <ProgressBar value={course.progress} />
         <div className="course__footer">
-          <Pill tone={completed ? 'success' : 'neutral'}>{completed ? 'Completed' : 'In Progress'}</Pill>
+          <Pill tone={completed ? "success" : "neutral"}>
+            {completed ? "Completed" : "In Progress"}
+          </Pill>
           <span className="course__schedule">{course.schedule}</span>
         </div>
       </div>
@@ -243,15 +258,23 @@ function CourseCard({ course, onOpen }) {
   );
 }
 
-function DashboardPage({ onPrimaryAction }) {
+function DashboardPage({ onPrimaryAction, headingRef }) {
   return (
     <div className="page">
       <header className="page__header">
         <div>
-          <h1>Dashboard</h1>
-          <p className="muted">Welcome back! Here&apos;s your learning overview.</p>
+          <h1 ref={headingRef} tabIndex={-1}>
+            Dashboard
+          </h1>
+          <p className="muted">
+            Welcome back! Here&apos;s your learning overview.
+          </p>
         </div>
-        <button type="button" className="btn btn--primary" onClick={onPrimaryAction}>
+        <button
+          type="button"
+          className="btn btn--primary"
+          onClick={onPrimaryAction}
+        >
           <span aria-hidden="true">＋</span>
           New Course
         </button>
@@ -282,7 +305,11 @@ function DashboardPage({ onPrimaryAction }) {
         <aside className="panel panel--aside" aria-label="Upcoming work">
           <div className="panel__header">
             <h2>Upcoming</h2>
-            <button type="button" className="btn btn--icon" aria-label="Open calendar">
+            <button
+              type="button"
+              className="btn btn--icon"
+              aria-label="Open calendar"
+            >
               📅
             </button>
           </div>
@@ -294,7 +321,11 @@ function DashboardPage({ onPrimaryAction }) {
               </li>
             ))}
           </ul>
-          <button type="button" className="btn btn--ghost btn--full" aria-label="View calendar">
+          <button
+            type="button"
+            className="btn btn--ghost btn--full"
+            aria-label="View calendar"
+          >
             View Calendar
           </button>
         </aside>
@@ -303,12 +334,14 @@ function DashboardPage({ onPrimaryAction }) {
   );
 }
 
-function CoursesPage({ filter, setFilter }) {
+function CoursesPage({ filter, setFilter, headingRef }) {
   return (
     <div className="page">
       <header className="page__header">
         <div>
-          <h1>Courses</h1>
+          <h1 ref={headingRef} tabIndex={-1}>
+            Courses
+          </h1>
           <p className="muted">Manage and track all your courses</p>
         </div>
         <button type="button" className="btn btn--primary">
@@ -330,14 +363,27 @@ function CoursesPage({ filter, setFilter }) {
             aria-label="Search courses"
           />
         </label>
-        <div className="courses-toolbar__actions" aria-label="Courses view options">
+        <div
+          className="courses-toolbar__actions"
+          aria-label="Courses view options"
+        >
           <button type="button" className="btn btn--icon" aria-label="Filter">
             ☰
           </button>
-          <button type="button" className="btn btn--icon" aria-label="Grid view" aria-pressed="true">
+          <button
+            type="button"
+            className="btn btn--icon"
+            aria-label="Grid view"
+            aria-pressed="true"
+          >
             ▦
           </button>
-          <button type="button" className="btn btn--icon" aria-label="List view" aria-pressed="false">
+          <button
+            type="button"
+            className="btn btn--icon"
+            aria-label="List view"
+            aria-pressed="false"
+          >
             ≡
           </button>
         </div>
@@ -348,10 +394,16 @@ function CoursesPage({ filter, setFilter }) {
           All Courses <span className="tab__count">({COURSES.length})</span>
         </button>
         <button type="button" role="tab" aria-selected="false" className="tab">
-          In Progress <span className="tab__count">({COURSES.filter((c) => c.progress < 100).length})</span>
+          In Progress{" "}
+          <span className="tab__count">
+            ({COURSES.filter((c) => c.progress < 100).length})
+          </span>
         </button>
         <button type="button" role="tab" aria-selected="false" className="tab">
-          Completed <span className="tab__count">({COURSES.filter((c) => c.progress >= 100).length})</span>
+          Completed{" "}
+          <span className="tab__count">
+            ({COURSES.filter((c) => c.progress >= 100).length})
+          </span>
         </button>
         <button type="button" role="tab" aria-selected="false" className="tab">
           Favorites
@@ -380,16 +432,22 @@ function NotesPage({
   onSave,
   onSaveAs,
   onNew,
+  headingRef,
 }) {
   const [selectedNoteId, setSelectedNoteId] = useState(SAMPLE_NOTES[0].id);
-  const [noteSearch, setNoteSearch] = useState('');
+  const [noteSearch, setNoteSearch] = useState("");
   const editorRef = useRef(null);
-  const selected = SAMPLE_NOTES.find((n) => n.id === selectedNoteId) || SAMPLE_NOTES[0];
+  const selected =
+    SAMPLE_NOTES.find((n) => n.id === selectedNoteId) || SAMPLE_NOTES[0];
 
   useEffect(() => {
     // If a file was opened from the menu (Open Recent/Open file), keep the custom content.
     // Otherwise default to the sample note.
-    if (!currentFilePath && !dirty && content === '# EduLense Desktop\n\nStart writing here...') {
+    if (
+      !currentFilePath &&
+      !dirty &&
+      content === "# EduLense Desktop\n\nStart writing here..."
+    ) {
       setContent(selected.body);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -398,15 +456,25 @@ function NotesPage({
   const noteList = useMemo(() => {
     const q = noteSearch.trim().toLowerCase();
     if (!q) return SAMPLE_NOTES;
-    return SAMPLE_NOTES.filter((n) => n.title.toLowerCase().includes(q) || n.course.toLowerCase().includes(q));
+    return SAMPLE_NOTES.filter(
+      (n) =>
+        n.title.toLowerCase().includes(q) || n.course.toLowerCase().includes(q),
+    );
   }, [noteSearch]);
 
   return (
     <div className="notes-layout">
       <aside className="notes-sidebar" aria-label="Notes list">
         <div className="notes-sidebar__header">
-          <h2>Notes</h2>
-          <button type="button" className="btn btn--icon" onClick={onNew} aria-label="Create new note">
+          <h2 ref={headingRef} tabIndex={-1}>
+            Notes
+          </h2>
+          <button
+            type="button"
+            className="btn btn--icon"
+            onClick={onNew}
+            aria-label="Create new note"
+          >
             ＋
           </button>
         </div>
@@ -440,10 +508,13 @@ function NotesPage({
             <button
               key={note.id}
               type="button"
-              className={cn('note-tile', note.id === selectedNoteId && 'is-selected')}
+              className={cn(
+                "note-tile",
+                note.id === selectedNoteId && "is-selected",
+              )}
               onClick={() => {
                 setSelectedNoteId(note.id);
-                setCurrentFilePath('');
+                setCurrentFilePath("");
                 setDirty(false);
                 setStatus(`Viewing ${note.title}`);
               }}
@@ -469,9 +540,18 @@ function NotesPage({
       </aside>
 
       <main className="notes-editor" aria-label="Notes editor">
-        <header className="notes-toolbar" role="toolbar" aria-label="Note actions">
+        <header
+          className="notes-toolbar"
+          role="toolbar"
+          aria-label="Note actions"
+        >
           <div className="notes-toolbar__actions">
-            <button type="button" className="btn btn--icon" onClick={onOpen} aria-label="Open note">
+            <button
+              type="button"
+              className="btn btn--icon"
+              onClick={onOpen}
+              aria-label="Open note"
+            >
               📂
             </button>
             <button
@@ -483,25 +563,45 @@ function NotesPage({
             >
               💾
             </button>
-            <button type="button" className="btn btn--icon" onClick={onSaveAs} aria-label="Save note as">
+            <button
+              type="button"
+              className="btn btn--icon"
+              onClick={onSaveAs}
+              aria-label="Save note as"
+            >
               ⤓
             </button>
           </div>
-          <div className="notes-toolbar__format" aria-label="Formatting controls (visual only)">
+          <div
+            className="notes-toolbar__format"
+            aria-label="Formatting controls (visual only)"
+          >
             <button type="button" className="btn btn--icon" aria-label="Bold">
               <strong>B</strong>
             </button>
             <button type="button" className="btn btn--icon" aria-label="Italic">
               <em>I</em>
             </button>
-            <button type="button" className="btn btn--icon" aria-label="Underline">
-              <span style={{ textDecoration: 'underline' }}>U</span>
+            <button
+              type="button"
+              className="btn btn--icon"
+              aria-label="Underline"
+            >
+              <span style={{ textDecoration: "underline" }}>U</span>
             </button>
             <span className="toolbar-divider" aria-hidden="true" />
-            <button type="button" className="btn btn--icon" aria-label="Bulleted list">
+            <button
+              type="button"
+              className="btn btn--icon"
+              aria-label="Bulleted list"
+            >
               •
             </button>
-            <button type="button" className="btn btn--icon" aria-label="Numbered list">
+            <button
+              type="button"
+              className="btn btn--icon"
+              aria-label="Numbered list"
+            >
               1.
             </button>
             <span className="toolbar-divider" aria-hidden="true" />
@@ -513,7 +613,9 @@ function NotesPage({
 
         <section className="note-header" aria-label="Note metadata">
           <div className="note-header__title">
-            <h1>{currentFilePath ? formatTitle(currentFilePath) : selected.title}</h1>
+            <h1>
+              {currentFilePath ? formatTitle(currentFilePath) : selected.title}
+            </h1>
             <div className="note-header__meta">
               <span>📅 {selected.date}</span>
               <Pill tone="info">{selected.course}</Pill>
@@ -543,13 +645,18 @@ function NotesPage({
   );
 }
 
-function PlaceholderPage({ title, children }) {
+function PlaceholderPage({ title, children, headingRef }) {
   return (
     <div className="page">
       <header className="page__header">
         <div>
-          <h1>{title}</h1>
-          <p className="muted">This section is included for desktop navigation and accessibility testing.</p>
+          <h1 ref={headingRef} tabIndex={-1}>
+            {title}
+          </h1>
+          <p className="muted">
+            This section is included for desktop navigation and accessibility
+            testing.
+          </p>
         </div>
       </header>
       <div className="panel">
@@ -572,13 +679,18 @@ function SettingsPage({
   onCheckUpdates,
   onDownloadUpdate,
   onInstallUpdate,
+  headingRef,
 }) {
   return (
     <div className="page">
       <header className="page__header">
         <div>
-          <h1>Settings</h1>
-          <p className="muted">Desktop preferences are stored locally on this device.</p>
+          <h1 ref={headingRef} tabIndex={-1}>
+            Settings
+          </h1>
+          <p className="muted">
+            Desktop preferences are stored locally on this device.
+          </p>
         </div>
       </header>
 
@@ -588,22 +700,26 @@ function SettingsPage({
             <h2>Appearance</h2>
           </div>
           <div className="panel__body">
-            <div className="radio-row" role="radiogroup" aria-label="Theme mode">
+            <div
+              className="radio-row"
+              role="radiogroup"
+              aria-label="Theme mode"
+            >
               <button
                 type="button"
-                className={cn('radio', themeMode === 'dark' && 'is-selected')}
-                onClick={() => setThemeMode('dark')}
+                className={cn("radio", themeMode === "dark" && "is-selected")}
+                onClick={() => setThemeMode("dark")}
                 role="radio"
-                aria-checked={themeMode === 'dark'}
+                aria-checked={themeMode === "dark"}
               >
                 Dark
               </button>
               <button
                 type="button"
-                className={cn('radio', themeMode === 'light' && 'is-selected')}
-                onClick={() => setThemeMode('light')}
+                className={cn("radio", themeMode === "light" && "is-selected")}
+                onClick={() => setThemeMode("light")}
                 role="radio"
-                aria-checked={themeMode === 'light'}
+                aria-checked={themeMode === "light"}
               >
                 Light
               </button>
@@ -612,17 +728,29 @@ function SettingsPage({
             <label className="toggle">
               <span>
                 <span className="toggle__title">Large text</span>
-                <span className="toggle__subtitle">Increase UI scale for readability.</span>
+                <span className="toggle__subtitle">
+                  Increase UI scale for readability.
+                </span>
               </span>
-              <input type="checkbox" checked={largeText} onChange={(e) => setLargeText(e.target.checked)} />
+              <input
+                type="checkbox"
+                checked={largeText}
+                onChange={(e) => setLargeText(e.target.checked)}
+              />
             </label>
 
             <label className="toggle">
               <span>
                 <span className="toggle__title">High contrast</span>
-                <span className="toggle__subtitle">Boost borders and secondary text contrast.</span>
+                <span className="toggle__subtitle">
+                  Boost borders and secondary text contrast.
+                </span>
               </span>
-              <input type="checkbox" checked={highContrast} onChange={(e) => setHighContrast(e.target.checked)} />
+              <input
+                type="checkbox"
+                checked={highContrast}
+                onChange={(e) => setHighContrast(e.target.checked)}
+              />
             </label>
           </div>
         </section>
@@ -635,7 +763,9 @@ function SettingsPage({
             <label className="toggle">
               <span>
                 <span className="toggle__title">Confirm hide-to-tray</span>
-                <span className="toggle__subtitle">Ask before minimizing to the system tray on close.</span>
+                <span className="toggle__subtitle">
+                  Ask before minimizing to the system tray on close.
+                </span>
               </span>
               <input
                 type="checkbox"
@@ -653,17 +783,23 @@ function SettingsPage({
           <div className="panel__body">
             <div className="callout">
               <div className="callout__title">Auto-updater</div>
-              <div className="callout__body">{updaterStatus.message || `State: ${updaterStatus.state}`}</div>
+              <div className="callout__body">
+                {updaterStatus.message || `State: ${updaterStatus.state}`}
+              </div>
             </div>
             <div className="btn-row">
-              <button type="button" className="btn btn--ghost" onClick={onCheckUpdates}>
+              <button
+                type="button"
+                className="btn btn--ghost"
+                onClick={onCheckUpdates}
+              >
                 Check for updates
               </button>
               <button
                 type="button"
                 className="btn btn--ghost"
                 onClick={onDownloadUpdate}
-                disabled={updaterStatus.state !== 'available'}
+                disabled={updaterStatus.state !== "available"}
               >
                 Download update
               </button>
@@ -671,7 +807,7 @@ function SettingsPage({
                 type="button"
                 className="btn btn--primary"
                 onClick={onInstallUpdate}
-                disabled={updaterStatus.state !== 'downloaded'}
+                disabled={updaterStatus.state !== "downloaded"}
               >
                 Install & Restart
               </button>
@@ -683,22 +819,27 @@ function SettingsPage({
   );
 }
 
-function HelpPage() {
+function HelpPage({ headingRef }) {
   return (
-    <PlaceholderPage title="Help">
+    <PlaceholderPage title="Help" headingRef={headingRef}>
       <h2>About EduLense</h2>
       <p>
-        EduLense is an AI-powered educational platform that started in K–12 education and has since expanded into
-        higher education.
+        EduLense is an AI-powered educational platform that started in K–12
+        education and has since expanded into higher education.
       </p>
       <p>
-        It supports teachers with lesson planning, assignment generation, grading, and student performance analysis.
-        By integrating Large Language Models (LLMs) with platforms like Moodle and Google Classroom, EduLense helps
-        automate educational workflows while improving accessibility and ease of use.
+        It supports teachers with lesson planning, assignment generation,
+        grading, and student performance analysis. By integrating Large Language
+        Models (LLMs) with platforms like Moodle and Google Classroom, EduLense
+        helps automate educational workflows while improving accessibility and
+        ease of use.
       </p>
       <h3>Desktop accessibility checklist</h3>
       <ul>
-        <li>All features are reachable with keyboard navigation and visible focus indicators.</li>
+        <li>
+          All features are reachable with keyboard navigation and visible focus
+          indicators.
+        </li>
         <li>Sidebar navigation uses proper landmarks and aria labels.</li>
         <li>Pages and controls are screen-reader friendly (NVDA/VoiceOver).</li>
       </ul>
@@ -708,7 +849,11 @@ function HelpPage() {
 
 function SidebarItem({ active, icon, label, badge, onClick }) {
   return (
-    <button type="button" className={cn('side-item', active && 'is-active')} onClick={onClick}>
+    <button
+      type="button"
+      className={cn("side-item", active && "is-active")}
+      onClick={onClick}
+    >
       <span className="side-item__badge" aria-hidden="true">
         {badge}
       </span>
@@ -729,23 +874,46 @@ export default function App() {
   const [historyIndex, setHistoryIndex] = useState(0);
 
   // Notes/editor state (used by native menu and keyboard shortcuts).
-  const [content, setContent] = useState('# EduLense Desktop\n\nStart writing here...');
-  const [currentFilePath, setCurrentFilePath] = useState('');
+  const [content, setContent] = useState(
+    "# EduLense Desktop\n\nStart writing here...",
+  );
+  const [currentFilePath, setCurrentFilePath] = useState("");
   const [dirty, setDirty] = useState(false);
-  const [status, setStatus] = useState('Ready');
+  const [status, setStatus] = useState("Ready");
   const [showShortcuts, setShowShortcuts] = useState(false);
-  const [courseFilter, setCourseFilter] = useState('');
+  const [courseFilter, setCourseFilter] = useState("");
 
   // Preferences persisted via IPC.
-  const [themeMode, setThemeMode] = useState('dark');
+  const [themeMode, setThemeMode] = useState("dark");
   const [autoRefreshRecent, setAutoRefreshRecent] = useState(true);
   const [largeText, setLargeText] = useState(false);
   const [highContrast, setHighContrast] = useState(false);
   const [confirmTrayMinimize, setConfirmTrayMinimize] = useState(true);
-  const [updaterStatus, setUpdaterStatus] = useState({ state: 'idle', message: 'Updater unavailable' });
+  const [updaterStatus, setUpdaterStatus] = useState({
+    state: "idle",
+    message: "Updater unavailable",
+  });
 
   const actionRef = useRef({});
   const persistTimerRef = useRef(null);
+  const signInHeadingRef = useRef(null);
+  const mainHeadingRef = useRef(null);
+
+  // Focus sign-in heading when user is logged out (for NVDA announcement).
+  useEffect(() => {
+    if (!isAuthenticated && hasHydratedState) {
+      setTimeout(() => {
+        signInHeadingRef.current?.focus();
+      }, 100);
+    }
+  }, [isAuthenticated, hasHydratedState]);
+
+  // Focus main heading on route change so NVDA announces the new page.
+  useEffect(() => {
+    if (isAuthenticated) {
+      mainHeadingRef.current?.focus();
+    }
+  }, [route, isAuthenticated]);
 
   const invokeSafe = async (label, fn) => {
     try {
@@ -791,28 +959,28 @@ export default function App() {
   const handleOpen = async () => {
     const result = await window.desktop.file.open();
     if (!result || result.canceled) {
-      setStatus(result?.error || 'Open canceled');
+      setStatus(result?.error || "Open canceled");
       return;
     }
-    setCurrentFilePath(result.filePath || '');
-    setContent(result.content ?? '');
+    setCurrentFilePath(result.filePath || "");
+    setContent(result.content ?? "");
     setDirty(false);
     setStatus(`Opened ${formatTitle(result.filePath)}`);
     navigate(ROUTES.notes);
   };
 
   const handleSave = async (forceSaveAs = false) => {
-    const payload = { filePath: forceSaveAs ? '' : currentFilePath, content };
+    const payload = { filePath: forceSaveAs ? "" : currentFilePath, content };
     const result = forceSaveAs
       ? await window.desktop.file.saveAs(payload)
       : await window.desktop.file.save(payload);
 
     if (!result?.ok) {
-      setStatus(result?.error || 'Save failed');
+      setStatus(result?.error || "Save failed");
       return;
     }
     if (result.canceled) {
-      setStatus('Save canceled');
+      setStatus("Save canceled");
       return;
     }
 
@@ -822,24 +990,28 @@ export default function App() {
   };
 
   const handleNew = () => {
-    setCurrentFilePath('');
-    setContent('# New Note\n\n');
+    setCurrentFilePath("");
+    setContent("# New Note\n\n");
     setDirty(false);
-    setStatus('Created new note');
+    setStatus("Created new note");
     navigate(ROUTES.notes);
   };
 
   const handleMenuCommand = async (command) => {
-    if (command && typeof command === 'object' && command.type === 'openRecent') {
+    if (
+      command &&
+      typeof command === "object" &&
+      command.type === "openRecent"
+    ) {
       // Recent file open happens via file:read.
       if (!isAuthenticated) return;
       const result = await window.desktop.file.read(command.filePath);
       if (!result?.ok) {
-        setStatus(result?.error || 'Unable to open recent file');
+        setStatus(result?.error || "Unable to open recent file");
         return;
       }
       setCurrentFilePath(command.filePath);
-      setContent(result.content ?? '');
+      setContent(result.content ?? "");
       setDirty(false);
       setStatus(`Opened ${formatTitle(command.filePath)}`);
       navigate(ROUTES.notes);
@@ -852,25 +1024,25 @@ export default function App() {
     }
 
     switch (command) {
-      case 'file:new':
+      case "file:new":
         handleNew();
         break;
-      case 'file:open':
+      case "file:open":
         await handleOpen();
         break;
-      case 'file:save':
+      case "file:save":
         await handleSave(false);
         break;
-      case 'file:saveAs':
+      case "file:saveAs":
         await handleSave(true);
         break;
-      case 'nav:back':
+      case "nav:back":
         navigateBack();
         break;
-      case 'nav:forward':
+      case "nav:forward":
         navigateForward();
         break;
-      case 'help:shortcuts':
+      case "help:shortcuts":
         setShowShortcuts(true);
         break;
       default:
@@ -892,17 +1064,22 @@ export default function App() {
   // Hydrate desktop state (prefs + auth flag).
   useEffect(() => {
     let cancelled = false;
-    invokeSafe('Load desktop state', () => window.desktop.state.get())
+    invokeSafe("Load desktop state", () => window.desktop.state.get())
       .then((result) => {
         if (cancelled) return;
         if (result?.ok && result.state) {
           const { prefs, auth } = result.state;
           if (prefs?.themeMode) setThemeMode(prefs.themeMode);
-          if (typeof prefs?.autoRefreshRecent === 'boolean') setAutoRefreshRecent(prefs.autoRefreshRecent);
-          if (typeof prefs?.largeText === 'boolean') setLargeText(prefs.largeText);
-          if (typeof prefs?.highContrast === 'boolean') setHighContrast(prefs.highContrast);
-          if (typeof prefs?.confirmTrayMinimize === 'boolean') setConfirmTrayMinimize(prefs.confirmTrayMinimize);
-          if (typeof auth?.isAuthenticated === 'boolean') setIsAuthenticated(auth.isAuthenticated);
+          if (typeof prefs?.autoRefreshRecent === "boolean")
+            setAutoRefreshRecent(prefs.autoRefreshRecent);
+          if (typeof prefs?.largeText === "boolean")
+            setLargeText(prefs.largeText);
+          if (typeof prefs?.highContrast === "boolean")
+            setHighContrast(prefs.highContrast);
+          if (typeof prefs?.confirmTrayMinimize === "boolean")
+            setConfirmTrayMinimize(prefs.confirmTrayMinimize);
+          if (typeof auth?.isAuthenticated === "boolean")
+            setIsAuthenticated(auth.isAuthenticated);
         }
         setHasHydratedState(true);
       })
@@ -917,10 +1094,14 @@ export default function App() {
 
   // Wire updater status.
   useEffect(() => {
-    invokeSafe('Get updater status', () => window.desktop.updater.getStatus()).then((result) => {
+    invokeSafe("Get updater status", () =>
+      window.desktop.updater.getStatus(),
+    ).then((result) => {
       if (result?.status) setUpdaterStatus(result.status);
     });
-    const offUpdater = window.desktop.onUpdaterStatus((nextStatus) => setUpdaterStatus(nextStatus));
+    const offUpdater = window.desktop.onUpdaterStatus((nextStatus) =>
+      setUpdaterStatus(nextStatus),
+    );
     return () => offUpdater?.();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -930,11 +1111,17 @@ export default function App() {
     if (!hasHydratedState) return;
     clearTimeout(persistTimerRef.current);
     persistTimerRef.current = setTimeout(() => {
-      invokeSafe('Save desktop state', () =>
+      invokeSafe("Save desktop state", () =>
         window.desktop.state.save({
-          prefs: { themeMode, autoRefreshRecent, largeText, highContrast, confirmTrayMinimize },
+          prefs: {
+            themeMode,
+            autoRefreshRecent,
+            largeText,
+            highContrast,
+            confirmTrayMinimize,
+          },
           auth: { isAuthenticated },
-        })
+        }),
       );
     }, 150);
     return () => clearTimeout(persistTimerRef.current);
@@ -949,18 +1136,22 @@ export default function App() {
   ]);
 
   useEffect(() => {
-    document.title = `${dirty ? '* ' : ''}${formatTitle(currentFilePath)} - EduLense Desktop`;
+    document.title = `${dirty ? "* " : ""}${formatTitle(currentFilePath)} - EduLense Desktop`;
   }, [currentFilePath, dirty]);
 
   useEffect(() => {
     document.documentElement.dataset.theme = themeMode;
-    document.documentElement.dataset.scale = largeText ? 'large' : 'normal';
-    document.documentElement.dataset.contrast = highContrast ? 'high' : 'normal';
+    document.documentElement.dataset.scale = largeText ? "large" : "normal";
+    document.documentElement.dataset.contrast = highContrast
+      ? "high"
+      : "normal";
   }, [themeMode, largeText, highContrast]);
 
   // Listen to native menu commands.
   useEffect(() => {
-    const offMenu = window.desktop.onMenuCommand((command) => actionRef.current.handleMenuCommand?.(command));
+    const offMenu = window.desktop.onMenuCommand((command) =>
+      actionRef.current.handleMenuCommand?.(command),
+    );
     return () => offMenu?.();
   }, []);
 
@@ -969,59 +1160,64 @@ export default function App() {
     const onKeyDown = async (event) => {
       const actions = actionRef.current;
       const mod = event.metaKey || event.ctrlKey;
-      if (mod && event.key.toLowerCase() === 'o') {
+      if (mod && event.key.toLowerCase() === "o") {
         event.preventDefault();
         await actions.handleOpen?.();
         return;
       }
-      if (mod && event.key.toLowerCase() === 'n') {
+      if (mod && event.key.toLowerCase() === "n") {
         event.preventDefault();
         actions.handleNew?.();
         return;
       }
-      if (mod && event.key.toLowerCase() === 's') {
+      if (mod && event.key.toLowerCase() === "s") {
         event.preventDefault();
         await actions.handleSave?.(event.shiftKey);
         return;
       }
-      if (mod && event.key === '1') {
+      if (mod && event.key === "1") {
         event.preventDefault();
         actions.navigate?.(ROUTES.dashboard);
         return;
       }
-      if (mod && event.key === '2') {
+      if (mod && event.key === "2") {
         event.preventDefault();
         actions.navigate?.(ROUTES.courses);
         return;
       }
-      if (mod && event.key === '3') {
+      if (mod && event.key === "3") {
         event.preventDefault();
         actions.navigate?.(ROUTES.notes);
         return;
       }
-      if (mod && event.key === ',') {
+      if (mod && event.key === ",") {
         event.preventDefault();
         actions.navigate?.(ROUTES.settings);
         return;
       }
-      if (mod && event.key === '/') {
+      if (mod && event.key === "/") {
         event.preventDefault();
         actions.setShowShortcuts?.(true);
         return;
       }
-      if (event.altKey && event.key === 'ArrowLeft') {
+      if (event.altKey && event.key === "ArrowLeft") {
         event.preventDefault();
         actions.navigateBack?.();
         return;
       }
-      if (event.altKey && event.key === 'ArrowRight') {
+      if (event.altKey && event.key === "ArrowRight") {
         event.preventDefault();
         actions.navigateForward?.();
+        return;
+      }
+      if (event.key === "Escape") {
+        event.preventDefault();
+        actions.setShowShortcuts?.(false);
       }
     };
 
-    window.addEventListener('keydown', onKeyDown);
-    return () => window.removeEventListener('keydown', onKeyDown);
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
   }, []);
 
   if (!hasHydratedState) {
@@ -1047,23 +1243,28 @@ export default function App() {
             <div className="auth-logo" aria-hidden="true">
               ◎
             </div>
-            <h1>Welcome to EduLense</h1>
+            <h1 ref={signInHeadingRef} tabIndex={-1}>
+              Welcome to EduLense
+            </h1>
             <p>
-              EduLense is an AI-powered educational platform for lesson planning, grading, and performance analysis.
-              Sign in to continue.
+              EduLense is an AI-powered educational platform for lesson
+              planning, grading, and performance analysis. Sign in to continue.
             </p>
           </section>
 
           <section className="auth-card" aria-label="Authentication actions">
             <h2>Sign in or create an account</h2>
-            <p>Save progress, sync across devices, and unlock tailored study insights across desktop and mobile.</p>
+            <p>
+              Save progress, sync across devices, and unlock tailored study
+              insights across desktop and mobile.
+            </p>
             <div className="auth-actions">
               <button
                 type="button"
                 className="filled"
                 onClick={() => {
                   setIsAuthenticated(true);
-                  setStatus('Signed in');
+                  setStatus("Signed in");
                 }}
               >
                 Sign In
@@ -1073,13 +1274,15 @@ export default function App() {
                 className="outlined"
                 onClick={() => {
                   setIsAuthenticated(true);
-                  setStatus('Account created');
+                  setStatus("Account created");
                 }}
               >
                 Create Account
               </button>
             </div>
-            <div className="auth-footnote">Tip: Press Cmd/Ctrl+/ any time to view keyboard shortcuts.</div>
+            <div className="auth-footnote">
+              Tip: Press Cmd/Ctrl+/ any time to view keyboard shortcuts.
+            </div>
           </section>
         </main>
       </div>
@@ -1089,9 +1292,20 @@ export default function App() {
   const contentNode = (() => {
     switch (route) {
       case ROUTES.dashboard:
-        return <DashboardPage onPrimaryAction={() => navigate(ROUTES.courses)} />;
+        return (
+          <DashboardPage
+            onPrimaryAction={() => navigate(ROUTES.courses)}
+            headingRef={mainHeadingRef}
+          />
+        );
       case ROUTES.courses:
-        return <CoursesPage filter={courseFilter} setFilter={setCourseFilter} />;
+        return (
+          <CoursesPage
+            filter={courseFilter}
+            setFilter={setCourseFilter}
+            headingRef={mainHeadingRef}
+          />
+        );
       case ROUTES.notes:
         return (
           <NotesPage
@@ -1107,6 +1321,7 @@ export default function App() {
             onSave={handleSave}
             onSaveAs={() => handleSave(true)}
             onNew={handleNew}
+            headingRef={mainHeadingRef}
           />
         );
       case ROUTES.settings:
@@ -1124,42 +1339,50 @@ export default function App() {
             onCheckUpdates={() => window.desktop.updater.check()}
             onDownloadUpdate={() => window.desktop.updater.download()}
             onInstallUpdate={() => window.desktop.updater.install()}
+            headingRef={mainHeadingRef}
           />
         );
       case ROUTES.help:
-        return <HelpPage />;
+        return <HelpPage headingRef={mainHeadingRef} />;
       case ROUTES.notifications:
         return (
-          <PlaceholderPage title="Notifications">
+          <PlaceholderPage title="Notifications" headingRef={mainHeadingRef}>
             <p className="muted">No new notifications.</p>
           </PlaceholderPage>
         );
       case ROUTES.calendar:
         return (
-          <PlaceholderPage title="Calendar">
-            <p className="muted">Calendar integration is a planned feature for EduLense Desktop.</p>
+          <PlaceholderPage title="Calendar" headingRef={mainHeadingRef}>
+            <p className="muted">
+              Calendar integration is a planned feature for EduLense Desktop.
+            </p>
           </PlaceholderPage>
         );
       case ROUTES.progress:
         return (
-          <PlaceholderPage title="Progress">
+          <PlaceholderPage title="Progress" headingRef={mainHeadingRef}>
             <p className="muted">Track overall course progress here.</p>
           </PlaceholderPage>
         );
       case ROUTES.achievements:
         return (
-          <PlaceholderPage title="Achievements">
+          <PlaceholderPage title="Achievements" headingRef={mainHeadingRef}>
             <p className="muted">Badges and milestones will appear here.</p>
           </PlaceholderPage>
         );
       case ROUTES.studySessions:
         return (
-          <PlaceholderPage title="Study Sessions">
+          <PlaceholderPage title="Study Sessions" headingRef={mainHeadingRef}>
             <p className="muted">Schedule and join study groups.</p>
           </PlaceholderPage>
         );
       default:
-        return <DashboardPage onPrimaryAction={() => navigate(ROUTES.courses)} />;
+        return (
+          <DashboardPage
+            onPrimaryAction={() => navigate(ROUTES.courses)}
+            headingRef={mainHeadingRef}
+          />
+        );
     }
   })();
 
@@ -1170,12 +1393,33 @@ export default function App() {
           <button type="button" className="btn btn--icon" aria-label="Refresh">
             ↻
           </button>
-          <button type="button" className="btn btn--icon" aria-label="Settings" onClick={() => navigate(ROUTES.settings)}>
+          <button
+            type="button"
+            className="btn btn--icon"
+            aria-label="Settings"
+            onClick={() => navigate(ROUTES.settings)}
+          >
             ⚙
           </button>
           <div className="topbar__spacer" />
           <div className="topbar__icons" aria-label="Quick actions">
-            {['🕒', '🔖', '📘', '📅', '🗒', 'ⓘ', '⇪', '⬇', '✎', '🗑', '🔗', '🔍', '⤢', '⤡', '＋'].map((c) => (
+            {[
+              "🕒",
+              "🔖",
+              "📘",
+              "📅",
+              "🗒",
+              "ⓘ",
+              "⇪",
+              "⬇",
+              "✎",
+              "🗑",
+              "🔗",
+              "🔍",
+              "⤢",
+              "⤡",
+              "＋",
+            ].map((c) => (
               <span key={c} className="topbar__glyph" aria-hidden="true">
                 {c}
               </span>
@@ -1250,7 +1494,11 @@ export default function App() {
             icon="🕒"
             onClick={() => navigate(ROUTES.studySessions)}
           />
-          <button type="button" className="side-cta" onClick={() => setStatus('Study Groups coming soon')}>
+          <button
+            type="button"
+            className="side-cta"
+            onClick={() => setStatus("Study Groups coming soon")}
+          >
             <span className="side-cta__new">New</span>
             Study Groups
           </button>
@@ -1306,7 +1554,10 @@ export default function App() {
         </div>
       </footer>
 
-      <ShortcutModal open={showShortcuts} onClose={() => setShowShortcuts(false)} />
+      <ShortcutModal
+        open={showShortcuts}
+        onClose={() => setShowShortcuts(false)}
+      />
     </div>
   );
 }
