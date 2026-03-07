@@ -155,6 +155,7 @@ function ProgressBar({ value }) {
     <div
       className="progress"
       role="progressbar"
+      aria-label={`Progress: ${safe}%`}
       aria-valuenow={safe}
       aria-valuemin={0}
       aria-valuemax={100}
@@ -184,7 +185,7 @@ function ShortcutModal({ open, onClose }) {
         ref={dialogRef}
         onMouseDown={(e) => e.stopPropagation()}
       >
-        <header className="modal__header">
+        <div className="modal__header">
           <h2>Keyboard Shortcuts</h2>
           <button
             type="button"
@@ -194,7 +195,7 @@ function ShortcutModal({ open, onClose }) {
           >
             ✕
           </button>
-        </header>
+        </div>
         <div className="modal__body">
           <ul className="shortcut-list">
             {SHORTCUTS.map(([keys, label]) => (
@@ -411,6 +412,7 @@ function CoursesPage({ filter, setFilter, headingRef }) {
       </div>
 
       <section className="course-grid" aria-label="All courses">
+        <h2 className="sr-only">All Courses</h2>
         {COURSES.map((course) => (
           <CourseCard key={course.id} course={course} />
         ))}
@@ -503,48 +505,45 @@ function NotesPage({
           </button>
         </nav>
 
-        <div className="notes-list" role="list">
+        <div className="notes-list" role="list" aria-label="Your notes">
           {noteList.map((note) => (
-            <button
-              key={note.id}
-              type="button"
-              className={cn(
-                "note-tile",
-                note.id === selectedNoteId && "is-selected",
-              )}
-              onClick={() => {
-                setSelectedNoteId(note.id);
-                setCurrentFilePath("");
-                setDirty(false);
-                setStatus(`Viewing ${note.title}`);
-              }}
-            >
-              <div className="note-tile__title">{note.title}</div>
-              <div className="note-tile__meta">
-                <span>{note.course}</span>
-                <span className="dot" aria-hidden="true">
-                  •
-                </span>
-                <span>{note.date}</span>
-              </div>
-              <div className="note-tile__tags">
-                {note.tags.map((tag) => (
-                  <span key={tag} className="tag">
-                    {tag}
+            <div key={note.id} role="listitem">
+              <button
+                type="button"
+                className={cn(
+                  "note-tile",
+                  note.id === selectedNoteId && "is-selected",
+                )}
+                onClick={() => {
+                  setSelectedNoteId(note.id);
+                  setCurrentFilePath("");
+                  setDirty(false);
+                  setStatus(`Viewing ${note.title}`);
+                }}
+              >
+                <div className="note-tile__title">{note.title}</div>
+                <div className="note-tile__meta">
+                  <span>{note.course}</span>
+                  <span className="dot" aria-hidden="true">
+                    •
                   </span>
-                ))}
-              </div>
-            </button>
+                  <span>{note.date}</span>
+                </div>
+                <div className="note-tile__tags">
+                  {note.tags.map((tag) => (
+                    <span key={tag} className="tag">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </button>
+            </div>
           ))}
         </div>
       </aside>
 
-      <main className="notes-editor" aria-label="Notes editor">
-        <header
-          className="notes-toolbar"
-          role="toolbar"
-          aria-label="Note actions"
-        >
+      <section className="notes-editor" aria-label="Notes editor">
+        <div className="notes-toolbar" role="toolbar" aria-label="Note actions">
           <div className="notes-toolbar__actions">
             <button
               type="button"
@@ -609,7 +608,7 @@ function NotesPage({
               🔗
             </button>
           </div>
-        </header>
+        </div>
 
         <section className="note-header" aria-label="Note metadata">
           <div className="note-header__title">
@@ -640,7 +639,7 @@ function NotesPage({
         <footer className="notes-status" aria-label="Editor status">
           <span className="muted">{status}</span>
         </footer>
-      </main>
+      </section>
     </div>
   );
 }
@@ -1402,7 +1401,11 @@ export default function App() {
             ⚙
           </button>
           <div className="topbar__spacer" />
-          <div className="topbar__icons" aria-label="Quick actions">
+          <div
+            className="topbar__icons"
+            role="toolbar"
+            aria-label="Quick actions"
+          >
             {[
               "🕒",
               "🔖",
@@ -1546,7 +1549,9 @@ export default function App() {
         </div>
         <div className="statusbar__center">
           <span className="muted">3 courses in progress</span>
-          <span className="status-warn">2 assignments due today</span>
+          <span className="status-warn" style={{ color: "#7a3a00" }}>
+            2 assignments due today
+          </span>
         </div>
         <div className="statusbar__right">
           <span className="muted">Ready</span>
