@@ -111,12 +111,30 @@ export default function App() {
   const actionRef = useRef({});
   const persistTimerRef = useRef(null);
   const modalHeadingRef = useRef(null);
+  const signInHeadingRef = useRef(null);
+  const mainHeadingRef = useRef(null);
 
   useEffect(() => {
     if (showShortcuts && modalHeadingRef.current) {
       modalHeadingRef.current.focus();
     }
   }, [showShortcuts]);
+
+  useEffect(() => {
+    if (!isAuthenticated && hasHydratedState) {
+      setTimeout(() => {
+        if (signInHeadingRef.current) {
+          signInHeadingRef.current.focus();
+        }
+      }, 100);
+    }
+  }, [isAuthenticated, hasHydratedState]);
+
+  useEffect(() => {
+    if (isAuthenticated && mainHeadingRef.current) {
+      mainHeadingRef.current.focus();
+    }
+  }, [route, isAuthenticated]);
 
   const invokeSafe = async (label, fn) => {
     try {
@@ -533,7 +551,9 @@ export default function App() {
             <div className="auth-logo" aria-hidden="true">
               ◎
             </div>
-            <h1>Welcome to EduLense</h1>
+            <h1 ref={signInHeadingRef} tabIndex={-1}>
+              Welcome to EduLense
+            </h1>
             <p>
               Your personalized learning hub. Sign in to continue or create an
               account to get started.
@@ -651,7 +671,9 @@ export default function App() {
         {route === "home" && (
           <div className="screen-stack">
             <section className="m-card hero-card">
-              <h2>Welcome Back!</h2>
+              <h2 ref={mainHeadingRef} tabIndex={-1}>
+                Welcome Back!
+              </h2>
               <p>Your educational journey continues here.</p>
               <div className="hero-actions">
                 <button type="button" className="filled" onClick={handleOpen}>
@@ -716,7 +738,9 @@ export default function App() {
         {route === "files" && (
           <div className="screen-stack">
             <section className="m-card">
-              <h2>Explore</h2>
+              <h2 ref={mainHeadingRef} tabIndex={-1}>
+                Explore
+              </h2>
               <p className="tile-subtitle">
                 Flutter-like list cards adapted for desktop files and topics.
               </p>
@@ -851,7 +875,9 @@ export default function App() {
             <section className="m-card profile-card">
               <div className="avatar">SU</div>
               <div>
-                <h2 className="profile-name">Student User</h2>
+                <h2 ref={mainHeadingRef} tabIndex={-1} className="profile-name">
+                  Student User
+                </h2>
                 <p className="tile-subtitle">student@edulense.app</p>
               </div>
             </section>
@@ -979,7 +1005,9 @@ export default function App() {
         {route === "settings" && (
           <div className="screen-stack">
             <section>
-              <h3 className="section-title">Appearance</h3>
+              <h3 ref={mainHeadingRef} tabIndex={-1} className="section-title">
+                Appearance
+              </h3>
               <div className="m-card card-stack">
                 <ThemeOption
                   label="Light Mode"
