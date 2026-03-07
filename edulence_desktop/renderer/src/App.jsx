@@ -478,6 +478,12 @@ export default function App() {
         event.preventDefault();
         actions.navigateForward?.();
       }
+
+      if (event.key === "Escape") {
+        event.preventDefault();
+        actions.setShowShortcuts?.(false);
+        return;
+      }
     };
 
     window.addEventListener("keydown", onKeyDown);
@@ -1082,6 +1088,12 @@ export default function App() {
             aria-modal="true"
             aria-labelledby="shortcut-title"
             onClick={(e) => e.stopPropagation()}
+            onKeyDown={(e) => {
+              if (e.key === "Tab") {
+                e.preventDefault();
+                e.stopPropagation();
+              }
+            }}
           >
             <h2 id="shortcut-title">Keyboard Shortcuts</h2>
             <ul className="shortcut-list modal-list">
@@ -1093,7 +1105,11 @@ export default function App() {
               ))}
             </ul>
             <div className="modal-actions">
-              <button type="button" onClick={() => setShowShortcuts(false)}>
+              <button
+                type="button"
+                autoFocus
+                onClick={() => setShowShortcuts(false)}
+              >
                 Close
               </button>
             </div>
