@@ -52,7 +52,9 @@ function ThemeOption({ label, subtitle, selected, onClick }) {
       className={`list-tile ${selected ? "selected" : ""}`}
       onClick={onClick}
     >
-      <span className="tile-leading">{selected ? "●" : "○"}</span>
+      <span className="tile-leading" aria-hidden="true">
+        {selected ? "●" : "○"}
+      </span>
       <span className="tile-copy">
         <span className="tile-title">{label}</span>
         <span className="tile-subtitle">{subtitle}</span>
@@ -108,6 +110,13 @@ export default function App() {
   const editorRef = useRef(null);
   const actionRef = useRef({});
   const persistTimerRef = useRef(null);
+  const modalHeadingRef = useRef(null);
+
+  useEffect(() => {
+    if (showShortcuts && modalHeadingRef.current) {
+      modalHeadingRef.current.focus();
+    }
+  }, [showShortcuts]);
 
   const invokeSafe = async (label, fn) => {
     try {
@@ -477,8 +486,8 @@ export default function App() {
       if (event.altKey && event.key === "ArrowRight") {
         event.preventDefault();
         actions.navigateForward?.();
+        return;
       }
-
       if (event.key === "Escape") {
         event.preventDefault();
         actions.setShowShortcuts?.(false);
@@ -607,7 +616,7 @@ export default function App() {
         </div>
       </header>
 
-      <nav className="desktop-utility-rail" aria-label="Desktop controls">
+      <div className="desktop-utility-rail" aria-label="Desktop controls">
         <button
           type="button"
           className="rail-button primary"
@@ -636,7 +645,7 @@ export default function App() {
         >
           Keys
         </button>
-      </nav>
+      </div>
 
       <main className="screen-body" aria-live="polite">
         {route === "home" && (
@@ -659,19 +668,22 @@ export default function App() {
 
             <section>
               <h3 className="section-title">Quick Actions</h3>
-              <div className="action-grid">
+              <div className="action-grid" role="list">
                 {QUICK_ACTIONS.map(([label, hint]) => (
                   <button
                     key={label}
                     type="button"
                     className="m-card action-card"
+                    role="listitem"
                     onClick={() => {
                       setStatus(hint);
                       if (label === "Assignments") navigate("files");
                       if (label === "Progress") navigate("notes");
                     }}
                   >
-                    <div className="action-icon">■</div>
+                    <div className="action-icon" aria-hidden="true">
+                      ■
+                    </div>
                     <div className="tile-title">{label}</div>
                     <div className="tile-subtitle">{hint}</div>
                   </button>
@@ -684,12 +696,16 @@ export default function App() {
               <div className="list-stack">
                 {RECENT_ACTIVITY.map(([title, subtitle]) => (
                   <div key={title} className="m-card list-row">
-                    <div className="row-icon">●</div>
+                    <div className="row-icon" aria-hidden="true">
+                      ●
+                    </div>
                     <div className="row-copy">
                       <div className="tile-title">{title}</div>
                       <div className="tile-subtitle">{subtitle}</div>
                     </div>
-                    <div className="row-chevron">›</div>
+                    <div className="row-chevron" aria-hidden="true">
+                      ›
+                    </div>
                   </div>
                 ))}
               </div>
@@ -724,12 +740,16 @@ export default function App() {
                     className="m-card list-tile"
                     onClick={() => setStatus(`Opened topic ${tile.title}`)}
                   >
-                    <span className="tile-leading info">Book</span>
+                    <span className="tile-leading info" aria-hidden="true">
+                      Book
+                    </span>
                     <span className="tile-copy">
                       <span className="tile-title">{tile.title}</span>
                       <span className="tile-subtitle">{tile.subtitle}</span>
                     </span>
-                    <span className="row-chevron">›</span>
+                    <span className="row-chevron" aria-hidden="true">
+                      ›
+                    </span>
                   </button>
                 ))}
               </div>
@@ -757,7 +777,9 @@ export default function App() {
                         <span className="tile-title">{formatTitle(file)}</span>
                         <span className="tile-subtitle ellipsis">{file}</span>
                       </span>
-                      <span className="row-chevron">›</span>
+                      <span className="row-chevron" aria-hidden="true">
+                        ›
+                      </span>
                     </button>
                   ))
                 )}
@@ -812,7 +834,9 @@ export default function App() {
                             {entry.path}
                           </span>
                         </span>
-                        <span className="row-chevron">›</span>
+                        <span className="row-chevron" aria-hidden="true">
+                          ›
+                        </span>
                       </button>
                     ))
                   )}
@@ -838,28 +862,36 @@ export default function App() {
                 className="m-card list-tile"
                 onClick={() => setStatus("Opened Completed Lessons")}
               >
-                <span className="tile-leading success">Done</span>
+                <span className="tile-leading success" aria-hidden="true">
+                  Done
+                </span>
                 <span className="tile-copy">
                   <span className="tile-title">Completed Lessons</span>
                   <span className="tile-subtitle">
                     View your learning history
                   </span>
                 </span>
-                <span className="row-chevron">›</span>
+                <span className="row-chevron" aria-hidden="true">
+                  ›
+                </span>
               </button>
               <button
                 type="button"
                 className="m-card list-tile"
                 onClick={() => setStatus("Opened Learning Goals")}
               >
-                <span className="tile-leading">Goal</span>
+                <span className="tile-leading" aria-hidden="true">
+                  Goal
+                </span>
                 <span className="tile-copy">
                   <span className="tile-title">Learning Goals</span>
                   <span className="tile-subtitle">
                     Track your weekly targets
                   </span>
                 </span>
-                <span className="row-chevron">›</span>
+                <span className="row-chevron" aria-hidden="true">
+                  ›
+                </span>
               </button>
               <button
                 type="button"
@@ -872,14 +904,18 @@ export default function App() {
                   setStatus("Signed out");
                 }}
               >
-                <span className="tile-leading warning">Out</span>
+                <span className="tile-leading warning" aria-hidden="true">
+                  Out
+                </span>
                 <span className="tile-copy">
                   <span className="tile-title">Sign Out</span>
                   <span className="tile-subtitle">
                     Return to the authentication screen
                   </span>
                 </span>
-                <span className="row-chevron">›</span>
+                <span className="row-chevron" aria-hidden="true">
+                  ›
+                </span>
               </button>
             </section>
 
@@ -1090,12 +1126,29 @@ export default function App() {
             onClick={(e) => e.stopPropagation()}
             onKeyDown={(e) => {
               if (e.key === "Tab") {
-                e.preventDefault();
+                const focusable = e.currentTarget.querySelectorAll(
+                  'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
+                );
+                const first = focusable[0];
+                const last = focusable[focusable.length - 1];
+                if (e.shiftKey) {
+                  if (document.activeElement === first) {
+                    e.preventDefault();
+                    last.focus();
+                  }
+                } else {
+                  if (document.activeElement === last) {
+                    e.preventDefault();
+                    first.focus();
+                  }
+                }
                 e.stopPropagation();
               }
             }}
           >
-            <h2 id="shortcut-title">Keyboard Shortcuts</h2>
+            <h2 id="shortcut-title" tabIndex={-1} ref={modalHeadingRef}>
+              Keyboard Shortcuts
+            </h2>
             <ul className="shortcut-list modal-list">
               {SHORTCUTS.map(([key, desc]) => (
                 <li key={`modal-${key}`}>
@@ -1105,11 +1158,7 @@ export default function App() {
               ))}
             </ul>
             <div className="modal-actions">
-              <button
-                type="button"
-                autoFocus
-                onClick={() => setShowShortcuts(false)}
-              >
+              <button type="button" onClick={() => setShowShortcuts(false)}>
                 Close
               </button>
             </div>
