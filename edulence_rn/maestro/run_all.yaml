@@ -1,0 +1,5 @@
+appId: com.edulence.rn
+---
+- runFlow: rn_auth_and_home.yaml
+- runFlow: rn_navigation_flow.yaml
+- runFlow: rn_settings_accessibility_flow.yaml

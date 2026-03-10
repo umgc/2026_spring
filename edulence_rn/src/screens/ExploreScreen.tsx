@@ -80,6 +80,7 @@ export function ExploreScreen(): React.JSX.Element {
           accessibilityRole="button"
           accessibilityLabel={`${item.title}. ${item.category}`}
           accessibilityHint="Opens course details"
+          accessibilityState={{ selected: isSelected }}
           onPress={() => {
             onSelectCourse(item.id);
           }}

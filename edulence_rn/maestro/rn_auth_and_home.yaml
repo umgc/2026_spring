@@ -1,0 +1,9 @@
+appId: com.edulence.rn
+---
+- launchApp:
+    clearState: true
+- assertVisible: "Welcome to EduLense"
+- assertVisible: "Sign in to EduLense"
+- assertVisible: "Create a new EduLense account"
+- tapOn: "Sign in to EduLense"
+- assertVisible: "Quick Actions"

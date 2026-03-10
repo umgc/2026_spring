@@ -25,13 +25,13 @@ describe('App coverage flows (high coverage)', () => {
     expect(await screen.findByRole('heading', { name: /dashboard/i })).toBeInTheDocument();
 
     await goTo(user, /courses/i);
-    expect(await screen.findByRole('heading', { name: /courses/i })).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { name: /^courses$/i })).toBeInTheDocument();
 
     await goTo(user, /notes/i);
-    expect(await screen.findByRole('heading', { name: /notes/i })).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { name: /^notes$/i })).toBeInTheDocument();
 
     await goTo(user, /dashboard/i);
-    expect(await screen.findByRole('heading', { name: /dashboard/i })).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { name: /^dashboard$/i })).toBeInTheDocument();
   });
 
   test('topbar buttons: Refresh and Settings (icon) are clickable', async () => {
@@ -68,7 +68,7 @@ describe('App coverage flows (high coverage)', () => {
     const { user } = await renderAndEnterApp();
 
     await goTo(user, /courses/i);
-    expect(await screen.findByRole('heading', { name: /courses/i })).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { name: /^courses$/i })).toBeInTheDocument();
 
     const search = await screen.findByPlaceholderText(/search courses/i);
 
@@ -93,7 +93,7 @@ describe('App coverage flows (high coverage)', () => {
     const { user } = await renderAndEnterApp();
 
     await goTo(user, /courses/i);
-    expect(await screen.findByRole('heading', { name: /courses/i })).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { name: /^courses$/i })).toBeInTheDocument();
 
     // Grab all matching course titles and click the first one.
     const titles = screen.getAllByText(

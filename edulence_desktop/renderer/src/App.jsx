@@ -852,6 +852,7 @@ function SidebarItem({ active, icon, label, badge, onClick }) {
       type="button"
       className={cn("side-item", active && "is-active")}
       onClick={onClick}
+      aria-current={active ? "page" : undefined}
     >
       <span className="side-item__badge" aria-hidden="true">
         {badge}

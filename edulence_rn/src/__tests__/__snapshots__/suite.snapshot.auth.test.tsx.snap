@@ -1,0 +1,341 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Suite snapshots matches auth entry screen snapshot 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    [
+      [
+        {
+          "flex": 1,
+        },
+        {
+          "backgroundColor": "#FAFAFA",
+        },
+      ],
+      {
+        "paddingBottom": 0,
+      },
+    ]
+  }
+>
+  <RCTScrollView
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessible={false}
+    automaticallyAdjustKeyboardInsets={true}
+    contentContainerStyle={
+      {
+        "flexGrow": 1,
+        "justifyContent": "center",
+        "padding": 24,
+      }
+    }
+    focusable={true}
+    keyboardDismissMode="interactive"
+    keyboardShouldPersistTaps="handled"
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+  >
+    <View>
+      <Text
+        accessibilityRole="header"
+        style={
+          [
+            {
+              "fontWeight": "700",
+            },
+            {
+              "color": "#212121",
+              "fontSize": 32,
+              "textAlign": "right",
+            },
+          ]
+        }
+      >
+        Welcome to EduLense
+      </Text>
+      <Text
+        style={
+          [
+            {
+              "lineHeight": 24,
+              "marginBottom": 24,
+              "marginTop": 16,
+            },
+            {
+              "color": "#4F4F4F",
+              "fontSize": 16,
+              "textAlign": "right",
+            },
+          ]
+        }
+      >
+        Sign in to continue your learning journey.
+      </Text>
+      <View
+        style={
+          [
+            {
+              "borderRadius": 16,
+              "borderWidth": 1,
+              "gap": 16,
+              "padding": 24,
+            },
+            {
+              "backgroundColor": "#FFFFFF",
+              "borderColor": "#E6E6E6",
+            },
+          ]
+        }
+      >
+        <TextInput
+          accessibilityHint="Enter your full name for sign up"
+          accessibilityLabel="Name"
+          accessible={true}
+          onChangeText={[Function]}
+          placeholder="Full name"
+          placeholderTextColor="#4F4F4F"
+          returnKeyType="next"
+          style={
+            [
+              {
+                "borderRadius": 10,
+                "borderWidth": 1,
+                "minHeight": 44,
+                "paddingHorizontal": 16,
+              },
+              {
+                "borderColor": "#E6E6E6",
+                "color": "#212121",
+                "fontSize": 15,
+                "textAlign": "right",
+              },
+            ]
+          }
+          value=""
+        />
+        <TextInput
+          accessibilityHint="Enter your email address"
+          accessibilityLabel="Email"
+          accessible={true}
+          autoCapitalize="none"
+          keyboardType="email-address"
+          onChangeText={[Function]}
+          placeholder="Email"
+          placeholderTextColor="#4F4F4F"
+          returnKeyType="next"
+          style={
+            [
+              {
+                "borderRadius": 10,
+                "borderWidth": 1,
+                "minHeight": 44,
+                "paddingHorizontal": 16,
+              },
+              {
+                "borderColor": "#E6E6E6",
+                "color": "#212121",
+                "fontSize": 15,
+                "textAlign": "right",
+              },
+            ]
+          }
+          textContentType="emailAddress"
+          value="demo@edulence.app"
+        />
+        <TextInput
+          accessibilityHint="Enter your password"
+          accessibilityLabel="Password"
+          accessible={true}
+          onChangeText={[Function]}
+          onSubmitEditing={[Function]}
+          placeholder="Password"
+          placeholderTextColor="#4F4F4F"
+          returnKeyType="go"
+          secureTextEntry={true}
+          style={
+            [
+              {
+                "borderRadius": 10,
+                "borderWidth": 1,
+                "minHeight": 44,
+                "paddingHorizontal": 16,
+              },
+              {
+                "borderColor": "#E6E6E6",
+                "color": "#212121",
+                "fontSize": 15,
+                "textAlign": "right",
+              },
+            ]
+          }
+          textContentType="password"
+          value="demo1234"
+        />
+        <Text
+          style={
+            [
+              {
+                "marginTop": -4,
+              },
+              {
+                "color": "#4F4F4F",
+                "fontSize": 12,
+                "textAlign": "right",
+              },
+            ]
+          }
+        >
+          Demo account: demo@edulence.app / demo1234
+        </Text>
+        <View
+          accessibilityHint="Opens your learning dashboard"
+          accessibilityLabel="Sign in to EduLense"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              {
+                "alignItems": "center",
+                "borderRadius": 10,
+                "justifyContent": "center",
+                "minHeight": 44,
+                "overflow": "hidden",
+                "paddingHorizontal": 16,
+              },
+              {
+                "backgroundColor": "#5E3AEE",
+                "opacity": 1,
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#FFFFFF",
+                  "fontWeight": "700",
+                },
+                {
+                  "fontSize": 16,
+                },
+              ]
+            }
+          >
+            Sign In
+          </Text>
+        </View>
+        <View
+          accessibilityHint="Starts account registration"
+          accessibilityLabel="Create a new EduLense account"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              {
+                "alignItems": "center",
+                "borderRadius": 10,
+                "borderWidth": 1,
+                "justifyContent": "center",
+                "minHeight": 44,
+                "overflow": "hidden",
+                "paddingHorizontal": 16,
+              },
+              {
+                "borderColor": "#5E3AEE",
+                "opacity": 1,
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "fontWeight": "700",
+                },
+                {
+                  "color": "#5E3AEE",
+                  "fontSize": 16,
+                },
+              ]
+            }
+          >
+            Sign Up
+          </Text>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
+`;

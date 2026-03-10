@@ -5,12 +5,20 @@
 - Native menu bar (`File`, `Edit`, `View`, `Help`)
 - Keyboard shortcuts (menu accelerators + renderer handlers)
 - Desktop navigation patterns (sidebar + back/forward history)
+- Keyboard navigation verification for sidebar traversal and shortcut routing
 - Window state persistence (size and position)
 - File system operations (open/read/save/save-as/show in folder)
 - System tray integration (show/hide + quit)
 - React app in renderer process (Vite)
 - Auto-updater wiring (`electron-updater`) for packaged builds
 - Persisted desktop preferences and mock auth session (`userData`)
+
+## Accessibility fixes included
+- Sidebar navigation exposes active state with `aria-current="page"`
+- Keyboard users can tab through sidebar destinations and activate them with `Enter`
+- Renderer tests verify `Tab` traversal, `Enter` activation, and `Ctrl/Cmd+2` route changes
+- Route headings receive focus after navigation so screen readers announce the active page
+- The shortcuts dialog is keyboard accessible and closable with keyboard commands
 
 ## Architecture Overview
 - `electron/main.js`: main process orchestration (window lifecycle, menu, tray, IPC, updater)
@@ -75,14 +83,34 @@ npm run dev
 npm run lint
 ```
 
-## Tests + Coverage (60%+)
+## Test
 ```bash
 npm test
+```
+
+## Keyboard navigation verification
+Run the renderer tests that cover desktop keyboard navigation:
+
+```bash
+npx jest --runInBand renderer/src/__tests__/App.test.jsx renderer/src/__tests__/App.coverage.test.jsx
+```
+
+This verifies:
+- `Tab` moves focus between sidebar destinations
+- `Enter` activates the focused navigation item
+- `Ctrl/Cmd+2` routes to `Courses`
+- active navigation state updates correctly after keyboard navigation
+
+## Coverage report
+```bash
 npm run test:coverage
 ```
 
 After running coverage, open:
-`coverage/lcov-report/index.html`
+`coverage/index.html`
+
+LCOV output is written to:
+`coverage/lcov.info`
 
 ## Production build (renderer)
 ```bash

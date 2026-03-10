@@ -17,7 +17,8 @@
     "build:ios:release": "npx eas-cli build --platform ios --profile production-ios",
     "build:release": "npx eas-cli build --platform all --profile production",
     "submit:android:production": "npx eas-cli submit --platform android --profile production",
-    "submit:ios:production": "npx eas-cli submit --platform ios --profile production"
+    "submit:ios:production": "npx eas-cli submit --platform ios --profile production",
+    "build:ios:simulator": "npx eas-cli build --platform ios --profile ios-simulator"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.2",
@@ -41,6 +42,7 @@
     "@types/react-test-renderer": "^19.0.0",
     "@typescript-eslint/eslint-plugin": "^8.8.0",
     "@typescript-eslint/parser": "^8.8.0",
+    "eas-cli": "^18.0.3",
     "eslint": "^8.57.1",
     "eslint-config-universe": "^15.0.3",
     "eslint-plugin-security": "^3.0.1",

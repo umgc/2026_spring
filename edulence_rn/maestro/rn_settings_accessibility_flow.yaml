@@ -1,0 +1,12 @@
+appId: com.edulence.rn
+---
+- launchApp:
+    clearState: true
+- tapOn: "Sign in to EduLense"
+- tapOn: "Profile tab"
+- tapOn: "Open settings"
+- assertVisible: "Appearance"
+- assertVisible: "Accessibility"
+- assertVisible: "Left-Handed Mode"
+- assertVisible: "Large Text"
+- assertVisible: "High Contrast"

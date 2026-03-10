@@ -5,13 +5,23 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.edulence.rn"
+      "bundleIdentifier": "com.edulence.rn",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "package": "com.edulence.rn"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "aa1956fd-7352-4a0c-9c53-6ef5ba017f20"
+      }
     }
   }
 }

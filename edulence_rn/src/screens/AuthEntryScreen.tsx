@@ -12,12 +12,14 @@ import {
   View,
 } from "react-native";
 
+import { useAccessibilityAnnouncement } from "../hooks/useAccessibilityAnnouncement";
 import { useAuthActions, useAuthState } from "../store/useAppStore";
 import { spacing } from "../theme/spacing";
 import { useAppTheme } from "../theme/useAppTheme";
 
 export function AuthEntryScreen(): React.JSX.Element {
   const { palette, fontScale, textAlign } = useAppTheme();
+  const { announce } = useAccessibilityAnnouncement();
   const { authError } = useAuthState();
   const { signIn, signUp, continueAsGuest, clearAuthError } = useAuthActions();
 
@@ -33,16 +35,18 @@ export function AuthEntryScreen(): React.JSX.Element {
   const onSignIn = useCallback(() => {
     const result = signIn(email, password);
     if (!result.success) {
+      announce(result.message ?? "Unable to sign in");
       continueAsGuest(name, email);
     }
-  }, [continueAsGuest, email, name, password, signIn]);
+  }, [announce, continueAsGuest, email, name, password, signIn]);
 
   const onSignUp = useCallback(() => {
     const result = signUp(name, email, password);
     if (!result.success) {
+      announce(result.message ?? "Unable to sign up");
       continueAsGuest(name, email);
     }
-  }, [continueAsGuest, email, name, password, signUp]);
+  }, [announce, continueAsGuest, email, name, password, signUp]);
 
   const onChangeName = useCallback(
     (value: string) => {
