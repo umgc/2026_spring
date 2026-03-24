@@ -1,0 +1,23 @@
+{
+  "name": "EduLense",
+  "short_name": "EduLense",
+  "description": "Responsive learning workspace with offline notes and accessibility settings.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f1e8",
+  "theme_color": "#0f766e",
+  "icons": [
+    {
+      "src": "/pwa-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/pwa-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
