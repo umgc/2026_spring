@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">81.81% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>18/22</span>
+                <span class='fraction'>16/20</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">81.81% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>18/22</span>
+                <span class='fraction'>16/20</span>
             </div>
         
             
@@ -151,22 +151,22 @@
 <a name='L86'></a><a href='#L86'>86</a>
 <a name='L87'></a><a href='#L87'>87</a>
 <a name='L88'></a><a href='#L88'>88</a>
-<a name='L89'></a><a href='#L89'>89</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L89'></a><a href='#L89'>89</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
@@ -186,7 +186,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -269,7 +269,7 @@ export default function AuthScreen() {
     }
   };
 &nbsp;
-  const handleGuest = <span class="fstat-no" title="function not covered" >(v</span>alues: AuthFormValues) =&gt; {
+  const <span class="fstat-no" title="function not covered" >handleGuest = (v</span>alues: AuthFormValues) =&gt; {
 <span class="cstat-no" title="statement not covered" >    continueAsGuest(values.name, values.email);</span>
 <span class="cstat-no" title="statement not covered" >    navigate(destination, { replace: true });</span>
   };
@@ -309,14 +309,14 @@ export default function AuthScreen() {
             &lt;button
               type="button"
               className={mode === 'signin' ? 'is-active' : <span class="branch-1 cbranch-no" title="branch not covered" >''}</span>
-              onClick={<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >n</span>avigate('/auth/signin')}</span>
+<span class="fstat-no" title="function not covered" >              onClick={() =&gt; <span class="cstat-no" title="statement not covered" >n</span>avigate('/auth/signin')}</span>
             &gt;
               Sign In
             &lt;/button&gt;
             &lt;button
               type="button"
               className={mode === 'signup' ? <span class="branch-0 cbranch-no" title="branch not covered" >'is-active' : '</span>'}
-              onClick={<span class="fstat-no" title="function not covered" >() =&gt; <span class="cstat-no" title="statement not covered" >n</span>avigate('/auth/signup')}</span>
+<span class="fstat-no" title="function not covered" >              onClick={() =&gt; <span class="cstat-no" title="statement not covered" >n</span>avigate('/auth/signup')}</span>
             &gt;
               Sign Up
             &lt;/button&gt;
@@ -334,7 +334,7 @@ export default function AuthScreen() {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-03-25T05:34:59.724Z
+                at 2026-03-26T01:44:43.965Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

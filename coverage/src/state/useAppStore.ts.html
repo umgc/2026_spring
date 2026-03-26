@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">82.97% </span>
+                <span class="strong">80.48% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>78/94</span>
+                <span class='fraction'>66/82</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">83.75% </span>
+                <span class="strong">82.66% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>67/80</span>
+                <span class='fraction'>62/75</span>
             </div>
         
             
@@ -336,10 +336,10 @@
 <a name='L271'></a><a href='#L271'>271</a>
 <a name='L272'></a><a href='#L272'>272</a>
 <a name='L273'></a><a href='#L273'>273</a>
-<a name='L274'></a><a href='#L274'>274</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
+<a name='L274'></a><a href='#L274'>274</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -544,7 +544,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">45x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -552,7 +552,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -563,7 +563,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">35x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -586,7 +586,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">93x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">93x</span>
 <span class="cline-any cline-yes">288x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -594,7 +594,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">45x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">45x</span>
 <span class="cline-any cline-yes">155x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -608,7 +608,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">103x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import { useShallow } from 'zustand/react/shallow';
@@ -657,7 +657,7 @@ const getStorage = () =&gt;
 &nbsp;
 const resolveTheme = (mode: ThemeMode): 'light' | 'dark' =&gt; {
   if (mode === 'system') {
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : <span class="branch-1 cbranch-no" title="branch not covered" >'light';</span>
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? <span class="branch-0 cbranch-no" title="branch not covered" >'dark' : '</span>light';
   }
   return mode;
 };
@@ -685,9 +685,9 @@ const useAppStore = create&lt;AppState&gt;()(
       appMeta,
       // Store actions are kept colocated with the state so routing and screens stay thin.
       setThemeMode: (themeMode) =&gt; set({ themeMode }),
-      setLeftHandedMode: <span class="fstat-no" title="function not covered" >(l</span>eftHandedMode) =&gt; <span class="cstat-no" title="statement not covered" >set({ leftHandedMode }),</span>
+<span class="fstat-no" title="function not covered" >      setLeftHandedMode: (l</span>eftHandedMode) =&gt; <span class="cstat-no" title="statement not covered" >set({ leftHandedMode }),</span>
       setLargeText: (largeText) =&gt; set({ largeText }),
-      setHighContrast: <span class="fstat-no" title="function not covered" >(h</span>ighContrast) =&gt; <span class="cstat-no" title="statement not covered" >set({ highContrast }),</span>
+<span class="fstat-no" title="function not covered" >      setHighContrast: (h</span>ighContrast) =&gt; <span class="cstat-no" title="statement not covered" >set({ highContrast }),</span>
       clearAuthError: () =&gt; set({ authError: null }),
       signIn: (email, password) =&gt; {
         const normalizedEmail = normalizeEmail(email);
@@ -732,7 +732,7 @@ const useAppStore = create&lt;AppState&gt;()(
         }
 &nbsp;
         const newUser: UserRecord = <span class="cstat-no" title="statement not covered" >{ name: trimmedName, email: normalizedEmail, password };</span>
-<span class="cstat-no" title="statement not covered" >        set(<span class="fstat-no" title="function not covered" >(s</span>tate) =&gt; (<span class="cstat-no" title="statement not covered" >{</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >        set((s</span>tate) =&gt; (<span class="cstat-no" title="statement not covered" >{</span></span>
           users: [...state.users, newUser],
           currentUser: { name: newUser.name, email: newUser.email },
           authError: null,
@@ -740,7 +740,7 @@ const useAppStore = create&lt;AppState&gt;()(
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        return { success: true };</span>
       },
-      continueAsGuest: <span class="fstat-no" title="function not covered" >(n</span>ame, email) =&gt;
+<span class="fstat-no" title="function not covered" >      continueAsGuest: (n</span>ame, email) =&gt;
 <span class="cstat-no" title="statement not covered" >        set({</span>
           currentUser: {
             name: name?.trim() || 'Guest Student',
@@ -787,13 +787,13 @@ const useAppStore = create&lt;AppState&gt;()(
             lastSavedMessage: 'Draft created locally',
           };
         }),
-      renameNote: <span class="fstat-no" title="function not covered" >(i</span>d, title) =&gt;
-<span class="cstat-no" title="statement not covered" >        set(<span class="fstat-no" title="function not covered" >(s</span>tate) =&gt; (<span class="cstat-no" title="statement not covered" >{</span></span>
-          notes: state.notes.map(<span class="fstat-no" title="function not covered" >(n</span>ote) =&gt; (<span class="cstat-no" title="statement not covered" >note.id === id ? { ...note, title: title.trim() || note.title } : note)),</span>
+<span class="fstat-no" title="function not covered" >      renameNote: (i</span>d, title) =&gt;
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >        set((s</span>tate) =&gt; (<span class="cstat-no" title="statement not covered" >{</span></span>
+          notes: state.notes.<span class="fstat-no" title="function not covered" >map((n</span>ote) =&gt; (<span class="cstat-no" title="statement not covered" >note.id === id ? { ...note, title: title.trim() || note.title } : note)),</span>
         })),
-      toggleFavoriteNote: <span class="fstat-no" title="function not covered" >(i</span>d) =&gt;
-<span class="cstat-no" title="statement not covered" >        set(<span class="fstat-no" title="function not covered" >(s</span>tate) =&gt; (<span class="cstat-no" title="statement not covered" >{</span></span>
-          notes: state.notes.map(<span class="fstat-no" title="function not covered" >(n</span>ote) =&gt; (<span class="cstat-no" title="statement not covered" >note.id === id ? { ...note, favorite: !note.favorite } : note)),</span>
+<span class="fstat-no" title="function not covered" >      toggleFavoriteNote: (i</span>d) =&gt;
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >        set((s</span>tate) =&gt; (<span class="cstat-no" title="statement not covered" >{</span></span>
+          notes: state.notes.<span class="fstat-no" title="function not covered" >map((n</span>ote) =&gt; (<span class="cstat-no" title="statement not covered" >note.id === id ? { ...note, favorite: !note.favorite } : note)),</span>
         })),
       setInstallReady: (installReady) =&gt; set({ installReady }),
       resolveTheme,
@@ -889,7 +889,7 @@ export default useAppStore;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-03-25T05:34:59.724Z
+                at 2026-03-26T01:44:43.965Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
