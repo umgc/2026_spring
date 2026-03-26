@@ -1,16 +1,81 @@
-# React + Vite
+# EduLense — Web Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive, mobile-first educational productivity PWA built with React, TypeScript, Vite, and Tailwind CSS.
 
-Currently, two official plugins are available:
+## Live Deployment
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+https://2026springnew.vercel.app
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19 + TypeScript
+- Vite 8
+- React Router v6 (lazy-loaded routes)
+- Zustand (state management)
+- Tailwind CSS
+- Vitest + React Testing Library (unit/RTL tests)
+- Playwright (E2E tests)
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Prerequisites
+
+- Node.js 18+
+- npm 9+
+
+### Install & Run
+
+```bash
+git clone https://github.com/umgc/2026_spring.git
+cd 2026_spring
+git checkout developer
+npm install
+npm run dev
+```
+
+App runs at http://localhost:5173
+
+## Testing
+
+### Unit & RTL Tests
+
+```bash
+npm test
+```
+
+### Coverage Report (91%+)
+
+```bash
+npm run test:Coverage
+```
+
+HTML report generated in `coverage/lcov-report/index.html`
+
+### E2E Tests (Playwright)
+
+```bash
+npx playwright install
+npm run test:e2e
+```
+
+Runs 4 critical user flows across Chrome, Firefox, and Safari.
+
+## Build & Deploy
+
+### Production Build
+
+```bash
+npm run build
+```
+
+Output in `dist/`
+
+### Deploy to Vercel
+
+The `vercel.json` in the project root configures automatic deployment.
+Connect the repository to Vercel and it deploys on every push to `developer`.
+
+## PWA
+
+The app is installable as a PWA from the deployed URL.
+Service worker provides offline support for cached routes.
