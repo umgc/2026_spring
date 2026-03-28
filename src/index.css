@@ -1092,7 +1092,7 @@ img {
   position: absolute;
   top: -100%;
   left: 1rem;
-  background: var(--accent);
+  background: var(#0f4c45);
   color: #fff;
   padding: 0.5rem 1rem;
   border-radius: var(--radius-sm);

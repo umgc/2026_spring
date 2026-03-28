@@ -96,7 +96,7 @@ useEffect(() => {
         <aside className="sidebar" aria-label="Site navigation">
           <div className="brand">
             <div className="brand-mark" aria-hidden="true">EL</div>
-            <p className="brand-name">{appMeta.name}</p>
+            <h2 className="brand-name">{appMeta.name}</h2>
             <p className="muted">Left-friendly learning workspace</p>
           </div>
 

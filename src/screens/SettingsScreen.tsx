@@ -41,7 +41,7 @@ function SettingsLayout() {
       </header>
 
       <div className="panel">
-        <div className="tab-row" role="tablist" aria-label="Settings sections">
+        <nav className="tab-row" aria-label="Settings sections">
           {settingsSections.map((section) => (
             <NavLink
               key={section.id}
@@ -51,7 +51,7 @@ function SettingsLayout() {
               {section.label}
             </NavLink>
           ))}
-        </div>
+        </nav>
       </div>
 
       <Outlet />

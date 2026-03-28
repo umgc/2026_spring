@@ -42,7 +42,7 @@ describe("AppShell", () => {
     document.documentElement.dataset.theme = "";
     document.documentElement.dataset.scale = "";
     document.documentElement.dataset.contrast = "";
-    document.documentElement.dir = "ltr";
+    document.documentElement.dataset.handed = "";
   });
 
   it("renders user info, offline banner, and applies accessibility attributes", () => {
@@ -59,7 +59,7 @@ describe("AppShell", () => {
     expect(document.documentElement.dataset.theme).toBe("dark");
     expect(document.documentElement.dataset.scale).toBe("large");
     expect(document.documentElement.dataset.contrast).toBe("high");
-    expect(document.documentElement.dir).toBe("rtl");
+    expect(document.documentElement.dataset.handed).toBe("left");
     expect(
       screen.getByRole("button", { name: /install app/i }),
     ).toBeInTheDocument();

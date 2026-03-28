@@ -106,12 +106,13 @@ export default function CoursesScreen() {
           </div>
         </div>
 
-        {filteredCourses.length > 0 ? (
-          <div className="course-grid">
-            {filteredCourses.map((course) => (
-              <CourseCard key={course.id} course={course} />
-            ))}
-          </div>
+            {filteredCourses.length > 0 ? (
+              <div className="course-grid">
+                <h2 className="sr-only">Course list</h2>
+                {filteredCourses.map((course) => (
+                  <CourseCard key={course.id} course={course} />
+                ))}
+              </div>
         ) : (
           <div className="empty-state">
             <strong>No courses match this filter.</strong>
