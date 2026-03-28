@@ -385,13 +385,25 @@ img {
   max-width: var(--layout-max);
   margin: 0 auto;
   padding: 1rem;
-  display: grid;
-  grid-template-columns: 284px minmax(0, 1fr);
+  display: flex;
+  flex-direction: row;
   gap: 1rem;
 }
 
-.app-shell.is-left-handed {
-  grid-template-columns: minmax(0, 1fr) 284px;
+.app-shell .sidebar {
+  width: 284px;
+  flex-shrink: 0;
+  order: 2;
+}
+
+.app-shell .content-shell {
+  flex: 1;
+  min-width: 0;
+  order: 1;
+}
+
+:root[data-handed='left'] .app-shell {
+  flex-direction: row;
 }
 
 .sidebar {
@@ -408,12 +420,12 @@ img {
   box-shadow: var(--shadow);
 }
 
-.app-shell.is-left-handed .sidebar {
-  order: 2;
+:root[data-handed='left'] .sidebar {
+  order: 1;
 }
 
-.app-shell.is-left-handed .content-shell {
-  order: 1;
+:root[data-handed='left'] .content-shell {
+  order: 2;
 }
 
 .brand {
@@ -593,6 +605,7 @@ img {
   display: grid;
   grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.9fr);
   gap: 1rem;
+  align-items: start;
 }
 
 .course-grid {
@@ -625,6 +638,7 @@ img {
   color: var(--accent-strong);
   font-size: 0.84rem;
   font-weight: 700;
+  min-height: unset;
 }
 
 .pill.success {
@@ -738,6 +752,9 @@ img {
 .detail-card {
   display: grid;
   gap: 0.65rem;
+  align-content: start;
+  padding: 1.15 rem;
+
 }
 
 .profile-grid,
@@ -755,6 +772,7 @@ img {
 .toggle {
   inline-size: 3.25rem;
   block-size: 1.85rem;
+  min-height: unset;
   border-radius: 999px;
   background: var(--surface-alt);
   border: 1px solid var(--border);
@@ -814,6 +832,8 @@ img {
   display: grid;
   gap: 1rem;
   animation: modal-in var(--dur-med) var(--ease-standard);
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 .page-loading .panel {
@@ -910,12 +930,12 @@ img {
     overflow: auto;
   }
 
-  :root[dir='rtl'] .mobile-drawer {
-    inset-inline-start: auto;
-    inset-inline-end: 0;
-    border-inline-end: 0;
-    border-inline-start: 1px solid var(--border);
-  }
+:root[data-handed='left'] .mobile-drawer {
+  inset-inline-start: auto;
+  inset-inline-end: 0;
+  border-inline-end: 0;
+  border-inline-start: 1px solid var(--border);
+}
 
   .mobile-bottom-nav {
     display: grid;
@@ -1066,4 +1086,20 @@ img {
     opacity: 1;
     transform: scale(1) translateY(0);
   }
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  z-index: 9999;
+  text-decoration: none;
+}
+.skip-link:focus {
+  top: 1rem;
 }

@@ -44,9 +44,9 @@ export default function ExploreScreen() {
                 onClick={() => setSelectedId(item.id)}
               >
                 <strong>{item.title}</strong>
-                <p className="pill-row">
-                  <span className="pill">{item.category}</span>
-                </p>
+                <div style={{ display: 'flex' }}>
+                  <span className="pill">{selectedItem.category}</span>
+                </div>
                 <p className="muted">{item.description}</p>
               </button>
             ))}
@@ -59,7 +59,7 @@ export default function ExploreScreen() {
                 <strong>{selectedItem.title}</strong>
                 <span className="pill">{selectedItem.category}</span>
                 <p className="muted">{selectedItem.description}</p>
-                <button type="button" className="btn btn-primary">
+                <button type="button" className="btn btn-primary" style={{ width: '100%' }}>
                   Save to learning plan
                 </button>
               </>

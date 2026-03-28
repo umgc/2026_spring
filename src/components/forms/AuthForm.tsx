@@ -48,8 +48,20 @@ export default function AuthForm({ mode, authError, onSubmit, onGuest }: AuthFor
       {mode === 'signup' ? (
         <div className="field">
           <label htmlFor="name">Full name</label>
-          <input id="name" name="name" value={values.name} onChange={handleChange} autoComplete="name" />
-          {errors.name ? <span className="field-error">{errors.name}</span> : null}
+          <input
+            id="name"
+            name="name"
+            value={values.name}
+            onChange={handleChange}
+            autoComplete="name"
+            aria-invalid={!!errors.name}
+            aria-describedby={errors.name ? 'name-error' : undefined}
+          />
+          {errors.name ? (
+            <span id="name-error" className="field-error" role="alert">
+              {errors.name}
+            </span>
+          ) : null}
         </div>
       ) : null}
 
@@ -62,8 +74,14 @@ export default function AuthForm({ mode, authError, onSubmit, onGuest }: AuthFor
           value={values.email}
           onChange={handleChange}
           autoComplete="email"
+          aria-invalid={!!errors.email}
+          aria-describedby={errors.email ? 'email-error' : undefined}
         />
-        {errors.email ? <span className="field-error">{errors.email}</span> : null}
+        {errors.email ? (
+          <span id="email-error" className="field-error" role="alert">
+            {errors.email}
+          </span>
+        ) : null}
       </div>
 
       <div className="field">
@@ -75,11 +93,20 @@ export default function AuthForm({ mode, authError, onSubmit, onGuest }: AuthFor
           value={values.password}
           onChange={handleChange}
           autoComplete={mode === 'signup' ? 'new-password' : 'current-password'}
+          aria-invalid={!!errors.password}
+          aria-describedby={errors.password ? 'password-error' : undefined}
         />
-        {errors.password ? <span className="field-error">{errors.password}</span> : null}
+        {errors.password ? (
+          <span id="password-error" className="field-error" role="alert">
+            {errors.password}
+          </span>
+        ) : null}
       </div>
 
-      <p className="muted">Demo account: `demo@edulence.app / demo1234`</p>
+      <p className="muted">
+        Demo account: <code>demo@edulence.app / demo1234</code>
+      </p>
+
       {authError ? (
         <div className="error-banner" role="alert">
           {authError}

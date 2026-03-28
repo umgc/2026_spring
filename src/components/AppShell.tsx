@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import type { NavItem } from '../types';
 import PageTransition from './PageTransition';
@@ -26,8 +26,8 @@ function Navigation({
           className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}
           onClick={onNavigate}
         >
-          <span>{item.label}</span>
           <span aria-hidden="true">{item.icon}</span>
+          <span>{item.label}</span>
         </NavLink>
       ))}
     </nav>
@@ -44,18 +44,31 @@ export default function AppShell() {
   const { signOut } = useAuthActions();
   const { installReady, themeMode, largeText, highContrast, leftHandedMode, resolveTheme } =
     usePreferenceState();
+  const drawerOpenButtonRef = useRef<HTMLButtonElement>(null);
 
   const resolvedTheme = useMemo(() => resolveTheme(themeMode), [resolveTheme, themeMode]);
 
+useEffect(() => {
+  document.documentElement.dataset.theme = resolvedTheme;
+  document.documentElement.dataset.scale = largeText ? 'large' : 'base';
+  document.documentElement.dataset.contrast = highContrast ? 'high' : 'base';
+  document.documentElement.dataset.handed = leftHandedMode ? 'left' : 'right';
+}, [resolvedTheme, largeText, highContrast, leftHandedMode]);
+
+  // Return focus to the hamburger button when the mobile drawer closes
   useEffect(() => {
-    document.documentElement.dataset.theme = resolvedTheme;
-    document.documentElement.dataset.scale = largeText ? 'large' : 'base';
-    document.documentElement.dataset.contrast = highContrast ? 'high' : 'base';
-    document.documentElement.dir = leftHandedMode ? 'rtl' : 'ltr';
-  }, [resolvedTheme, largeText, highContrast, leftHandedMode]);
+    if (!drawerOpen) {
+      drawerOpenButtonRef.current?.focus();
+    }
+  }, [drawerOpen]);
 
   return (
     <div className="app-root">
+      {/* Skip link: lets keyboard users jump past nav directly to content */}
+      <a href="#main-content" className="skip-link">
+        Skip to main content
+      </a>
+
       {drawerOpen ? (
         <button
           type="button"
@@ -65,10 +78,10 @@ export default function AppShell() {
         />
       ) : null}
       {drawerOpen ? (
-        <aside className="mobile-drawer">
+        <aside className="mobile-drawer" aria-label="Mobile navigation">
           <div className="split-header">
             <div>
-              <div className="brand-mark">EL</div>
+              <div className="brand-mark" aria-hidden="true">EL</div>
               <h2>{appMeta.name}</h2>
             </div>
             <button type="button" className="btn" onClick={() => setDrawerOpen(false)}>
@@ -80,10 +93,10 @@ export default function AppShell() {
       ) : null}
 
       <div className={`app-shell${leftHandedMode ? ' is-left-handed' : ''}`}>
-        <aside className="sidebar">
+        <aside className="sidebar" aria-label="Site navigation">
           <div className="brand">
-            <div className="brand-mark">EL</div>
-            <h1 className="brand-name">{appMeta.name}</h1>
+            <div className="brand-mark" aria-hidden="true">EL</div>
+            <p className="brand-name">{appMeta.name}</p>
             <p className="muted">Left-friendly learning workspace</p>
           </div>
 
@@ -106,10 +119,13 @@ export default function AppShell() {
           <header className="topbar">
             <div className="topbar-actions">
               <button
+                ref={drawerOpenButtonRef}
                 type="button"
                 className="icon-btn"
                 onClick={() => setDrawerOpen(true)}
                 aria-label="Open navigation menu"
+                aria-expanded={drawerOpen}
+                aria-controls="mobile-drawer"
               >
                 ≡
               </button>
@@ -148,9 +164,11 @@ export default function AppShell() {
             </div>
           ) : null}
 
-          <PageTransition>
-            <Outlet />
-          </PageTransition>
+          <main id="main-content" tabIndex={-1}>
+            <PageTransition>
+              <Outlet />
+            </PageTransition>
+          </main>
 
           <footer className="footer">
             {appMeta.name} v{appMeta.version} · nested routing and deep links supported · typed local-first state

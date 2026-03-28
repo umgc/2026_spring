@@ -8,7 +8,7 @@ export default function DashboardScreen() {
   const { courses } = useCourseState();
 
   return (
-    <section className="page">
+    <section className="page" aria-label="Dashboard">
       <header className="page-header">
         <div>
           <h1 className="page-title">Dashboard</h1>
@@ -24,7 +24,7 @@ export default function DashboardScreen() {
         </div>
       </header>
 
-      <div className="metrics-grid">
+      <div className="metrics-grid" aria-label="Key metrics">
         {dashboardMetrics.map((metric) => (
           <MetricCard key={metric.label} {...metric} />
         ))}
@@ -53,7 +53,7 @@ export default function DashboardScreen() {
           </div>
         </div>
 
-        <aside className="panel">
+        <aside className="panel" aria-label="Upcoming and recent activity">
           <div>
             <h2>Upcoming</h2>
             <p className="muted">Deadlines and events carried from the desktop view.</p>

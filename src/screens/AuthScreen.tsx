@@ -35,11 +35,11 @@ export default function AuthScreen() {
 
   return (
     <main className="auth-layout">
-      <section className="auth-intro">
+      <section className="auth-intro" aria-label="App features">
         <span className="eyebrow">PWA Ready</span>
         <h1 className="hero-title">Study flows that hold up online and offline.</h1>
         <p className="hero-copy">
-          EduLense combines the mobile app’s accessibility settings with the desktop app’s richer learning workspace:
+          EduLense combines the mobile app's accessibility settings with the desktop app's richer learning workspace:
           courses, explore, notes, profile, and settings in one responsive web shell.
         </p>
         <div className="hero-grid">
@@ -58,17 +58,18 @@ export default function AuthScreen() {
         </div>
       </section>
 
-      <section className="auth-panel">
+      <section className="auth-panel" aria-label="Sign in or create account">
         <div className="split-header">
           <div>
             <span className="eyebrow">Welcome</span>
             <h2>{mode === 'signup' ? 'Create your account' : 'Sign in to continue'}</h2>
           </div>
-          <div className="segmented" aria-label="Authentication mode">
+          <div role="group" aria-label="Authentication mode" className="segmented">
             <button
               type="button"
               className={mode === 'signin' ? 'is-active' : ''}
               onClick={() => navigate('/auth/signin')}
+              aria-pressed={mode === 'signin'}
             >
               Sign In
             </button>
@@ -76,6 +77,7 @@ export default function AuthScreen() {
               type="button"
               className={mode === 'signup' ? 'is-active' : ''}
               onClick={() => navigate('/auth/signup')}
+              aria-pressed={mode === 'signup'}
             >
               Sign Up
             </button>
