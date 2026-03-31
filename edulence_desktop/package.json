@@ -2,6 +2,7 @@
   "name": "edulence-desktop",
   "version": "1.0.0",
   "private": true,
+  "author": "UMGC EduLense Team",
   "description": "EduLense Electron desktop application with React renderer",
   "main": "electron/main.js",
   "scripts": {
