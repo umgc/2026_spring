@@ -1,39 +1,66 @@
 # EduLense Cross-Platform Suite
 
-EduLense is a multi-platform learning workspace that ships as:
+EduLense is a multi-platform learning workspace designed to deliver a consistent study experience across browser, desktop, and mobile runtimes. This repository contains the shared product family, platform-specific implementations, and the build and release guidance needed to maintain them.
 
-- A React + Vite web app in the repository root
-- A standalone web package in [`edulence_web`](./edulence_web)
-- An Electron desktop app in [`edulence_desktop`](./edulence_desktop)
-- An Expo React Native app in [`edulence_rn`](./edulence_rn)
-- A Flutter app in [`edulence`](./edulence)
+## Platform Coverage
 
-## Final Polish Status
+- Root web app in `src/`
+- Standalone web package in [`edulence_web`](./edulence_web)
+- Electron desktop app in [`edulence_desktop`](./edulence_desktop)
+- Expo React Native app in [`edulence_rn`](./edulence_rn)
+- Flutter app in [`edulence`](./edulence)
 
-As of March 30, 2026, the final polish pass completed the following:
+## What The Suite Includes
 
-- Fixed the root web production build failure caused by invalid CSS
-- Cleaned root and desktop lint configuration so checks target real source files
-- Aligned React Native and Flutter brand colors with the primary web experience
-- Smoothed press states, card surfaces, and modal behavior on mobile and desktop
-- Updated snapshot coverage for the polished React Native UI
-- Removed stale duplicate desktop package configuration that caused build warnings
+- authentication and guest entry flows
+- dashboard, course, explore, notes, profile, and settings experiences
+- accessibility preferences and left-handed layout support
+- platform-specific build pipelines for web, desktop, React Native, and Flutter
+- automated verification across web, desktop, mobile, and accessibility-sensitive flows
+
+## Documentation Hub
+
+The top-level documentation set lives in [`docs`](./docs):
+
+- [Documentation Index](./docs/INDEX.md)
+- [Architecture Overview](./docs/ARCHITECTURE.md)
+- [Setup Guide](./docs/SETUP.md)
+- [API Reference](./docs/API_REFERENCE.md)
+- [Troubleshooting Guide](./docs/TROUBLESHOOTING.md)
+- [Deployment Guide](./docs/DEPLOYMENT.md)
+- [Contributing Guide](./docs/CONTRIBUTING.md)
+
+Additional platform-specific references:
+
+- [Build and Test Artifacts](./BUILD_AND_TEST_ARTIFACTS.md)
+- [Desktop README](./edulence_desktop/README.md)
+- [React Native README](./edulence_rn/README.md)
+- [Flutter README](./edulence/README.md)
+- [Standalone Web README](./edulence_web/README.md)
 
 ## Repository Layout
 
-- `src/`: main React web app
-- `edulence_web/`: standalone web package
-- `edulence_desktop/`: Electron desktop package
-- `edulence_rn/`: Expo React Native package
-- `edulence/`: Flutter package
-- `BUILD_AND_TEST_ARTIFACTS.md`: build and verification runbook
+```text
+EduLense/
+├── src/                  # Primary React web app
+├── public/               # Root web static assets
+├── e2e/                  # Playwright browser tests
+├── docs/                 # Top-level documentation
+├── edulence_web/         # Standalone web package
+├── edulence_desktop/     # Electron desktop package
+├── edulence_rn/          # Expo React Native package
+├── edulence/             # Flutter package
+└── BUILD_AND_TEST_ARTIFACTS.md
+```
 
 ## Prerequisites
 
 - Node.js 18+
 - npm 9+
-- Flutter SDK for the Flutter app
-- Xcode and/or Android Studio for native mobile workflows
+- Flutter SDK
+- Xcode for Apple platform workflows
+- Android Studio and Android SDK for Android workflows
+- Expo account for EAS release builds
 
 ## Quick Start
 
@@ -69,9 +96,9 @@ flutter pub get
 flutter run
 ```
 
-## Verification Commands
+## Verification Snapshot
 
-These commands were used during the March 30, 2026 polish pass:
+These were the core local verification commands used in the latest readiness pass:
 
 ```bash
 cd /Users/kwameduodu/EduLense/EduLense
@@ -92,16 +119,13 @@ cd /Users/kwameduodu/EduLense/EduLense/edulence
 flutter test
 ```
 
-## Platform Notes
+For full artifact locations and platform-specific build notes, see [Build and Test Artifacts](./BUILD_AND_TEST_ARTIFACTS.md).
 
-- Root web app: primary responsive PWA experience with page transitions and accessibility preferences
-- Desktop app: Electron shell with secure preload bridge, tray support, updater wiring, and keyboard shortcuts
-- React Native app: Expo-based mobile app with accessibility-first controls and parity-focused UI
-- Flutter app: Material 3 app with accessibility coverage and updated brand palette
+## Architecture Summary
 
-## Additional Documentation
+- Root web app: React, Vite, React Router, and persisted Zustand state
+- Desktop app: Electron main process plus React renderer with secure preload bridge
+- React Native app: Expo, React Navigation, and Zustand-based mobile state
+- Flutter app: Material 3, `go_router`, and Flutter-native packaging targets
 
-- [Build and Test Artifacts](./BUILD_AND_TEST_ARTIFACTS.md)
-- [Desktop README](./edulence_desktop/README.md)
-- [React Native README](./edulence_rn/README.md)
-- [Standalone Web README](./edulence_web/README.md)
+See [Architecture Overview](./docs/ARCHITECTURE.md) for the detailed breakdown.
