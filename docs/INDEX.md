@@ -20,6 +20,7 @@ EduLense is a cross-platform learning workspace delivered through shared product
 - [Architecture Overview](./ARCHITECTURE.md)
 - [Setup Guide](./SETUP.md)
 - [API Reference](./API_REFERENCE.md)
+- [Framework Comparison Analysis](./FRAMEWORK_COMPARISON_ANALYSIS.md)
 - [Troubleshooting Guide](./TROUBLESHOOTING.md)
 - [Deployment Guide](./DEPLOYMENT.md)
 - [Contributing Guide](./CONTRIBUTING.md)
