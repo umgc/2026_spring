@@ -2,7 +2,6 @@
 module.exports = {
   testEnvironment: 'jsdom',
   testMatch: ['<rootDir>/**/__tests__/**/*.(test|spec).(js|jsx)'],
-  setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
   transform: {
     '^.+\\.(js|jsx)$': ['@swc/jest'],
   },

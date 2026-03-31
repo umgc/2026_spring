@@ -10,7 +10,7 @@ exports[`Suite snapshots matches auth entry screen snapshot 1`] = `
           "flex": 1,
         },
         {
-          "backgroundColor": "#FAFAFA",
+          "backgroundColor": "#F4F1E8",
         },
       ],
       {
@@ -58,7 +58,7 @@ exports[`Suite snapshots matches auth entry screen snapshot 1`] = `
               "fontWeight": "700",
             },
             {
-              "color": "#212121",
+              "color": "#18222F",
               "fontSize": 32,
               "textAlign": "right",
             },
@@ -76,7 +76,7 @@ exports[`Suite snapshots matches auth entry screen snapshot 1`] = `
               "marginTop": 16,
             },
             {
-              "color": "#4F4F4F",
+              "color": "#5F6973",
               "fontSize": 16,
               "textAlign": "right",
             },
@@ -95,8 +95,8 @@ exports[`Suite snapshots matches auth entry screen snapshot 1`] = `
               "padding": 24,
             },
             {
-              "backgroundColor": "#FFFFFF",
-              "borderColor": "#E6E6E6",
+              "backgroundColor": "#FFFDF8",
+              "borderColor": "#D9D1C4",
             },
           ]
         }
@@ -107,7 +107,7 @@ exports[`Suite snapshots matches auth entry screen snapshot 1`] = `
           accessible={true}
           onChangeText={[Function]}
           placeholder="Full name"
-          placeholderTextColor="#4F4F4F"
+          placeholderTextColor="#5F6973"
           returnKeyType="next"
           style={
             [
@@ -118,8 +118,8 @@ exports[`Suite snapshots matches auth entry screen snapshot 1`] = `
                 "paddingHorizontal": 16,
               },
               {
-                "borderColor": "#E6E6E6",
-                "color": "#212121",
+                "borderColor": "#D9D1C4",
+                "color": "#18222F",
                 "fontSize": 15,
                 "textAlign": "right",
               },
@@ -135,7 +135,7 @@ exports[`Suite snapshots matches auth entry screen snapshot 1`] = `
           keyboardType="email-address"
           onChangeText={[Function]}
           placeholder="Email"
-          placeholderTextColor="#4F4F4F"
+          placeholderTextColor="#5F6973"
           returnKeyType="next"
           style={
             [
@@ -146,8 +146,8 @@ exports[`Suite snapshots matches auth entry screen snapshot 1`] = `
                 "paddingHorizontal": 16,
               },
               {
-                "borderColor": "#E6E6E6",
-                "color": "#212121",
+                "borderColor": "#D9D1C4",
+                "color": "#18222F",
                 "fontSize": 15,
                 "textAlign": "right",
               },
@@ -163,7 +163,7 @@ exports[`Suite snapshots matches auth entry screen snapshot 1`] = `
           onChangeText={[Function]}
           onSubmitEditing={[Function]}
           placeholder="Password"
-          placeholderTextColor="#4F4F4F"
+          placeholderTextColor="#5F6973"
           returnKeyType="go"
           secureTextEntry={true}
           style={
@@ -175,8 +175,8 @@ exports[`Suite snapshots matches auth entry screen snapshot 1`] = `
                 "paddingHorizontal": 16,
               },
               {
-                "borderColor": "#E6E6E6",
-                "color": "#212121",
+                "borderColor": "#D9D1C4",
+                "color": "#18222F",
                 "fontSize": 15,
                 "textAlign": "right",
               },
@@ -192,7 +192,7 @@ exports[`Suite snapshots matches auth entry screen snapshot 1`] = `
                 "marginTop": -4,
               },
               {
-                "color": "#4F4F4F",
+                "color": "#5F6973",
                 "fontSize": 12,
                 "textAlign": "right",
               },
@@ -245,7 +245,7 @@ exports[`Suite snapshots matches auth entry screen snapshot 1`] = `
                 "paddingHorizontal": 16,
               },
               {
-                "backgroundColor": "#5E3AEE",
+                "backgroundColor": "#0F766E",
                 "opacity": 1,
               },
             ]
@@ -312,7 +312,7 @@ exports[`Suite snapshots matches auth entry screen snapshot 1`] = `
                 "paddingHorizontal": 16,
               },
               {
-                "borderColor": "#5E3AEE",
+                "borderColor": "#0F766E",
                 "opacity": 1,
               },
             ]
@@ -325,7 +325,7 @@ exports[`Suite snapshots matches auth entry screen snapshot 1`] = `
                   "fontWeight": "700",
                 },
                 {
-                  "color": "#5E3AEE",
+                  "color": "#0F766E",
                   "fontSize": 16,
                 },
               ]

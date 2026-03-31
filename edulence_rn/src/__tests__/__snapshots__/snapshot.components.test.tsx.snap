@@ -10,7 +10,7 @@ exports[`Snapshot coverage matches screen snapshots 1`] = `
           "flex": 1,
         },
         {
-          "backgroundColor": "#FAFAFA",
+          "backgroundColor": "#F4F1E8",
         },
       ],
       {
@@ -58,7 +58,7 @@ exports[`Snapshot coverage matches screen snapshots 1`] = `
               "fontWeight": "700",
             },
             {
-              "color": "#212121",
+              "color": "#18222F",
               "fontSize": 32,
               "textAlign": "right",
             },
@@ -76,7 +76,7 @@ exports[`Snapshot coverage matches screen snapshots 1`] = `
               "marginTop": 16,
             },
             {
-              "color": "#4F4F4F",
+              "color": "#5F6973",
               "fontSize": 16,
               "textAlign": "right",
             },
@@ -95,8 +95,8 @@ exports[`Snapshot coverage matches screen snapshots 1`] = `
               "padding": 24,
             },
             {
-              "backgroundColor": "#FFFFFF",
-              "borderColor": "#E6E6E6",
+              "backgroundColor": "#FFFDF8",
+              "borderColor": "#D9D1C4",
             },
           ]
         }
@@ -107,7 +107,7 @@ exports[`Snapshot coverage matches screen snapshots 1`] = `
           accessible={true}
           onChangeText={[Function]}
           placeholder="Full name"
-          placeholderTextColor="#4F4F4F"
+          placeholderTextColor="#5F6973"
           returnKeyType="next"
           style={
             [
@@ -118,8 +118,8 @@ exports[`Snapshot coverage matches screen snapshots 1`] = `
                 "paddingHorizontal": 16,
               },
               {
-                "borderColor": "#E6E6E6",
-                "color": "#212121",
+                "borderColor": "#D9D1C4",
+                "color": "#18222F",
                 "fontSize": 15,
                 "textAlign": "right",
               },
@@ -135,7 +135,7 @@ exports[`Snapshot coverage matches screen snapshots 1`] = `
           keyboardType="email-address"
           onChangeText={[Function]}
           placeholder="Email"
-          placeholderTextColor="#4F4F4F"
+          placeholderTextColor="#5F6973"
           returnKeyType="next"
           style={
             [
@@ -146,8 +146,8 @@ exports[`Snapshot coverage matches screen snapshots 1`] = `
                 "paddingHorizontal": 16,
               },
               {
-                "borderColor": "#E6E6E6",
-                "color": "#212121",
+                "borderColor": "#D9D1C4",
+                "color": "#18222F",
                 "fontSize": 15,
                 "textAlign": "right",
               },
@@ -163,7 +163,7 @@ exports[`Snapshot coverage matches screen snapshots 1`] = `
           onChangeText={[Function]}
           onSubmitEditing={[Function]}
           placeholder="Password"
-          placeholderTextColor="#4F4F4F"
+          placeholderTextColor="#5F6973"
           returnKeyType="go"
           secureTextEntry={true}
           style={
@@ -175,8 +175,8 @@ exports[`Snapshot coverage matches screen snapshots 1`] = `
                 "paddingHorizontal": 16,
               },
               {
-                "borderColor": "#E6E6E6",
-                "color": "#212121",
+                "borderColor": "#D9D1C4",
+                "color": "#18222F",
                 "fontSize": 15,
                 "textAlign": "right",
               },
@@ -192,7 +192,7 @@ exports[`Snapshot coverage matches screen snapshots 1`] = `
                 "marginTop": -4,
               },
               {
-                "color": "#4F4F4F",
+                "color": "#5F6973",
                 "fontSize": 12,
                 "textAlign": "right",
               },
@@ -245,7 +245,7 @@ exports[`Snapshot coverage matches screen snapshots 1`] = `
                 "paddingHorizontal": 16,
               },
               {
-                "backgroundColor": "#5E3AEE",
+                "backgroundColor": "#0F766E",
                 "opacity": 1,
               },
             ]
@@ -312,7 +312,7 @@ exports[`Snapshot coverage matches screen snapshots 1`] = `
                 "paddingHorizontal": 16,
               },
               {
-                "borderColor": "#5E3AEE",
+                "borderColor": "#0F766E",
                 "opacity": 1,
               },
             ]
@@ -325,7 +325,7 @@ exports[`Snapshot coverage matches screen snapshots 1`] = `
                   "fontWeight": "700",
                 },
                 {
-                  "color": "#5E3AEE",
+                  "color": "#0F766E",
                   "fontSize": 16,
                 },
               ]
@@ -356,7 +356,7 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
         "flex": 1,
       },
       {
-        "backgroundColor": "#FAFAFA",
+        "backgroundColor": "#F4F1E8",
       },
     ]
   }
@@ -370,7 +370,7 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
             "fontWeight": "700",
           },
           {
-            "color": "#212121",
+            "color": "#18222F",
             "fontSize": 22,
             "textAlign": "right",
           },
@@ -384,14 +384,22 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
       style={
         [
           {
-            "borderRadius": 12,
+            "borderRadius": 18,
             "borderWidth": 1,
+            "elevation": 4,
             "gap": 8,
             "padding": 16,
+            "shadowOffset": {
+              "height": 12,
+              "width": 0,
+            },
+            "shadowOpacity": 0.16,
+            "shadowRadius": 24,
           },
           {
-            "backgroundColor": "#FFFFFF",
-            "borderColor": "#E6E6E6",
+            "backgroundColor": "#FFFDF8",
+            "borderColor": "#D9D1C4",
+            "shadowColor": "rgba(36, 48, 63, 0.12)",
           },
           undefined,
         ]
@@ -431,15 +439,28 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "borderRadius": 8,
-            "flexDirection": "row",
-            "gap": 8,
-            "minHeight": 56,
-            "paddingHorizontal": 8,
-            "paddingVertical": 8,
-          }
+          [
+            {
+              "alignItems": "center",
+              "borderRadius": 14,
+              "borderWidth": 1,
+              "flexDirection": "row",
+              "gap": 8,
+              "minHeight": 56,
+              "paddingHorizontal": 8,
+              "paddingVertical": 8,
+            },
+            {
+              "backgroundColor": "transparent",
+              "borderColor": "#D9D1C4",
+              "opacity": 1,
+              "transform": [
+                {
+                  "scale": 1,
+                },
+              ],
+            },
+          ]
         }
       >
         <View
@@ -455,7 +476,7 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
               },
               {
                 "backgroundColor": "transparent",
-                "borderColor": "#E6E6E6",
+                "borderColor": "#D9D1C4",
               },
             ]
           }
@@ -479,7 +500,7 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
                   "fontWeight": "600",
                 },
                 {
-                  "color": "#212121",
+                  "color": "#18222F",
                   "fontSize": 15,
                   "textAlign": "right",
                 },
@@ -495,7 +516,7 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
                   "lineHeight": 18,
                 },
                 {
-                  "color": "#4F4F4F",
+                  "color": "#5F6973",
                   "fontSize": 13,
                   "textAlign": "right",
                 },
@@ -543,15 +564,28 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "borderRadius": 8,
-            "flexDirection": "row",
-            "gap": 8,
-            "minHeight": 56,
-            "paddingHorizontal": 8,
-            "paddingVertical": 8,
-          }
+          [
+            {
+              "alignItems": "center",
+              "borderRadius": 14,
+              "borderWidth": 1,
+              "flexDirection": "row",
+              "gap": 8,
+              "minHeight": 56,
+              "paddingHorizontal": 8,
+              "paddingVertical": 8,
+            },
+            {
+              "backgroundColor": "transparent",
+              "borderColor": "#D9D1C4",
+              "opacity": 1,
+              "transform": [
+                {
+                  "scale": 1,
+                },
+              ],
+            },
+          ]
         }
       >
         <View
@@ -567,7 +601,7 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
               },
               {
                 "backgroundColor": "transparent",
-                "borderColor": "#E6E6E6",
+                "borderColor": "#D9D1C4",
               },
             ]
           }
@@ -591,7 +625,7 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
                   "fontWeight": "600",
                 },
                 {
-                  "color": "#212121",
+                  "color": "#18222F",
                   "fontSize": 15,
                   "textAlign": "right",
                 },
@@ -607,7 +641,7 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
                   "lineHeight": 18,
                 },
                 {
-                  "color": "#4F4F4F",
+                  "color": "#5F6973",
                   "fontSize": 13,
                   "textAlign": "right",
                 },
@@ -655,15 +689,28 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "borderRadius": 8,
-            "flexDirection": "row",
-            "gap": 8,
-            "minHeight": 56,
-            "paddingHorizontal": 8,
-            "paddingVertical": 8,
-          }
+          [
+            {
+              "alignItems": "center",
+              "borderRadius": 14,
+              "borderWidth": 1,
+              "flexDirection": "row",
+              "gap": 8,
+              "minHeight": 56,
+              "paddingHorizontal": 8,
+              "paddingVertical": 8,
+            },
+            {
+              "backgroundColor": "#F1ECE0",
+              "borderColor": "#B9B0A3",
+              "opacity": 1,
+              "transform": [
+                {
+                  "scale": 1,
+                },
+              ],
+            },
+          ]
         }
       >
         <View
@@ -678,8 +725,8 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
                 "width": 40,
               },
               {
-                "backgroundColor": "#5E3AEE20",
-                "borderColor": "#E6E6E6",
+                "backgroundColor": "#0F766E20",
+                "borderColor": "#D9D1C4",
               },
             ]
           }
@@ -703,7 +750,7 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
                   "fontWeight": "600",
                 },
                 {
-                  "color": "#212121",
+                  "color": "#18222F",
                   "fontSize": 15,
                   "textAlign": "right",
                 },
@@ -719,7 +766,7 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
                   "lineHeight": 18,
                 },
                 {
-                  "color": "#4F4F4F",
+                  "color": "#5F6973",
                   "fontSize": 13,
                   "textAlign": "right",
                 },
@@ -742,7 +789,7 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
             "fontWeight": "700",
           },
           {
-            "color": "#212121",
+            "color": "#18222F",
             "fontSize": 22,
             "textAlign": "right",
           },
@@ -756,14 +803,22 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
       style={
         [
           {
-            "borderRadius": 12,
+            "borderRadius": 18,
             "borderWidth": 1,
+            "elevation": 4,
             "gap": 8,
             "padding": 16,
+            "shadowOffset": {
+              "height": 12,
+              "width": 0,
+            },
+            "shadowOpacity": 0.16,
+            "shadowRadius": 24,
           },
           {
-            "backgroundColor": "#FFFFFF",
-            "borderColor": "#E6E6E6",
+            "backgroundColor": "#FFFDF8",
+            "borderColor": "#D9D1C4",
+            "shadowColor": "rgba(36, 48, 63, 0.12)",
           },
           undefined,
         ]
@@ -804,15 +859,23 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "borderRadius": 8,
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "minHeight": 44,
-            "paddingHorizontal": 8,
-            "paddingVertical": 8,
-          }
+          [
+            {
+              "alignItems": "center",
+              "borderRadius": 14,
+              "borderWidth": 1,
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "minHeight": 44,
+              "paddingHorizontal": 8,
+              "paddingVertical": 8,
+            },
+            {
+              "backgroundColor": "transparent",
+              "borderColor": "#B9B0A3",
+              "opacity": 1,
+            },
+          ]
         }
       >
         <Text
@@ -822,7 +885,7 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
                 "fontWeight": "600",
               },
               {
-                "color": "#212121",
+                "color": "#18222F",
                 "fontSize": 15,
                 "textAlign": "right",
               },
@@ -840,13 +903,15 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
             onChange={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
+            onTintColor="#0F766E88"
             style={
               {
                 "height": 31,
                 "width": 51,
               }
             }
-            thumbTintColor="#5E3AEE"
+            thumbTintColor="#0F766E"
+            tintColor="#D9D1C4"
             value={true}
           />
         </View>
@@ -886,15 +951,23 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "borderRadius": 8,
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "minHeight": 44,
-            "paddingHorizontal": 8,
-            "paddingVertical": 8,
-          }
+          [
+            {
+              "alignItems": "center",
+              "borderRadius": 14,
+              "borderWidth": 1,
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "minHeight": 44,
+              "paddingHorizontal": 8,
+              "paddingVertical": 8,
+            },
+            {
+              "backgroundColor": "transparent",
+              "borderColor": "#D9D1C4",
+              "opacity": 1,
+            },
+          ]
         }
       >
         <Text
@@ -904,7 +977,7 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
                 "fontWeight": "600",
               },
               {
-                "color": "#212121",
+                "color": "#18222F",
                 "fontSize": 15,
                 "textAlign": "right",
               },
@@ -922,12 +995,14 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
             onChange={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
+            onTintColor="#0F766E88"
             style={
               {
                 "height": 31,
                 "width": 51,
               }
             }
+            tintColor="#D9D1C4"
             value={false}
           />
         </View>
@@ -967,15 +1042,23 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
-            "alignItems": "center",
-            "borderRadius": 8,
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "minHeight": 44,
-            "paddingHorizontal": 8,
-            "paddingVertical": 8,
-          }
+          [
+            {
+              "alignItems": "center",
+              "borderRadius": 14,
+              "borderWidth": 1,
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "minHeight": 44,
+              "paddingHorizontal": 8,
+              "paddingVertical": 8,
+            },
+            {
+              "backgroundColor": "transparent",
+              "borderColor": "#D9D1C4",
+              "opacity": 1,
+            },
+          ]
         }
       >
         <Text
@@ -985,7 +1068,7 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
                 "fontWeight": "600",
               },
               {
-                "color": "#212121",
+                "color": "#18222F",
                 "fontSize": 15,
                 "textAlign": "right",
               },
@@ -1003,12 +1086,14 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
             onChange={[Function]}
             onResponderTerminationRequest={[Function]}
             onStartShouldSetResponder={[Function]}
+            onTintColor="#0F766E88"
             style={
               {
                 "height": 31,
                 "width": 51,
               }
             }
+            tintColor="#D9D1C4"
             value={false}
           />
         </View>
@@ -1022,7 +1107,7 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
             "fontWeight": "700",
           },
           {
-            "color": "#212121",
+            "color": "#18222F",
             "fontSize": 22,
             "textAlign": "right",
           },
@@ -1036,14 +1121,22 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
       style={
         [
           {
-            "borderRadius": 12,
+            "borderRadius": 18,
             "borderWidth": 1,
+            "elevation": 4,
             "gap": 8,
             "padding": 16,
+            "shadowOffset": {
+              "height": 12,
+              "width": 0,
+            },
+            "shadowOpacity": 0.16,
+            "shadowRadius": 24,
           },
           {
-            "backgroundColor": "#FFFFFF",
-            "borderColor": "#E6E6E6",
+            "backgroundColor": "#FFFDF8",
+            "borderColor": "#D9D1C4",
+            "shadowColor": "rgba(36, 48, 63, 0.12)",
           },
           undefined,
         ]
@@ -1056,7 +1149,7 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
               "fontWeight": "700",
             },
             {
-              "color": "#212121",
+              "color": "#18222F",
               "fontSize": 18,
               "textAlign": "right",
             },
@@ -1072,7 +1165,7 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
               "lineHeight": 20,
             },
             {
-              "color": "#4F4F4F",
+              "color": "#5F6973",
               "fontSize": 14,
               "textAlign": "right",
             },
@@ -1089,7 +1182,7 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
               "lineHeight": 20,
             },
             {
-              "color": "#4F4F4F",
+              "color": "#5F6973",
               "fontSize": 14,
               "textAlign": "right",
             },
@@ -1122,7 +1215,7 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
                 "paddingVertical": 8,
               },
               {
-                "borderColor": "#4CAF50",
+                "borderColor": "#15803D",
               },
             ]
           }
@@ -1135,7 +1228,7 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
                   "fontWeight": "600",
                 },
                 {
-                  "color": "#4CAF50",
+                  "color": "#15803D",
                 },
               ]
             }
@@ -1158,7 +1251,7 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
                 "paddingVertical": 8,
               },
               {
-                "borderColor": "#2196F3",
+                "borderColor": "#1D4ED8",
               },
             ]
           }
@@ -1171,7 +1264,7 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
                   "fontWeight": "600",
                 },
                 {
-                  "color": "#2196F3",
+                  "color": "#1D4ED8",
                 },
               ]
             }
@@ -1194,7 +1287,7 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
                 "paddingVertical": 8,
               },
               {
-                "borderColor": "#5E3AEE",
+                "borderColor": "#0F766E",
               },
             ]
           }
@@ -1207,7 +1300,7 @@ exports[`Snapshot coverage matches screen snapshots 2`] = `
                   "fontWeight": "600",
                 },
                 {
-                  "color": "#5E3AEE",
+                  "color": "#0F766E",
                 },
               ]
             }
@@ -1259,19 +1352,32 @@ exports[`Snapshot coverage matches shared component snapshots 1`] = `
     [
       {
         "alignItems": "center",
-        "borderRadius": 12,
+        "borderRadius": 18,
         "borderWidth": 1,
+        "elevation": 3,
         "flex": 1,
         "gap": 8,
         "justifyContent": "center",
         "minHeight": 120,
         "overflow": "hidden",
         "padding": 16,
+        "shadowOffset": {
+          "height": 12,
+          "width": 0,
+        },
+        "shadowOpacity": 0.14,
+        "shadowRadius": 20,
       },
       {
-        "backgroundColor": "#FFFFFF",
-        "borderColor": "#E6E6E6",
+        "backgroundColor": "#FFFDF8",
+        "borderColor": "#D9D1C4",
         "opacity": 1,
+        "shadowColor": "rgba(36, 48, 63, 0.12)",
+        "transform": [
+          {
+            "scale": 1,
+          },
+        ],
       },
     ]
   }
@@ -1286,7 +1392,7 @@ exports[`Snapshot coverage matches shared component snapshots 1`] = `
           "fontWeight": "600",
         },
         {
-          "color": "#212121",
+          "color": "#18222F",
           "fontSize": 14,
           "textAlign": "right",
         },
@@ -1360,7 +1466,7 @@ exports[`Snapshot coverage matches shared component snapshots 3`] = `
           "fontWeight": "700",
         },
         {
-          "color": "#212121",
+          "color": "#18222F",
           "fontSize": 28,
           "textAlign": "right",
         },
@@ -1407,13 +1513,21 @@ exports[`Snapshot coverage matches shared component snapshots 3`] = `
         {
           "alignItems": "center",
           "borderRadius": 22,
+          "borderWidth": 1,
           "justifyContent": "center",
           "minHeight": 44,
           "minWidth": 44,
           "overflow": "hidden",
         },
         {
+          "backgroundColor": "#FFFDF8",
+          "borderColor": "#D9D1C4",
           "opacity": 1,
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
         },
       ]
     }
@@ -1434,7 +1548,7 @@ exports[`Snapshot coverage matches shared component snapshots 4`] = `
         "fontWeight": "700",
       },
       {
-        "color": "#212121",
+        "color": "#18222F",
         "fontSize": 22,
         "textAlign": "right",
       },
@@ -1482,15 +1596,23 @@ exports[`Snapshot coverage matches shared component snapshots 5`] = `
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   style={
-    {
-      "alignItems": "center",
-      "borderRadius": 8,
-      "flexDirection": "row",
-      "justifyContent": "space-between",
-      "minHeight": 44,
-      "paddingHorizontal": 8,
-      "paddingVertical": 8,
-    }
+    [
+      {
+        "alignItems": "center",
+        "borderRadius": 14,
+        "borderWidth": 1,
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "minHeight": 44,
+        "paddingHorizontal": 8,
+        "paddingVertical": 8,
+      },
+      {
+        "backgroundColor": "transparent",
+        "borderColor": "#D9D1C4",
+        "opacity": 1,
+      },
+    ]
   }
 >
   <Text
@@ -1500,7 +1622,7 @@ exports[`Snapshot coverage matches shared component snapshots 5`] = `
           "fontWeight": "600",
         },
         {
-          "color": "#212121",
+          "color": "#18222F",
           "fontSize": 15,
           "textAlign": "right",
         },
@@ -1518,12 +1640,14 @@ exports[`Snapshot coverage matches shared component snapshots 5`] = `
       onChange={[Function]}
       onResponderTerminationRequest={[Function]}
       onStartShouldSetResponder={[Function]}
+      onTintColor="#0F766E88"
       style={
         {
           "height": 31,
           "width": 51,
         }
       }
+      tintColor="#D9D1C4"
       value={false}
     />
   </View>
@@ -1535,14 +1659,22 @@ exports[`Snapshot coverage matches shared component snapshots 6`] = `
   style={
     [
       {
-        "borderRadius": 12,
+        "borderRadius": 18,
         "borderWidth": 1,
+        "elevation": 4,
         "gap": 8,
         "padding": 16,
+        "shadowOffset": {
+          "height": 12,
+          "width": 0,
+        },
+        "shadowOpacity": 0.16,
+        "shadowRadius": 24,
       },
       {
-        "backgroundColor": "#FFFFFF",
-        "borderColor": "#E6E6E6",
+        "backgroundColor": "#FFFDF8",
+        "borderColor": "#D9D1C4",
+        "shadowColor": "rgba(36, 48, 63, 0.12)",
       },
       undefined,
     ]
@@ -1556,7 +1688,7 @@ exports[`Snapshot coverage matches shared component snapshots 6`] = `
           "fontWeight": "700",
         },
         {
-          "color": "#212121",
+          "color": "#18222F",
           "fontSize": 22,
           "textAlign": "right",
         },
@@ -1604,15 +1736,28 @@ exports[`Snapshot coverage matches shared component snapshots 7`] = `
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   style={
-    {
-      "alignItems": "center",
-      "borderRadius": 8,
-      "flexDirection": "row",
-      "gap": 8,
-      "minHeight": 56,
-      "paddingHorizontal": 8,
-      "paddingVertical": 8,
-    }
+    [
+      {
+        "alignItems": "center",
+        "borderRadius": 14,
+        "borderWidth": 1,
+        "flexDirection": "row",
+        "gap": 8,
+        "minHeight": 56,
+        "paddingHorizontal": 8,
+        "paddingVertical": 8,
+      },
+      {
+        "backgroundColor": "#F1ECE0",
+        "borderColor": "#B9B0A3",
+        "opacity": 1,
+        "transform": [
+          {
+            "scale": 1,
+          },
+        ],
+      },
+    ]
   }
 >
   <View
@@ -1627,8 +1772,8 @@ exports[`Snapshot coverage matches shared component snapshots 7`] = `
           "width": 40,
         },
         {
-          "backgroundColor": "#5E3AEE20",
-          "borderColor": "#E6E6E6",
+          "backgroundColor": "#0F766E20",
+          "borderColor": "#D9D1C4",
         },
       ]
     }
@@ -1652,7 +1797,7 @@ exports[`Snapshot coverage matches shared component snapshots 7`] = `
             "fontWeight": "600",
           },
           {
-            "color": "#212121",
+            "color": "#18222F",
             "fontSize": 15,
             "textAlign": "right",
           },
@@ -1668,7 +1813,7 @@ exports[`Snapshot coverage matches shared component snapshots 7`] = `
             "lineHeight": 18,
           },
           {
-            "color": "#4F4F4F",
+            "color": "#5F6973",
             "fontSize": 13,
             "textAlign": "right",
           },

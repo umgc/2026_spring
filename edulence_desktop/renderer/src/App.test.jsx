@@ -132,14 +132,14 @@ test("settings: navigate to Settings tab and toggle High Contrast", async () => 
   if (switchEl) {
     const before =
       switchEl.getAttribute("aria-checked") ??
-      (switchEl instanceof HTMLInputElement ? String(switchEl.checked) : null);
+      (switchEl instanceof window.HTMLInputElement ? String(switchEl.checked) : null);
     await act(async () => {
       switchEl.click();
       await Promise.resolve();
     });
     const after =
       switchEl.getAttribute("aria-checked") ??
-      (switchEl instanceof HTMLInputElement ? String(switchEl.checked) : null);
+      (switchEl instanceof window.HTMLInputElement ? String(switchEl.checked) : null);
     expect(after).not.toEqual(before);
   } else {
     await act(async () => {
@@ -283,8 +283,6 @@ test("settings: toggle Left-Handed Mode", async () => {
   await screen.findByLabelText(/settings/i);
   const nav = screen.getByLabelText(/main navigation tabs/i);
   within(nav).getByRole("button", { name: /^settings$/i }).click();
-  const checkbox = await screen.findByTitle ? 
-    document.querySelector('input[type="checkbox"]') : null;
   // Find Left-Handed label, get its checkbox
   const label = await screen.findByText(/left-handed mode/i);
   const row = label.closest("label");

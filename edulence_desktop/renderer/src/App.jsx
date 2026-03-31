@@ -175,7 +175,13 @@ function ShortcutModal({ open, onClose }) {
 
   if (!open) return null;
   return (
-    <div className="modal" role="presentation" onMouseDown={onClose}>
+    <div className="modal" role="presentation">
+      <button
+        type="button"
+        className="modal__backdrop"
+        onClick={onClose}
+        aria-label="Close shortcuts dialog"
+      />
       <section
         className="modal__card"
         role="dialog"
@@ -183,7 +189,6 @@ function ShortcutModal({ open, onClose }) {
         aria-label="Keyboard Shortcuts"
         tabIndex={-1}
         ref={dialogRef}
-        onMouseDown={(e) => e.stopPropagation()}
       >
         <div className="modal__header">
           <h2>Keyboard Shortcuts</h2>
@@ -724,33 +729,49 @@ function SettingsPage({
               </button>
             </div>
 
-            <label className="toggle">
+            <div
+              className="toggle"
+              role="group"
+              aria-labelledby="large-text-title"
+              aria-describedby="large-text-subtitle"
+            >
               <span>
-                <span className="toggle__title">Large text</span>
-                <span className="toggle__subtitle">
+                <span id="large-text-title" className="toggle__title">Large text</span>
+                <span id="large-text-subtitle" className="toggle__subtitle">
                   Increase UI scale for readability.
                 </span>
               </span>
               <input
+                id="large-text-toggle"
                 type="checkbox"
                 checked={largeText}
+                aria-labelledby="large-text-title"
+                aria-describedby="large-text-subtitle"
                 onChange={(e) => setLargeText(e.target.checked)}
               />
-            </label>
+            </div>
 
-            <label className="toggle">
+            <div
+              className="toggle"
+              role="group"
+              aria-labelledby="high-contrast-title"
+              aria-describedby="high-contrast-subtitle"
+            >
               <span>
-                <span className="toggle__title">High contrast</span>
-                <span className="toggle__subtitle">
+                <span id="high-contrast-title" className="toggle__title">High contrast</span>
+                <span id="high-contrast-subtitle" className="toggle__subtitle">
                   Boost borders and secondary text contrast.
                 </span>
               </span>
               <input
+                id="high-contrast-toggle"
                 type="checkbox"
                 checked={highContrast}
+                aria-labelledby="high-contrast-title"
+                aria-describedby="high-contrast-subtitle"
                 onChange={(e) => setHighContrast(e.target.checked)}
               />
-            </label>
+            </div>
           </div>
         </section>
 
@@ -759,19 +780,27 @@ function SettingsPage({
             <h2>Window & Tray</h2>
           </div>
           <div className="panel__body">
-            <label className="toggle">
+            <div
+              className="toggle"
+              role="group"
+              aria-labelledby="confirm-hide-title"
+              aria-describedby="confirm-hide-subtitle"
+            >
               <span>
-                <span className="toggle__title">Confirm hide-to-tray</span>
-                <span className="toggle__subtitle">
+                <span id="confirm-hide-title" className="toggle__title">Confirm hide-to-tray</span>
+                <span id="confirm-hide-subtitle" className="toggle__subtitle">
                   Ask before minimizing to the system tray on close.
                 </span>
               </span>
               <input
+                id="confirm-hide-to-tray-toggle"
                 type="checkbox"
                 checked={confirmTrayMinimize}
+                aria-labelledby="confirm-hide-title"
+                aria-describedby="confirm-hide-subtitle"
                 onChange={(e) => setConfirmTrayMinimize(e.target.checked)}
               />
-            </label>
+            </div>
           </div>
         </section>
 
@@ -1089,7 +1118,6 @@ export default function App() {
     return () => {
       cancelled = true;
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Wire updater status.
@@ -1103,7 +1131,6 @@ export default function App() {
       setUpdaterStatus(nextStatus),
     );
     return () => offUpdater?.();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Persist desktop preferences.

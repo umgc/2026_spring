@@ -29,9 +29,11 @@ export const ActionCard = React.memo(function ActionCard({
       style={({ pressed }) => [
         styles.card,
         {
-          borderColor: palette.border,
-          backgroundColor: palette.surface,
-          opacity: pressed && Platform.OS === "ios" ? 0.85 : 1,
+          borderColor: pressed ? palette.borderStrong : palette.border,
+          backgroundColor: pressed ? palette.surfaceMuted : palette.surface,
+          opacity: pressed && Platform.OS === "ios" ? 0.9 : 1,
+          transform: [{ scale: pressed ? 0.98 : 1 }],
+          shadowColor: palette.shadow,
         },
       ]}
     >
@@ -56,13 +58,17 @@ const styles = StyleSheet.create({
   card: {
     flex: 1,
     minHeight: 120,
-    borderRadius: 12,
+    borderRadius: 18,
     borderWidth: 1,
     alignItems: "center",
     justifyContent: "center",
     padding: spacing.md,
     gap: spacing.sm,
     overflow: "hidden",
+    shadowOffset: { width: 0, height: 12 },
+    shadowOpacity: 0.14,
+    shadowRadius: 20,
+    elevation: 3,
   },
   label: {
     fontWeight: "600",

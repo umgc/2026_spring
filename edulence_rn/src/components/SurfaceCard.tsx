@@ -16,7 +16,11 @@ export function SurfaceCard({ children, style }: Props): React.JSX.Element {
     <View
       style={[
         styles.card,
-        { borderColor: palette.border, backgroundColor: palette.surface },
+        {
+          borderColor: palette.border,
+          backgroundColor: palette.surface,
+          shadowColor: palette.shadow,
+        },
         style,
       ]}
     >
@@ -27,9 +31,13 @@ export function SurfaceCard({ children, style }: Props): React.JSX.Element {
 
 const styles = StyleSheet.create({
   card: {
-    borderRadius: 12,
+    borderRadius: 18,
     borderWidth: 1,
     padding: spacing.md,
     gap: spacing.sm,
+    shadowOffset: { width: 0, height: 12 },
+    shadowOpacity: 0.16,
+    shadowRadius: 24,
+    elevation: 4,
   },
 });

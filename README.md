@@ -1,81 +1,107 @@
-# EduLense — Web Application
+# EduLense Cross-Platform Suite
 
-A responsive, mobile-first educational productivity PWA built with React, TypeScript, Vite, and Tailwind CSS.
+EduLense is a multi-platform learning workspace that ships as:
 
-## Live Deployment
+- A React + Vite web app in the repository root
+- A standalone web package in [`edulence_web`](./edulence_web)
+- An Electron desktop app in [`edulence_desktop`](./edulence_desktop)
+- An Expo React Native app in [`edulence_rn`](./edulence_rn)
+- A Flutter app in [`edulence`](./edulence)
 
-https://2026springnew.vercel.app
+## Final Polish Status
 
-## Tech Stack
+As of March 30, 2026, the final polish pass completed the following:
 
-- React 19 + TypeScript
-- Vite 8
-- React Router v6 (lazy-loaded routes)
-- Zustand (state management)
-- Tailwind CSS
-- Vitest + React Testing Library (unit/RTL tests)
-- Playwright (E2E tests)
+- Fixed the root web production build failure caused by invalid CSS
+- Cleaned root and desktop lint configuration so checks target real source files
+- Aligned React Native and Flutter brand colors with the primary web experience
+- Smoothed press states, card surfaces, and modal behavior on mobile and desktop
+- Updated snapshot coverage for the polished React Native UI
+- Removed stale duplicate desktop package configuration that caused build warnings
 
-## Getting Started
+## Repository Layout
 
-### Prerequisites
+- `src/`: main React web app
+- `edulence_web/`: standalone web package
+- `edulence_desktop/`: Electron desktop package
+- `edulence_rn/`: Expo React Native package
+- `edulence/`: Flutter package
+- `BUILD_AND_TEST_ARTIFACTS.md`: build and verification runbook
+
+## Prerequisites
 
 - Node.js 18+
 - npm 9+
+- Flutter SDK for the Flutter app
+- Xcode and/or Android Studio for native mobile workflows
 
-### Install & Run
+## Quick Start
+
+### Root web app
 
 ```bash
-git clone https://github.com/umgc/2026_spring.git
-cd 2026_spring
-git checkout developer
+cd /Users/kwameduodu/EduLense/EduLense
 npm install
 npm run dev
 ```
 
-App runs at http://localhost:5173
-
-## Testing
-
-### Unit & RTL Tests
+### Desktop app
 
 ```bash
-npm test
+cd /Users/kwameduodu/EduLense/EduLense/edulence_desktop
+npm install
+npm run dev
 ```
 
-### Coverage Report (91%+)
+### React Native app
 
 ```bash
-npm run test:Coverage
+cd /Users/kwameduodu/EduLense/EduLense/edulence_rn
+npm install
+npm run start
 ```
 
-HTML report generated in `coverage/lcov-report/index.html`
-
-### E2E Tests (Playwright)
+### Flutter app
 
 ```bash
-npx playwright install
-npm run test:e2e
+cd /Users/kwameduodu/EduLense/EduLense/edulence
+flutter pub get
+flutter run
 ```
 
-Runs 4 critical user flows across Chrome, Firefox, and Safari.
+## Verification Commands
 
-## Build & Deploy
-
-### Production Build
+These commands were used during the March 30, 2026 polish pass:
 
 ```bash
+cd /Users/kwameduodu/EduLense/EduLense
 npm run build
+npm run lint
+npm test -- --run
+
+cd /Users/kwameduodu/EduLense/EduLense/edulence_desktop
+npm run build
+npm run lint
+npm test
+
+cd /Users/kwameduodu/EduLense/EduLense/edulence_rn
+npm run typecheck
+npm test
+
+cd /Users/kwameduodu/EduLense/EduLense/edulence
+flutter test
 ```
 
-Output in `dist/`
+## Platform Notes
 
-### Deploy to Vercel
+- Root web app: primary responsive PWA experience with page transitions and accessibility preferences
+- Desktop app: Electron shell with secure preload bridge, tray support, updater wiring, and keyboard shortcuts
+- React Native app: Expo-based mobile app with accessibility-first controls and parity-focused UI
+- Flutter app: Material 3 app with accessibility coverage and updated brand palette
 
-The `vercel.json` in the project root configures automatic deployment.
-Connect the repository to Vercel and it deploys on every push to `developer`.
+## Additional Documentation
 
-## PWA
-
-The app is installable as a PWA from the deployed URL.
-Service worker provides offline support for cached routes.
+- [Build and Test Artifacts](./BUILD_AND_TEST_ARTIFACTS.md)
+- [Desktop README](./edulence_desktop/README.md)
+- [React Native README](./edulence_rn/README.md)
+- [Standalone Web README](./edulence_web/README.md)

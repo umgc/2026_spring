@@ -1085,7 +1085,17 @@ textarea:focus-visible {
   z-index: 10;
 }
 
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  padding: 0;
+  background: transparent;
+}
+
 .modal__card {
+  position: relative;
+  z-index: 1;
   width: min(760px, 100%);
   background: rgba(15, 26, 46, 0.92);
   border: 1px solid var(--border);

@@ -1092,13 +1092,15 @@ img {
   position: absolute;
   top: -100%;
   left: 1rem;
-  background: var(#0f4c45);
+  background: var(--accent-strong);
   color: #fff;
   padding: 0.5rem 1rem;
   border-radius: var(--radius-sm);
   font-weight: 600;
   z-index: 9999;
   text-decoration: none;
+  box-shadow: 0 10px 30px rgba(17, 94, 89, 0.28);
+  transition: top var(--dur-fast) var(--ease-standard);
 }
 .skip-link:focus {
   top: 1rem;

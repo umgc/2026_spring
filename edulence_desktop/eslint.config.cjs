@@ -6,7 +6,12 @@ const jsxA11y = require('eslint-plugin-jsx-a11y');
 module.exports = [
   js.configs.recommended,
   {
-    ignores: ['dist/**', 'coverage/**', 'node_modules/**'],
+    ignores: [
+      'dist/**',
+      'coverage/**',
+      'node_modules/**',
+      'jest.setup.js',
+    ],
   },
   {
     files: ['**/*.{js,jsx}'],
@@ -40,15 +45,55 @@ module.exports = [
     },
   },
   {
+    files: [
+      'electron/**/*.js',
+      'jest.config.cjs',
+      'test/**/*.js',
+      'jest.setup.cjs',
+    ],
+    languageOptions: {
+      sourceType: 'commonjs',
+      globals: {
+        module: 'readonly',
+        require: 'readonly',
+        __dirname: 'readonly',
+        process: 'readonly',
+        console: 'readonly',
+        setImmediate: 'readonly',
+        clearTimeout: 'readonly',
+        setTimeout: 'readonly',
+        window: 'readonly',
+      },
+    },
+    rules: {
+      'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    },
+  },
+  {
+    files: ['vite.config.js'],
+    languageOptions: {
+      sourceType: 'module',
+      globals: {
+        __dirname: 'readonly',
+        process: 'readonly',
+      },
+    },
+  },
+  {
     files: ['**/__tests__/**/*.{js,jsx}', '**/*.test.{js,jsx}'],
     languageOptions: {
       globals: {
         describe: 'readonly',
+        it: 'readonly',
         test: 'readonly',
         expect: 'readonly',
         beforeEach: 'readonly',
         afterEach: 'readonly',
+        beforeAll: 'readonly',
+        afterAll: 'readonly',
         jest: 'readonly',
+        global: 'readonly',
+        HTMLInputElement: 'readonly',
       },
     },
   },

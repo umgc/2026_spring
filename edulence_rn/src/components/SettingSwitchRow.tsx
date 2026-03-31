@@ -1,5 +1,5 @@
 import React from "react";
-import { Pressable, StyleSheet, Switch, Text, View } from "react-native";
+import { Platform, Pressable, StyleSheet, Switch, Text, View } from "react-native";
 
 import { spacing } from "../theme/spacing";
 import { useAppTheme } from "../theme/useAppTheme";
@@ -27,7 +27,14 @@ export function SettingSwitchRow({
       accessibilityHint={hint}
       accessibilityState={{ checked: value }}
       onPress={() => onValueChange(!value)}
-      style={styles.row}
+      style={({ pressed }) => [
+        styles.row,
+        {
+          backgroundColor: pressed ? palette.backgroundSoft : "transparent",
+          borderColor: value ? palette.borderStrong : palette.border,
+          opacity: pressed && Platform.OS === "ios" ? 0.94 : 1,
+        },
+      ]}
       hitSlop={4}
     >
       <Text
@@ -49,6 +56,10 @@ export function SettingSwitchRow({
         <Switch
           value={value}
           onValueChange={onValueChange}
+          trackColor={{
+            false: palette.border,
+            true: `${palette.accent}88`,
+          }}
           thumbColor={value ? palette.accent : undefined}
         />
       </View>
@@ -62,7 +73,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    borderRadius: 8,
+    borderRadius: 14,
+    borderWidth: 1,
     paddingHorizontal: spacing.sm,
     paddingVertical: spacing.sm,
   },

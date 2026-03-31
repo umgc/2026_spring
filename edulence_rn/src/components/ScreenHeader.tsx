@@ -37,7 +37,10 @@ export const ScreenHeader = React.memo(function ScreenHeader({
         style={({ pressed }) => [
           styles.iconButton,
           {
+            backgroundColor: pressed ? palette.surfaceMuted : palette.surface,
+            borderColor: pressed ? palette.borderStrong : palette.border,
             opacity: pressed && Platform.OS === "ios" ? 0.75 : 1,
+            transform: [{ scale: pressed ? 0.96 : 1 }],
           },
         ]}
       >
@@ -60,6 +63,7 @@ const styles = StyleSheet.create({
     minWidth: 44,
     minHeight: 44,
     borderRadius: 22,
+    borderWidth: 1,
     alignItems: "center",
     justifyContent: "center",
     overflow: "hidden",

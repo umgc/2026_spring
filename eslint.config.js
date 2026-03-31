@@ -10,8 +10,12 @@ export default defineConfig([
   globalIgnores([
     'dist',
     'coverage',
+    'edulence_web/**',
+    'edulence_web/dist/**',
+    'edulence_web/coverage/**',
     'edulence_desktop/**',
     'edulence_rn/**',
+    'edulence/**',
     'electron/**',
     'jest.config.cjs',
     'jest.setup.js',
@@ -56,6 +60,28 @@ export default defineConfig([
       'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
       '@typescript-eslint/no-explicit-any': 'error',
+    },
+  },
+  {
+    files: ['src/**/__tests__/**/*.{ts,tsx}', 'src/**/*.test.{ts,tsx}'],
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        describe: 'readonly',
+        it: 'readonly',
+        test: 'readonly',
+        expect: 'readonly',
+        beforeEach: 'readonly',
+        afterEach: 'readonly',
+        beforeAll: 'readonly',
+        afterAll: 'readonly',
+        jest: 'readonly',
+        global: 'readonly',
+        vi: 'readonly',
+      },
+    },
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'off',
     },
   },
 ])

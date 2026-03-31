@@ -1,6 +1,6 @@
 import { MaterialIcons } from "@expo/vector-icons";
 import React from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Platform, Pressable, StyleSheet, Text, View } from "react-native";
 
 import { spacing } from "../theme/spacing";
 import { useAppTheme } from "../theme/useAppTheme";
@@ -61,7 +61,19 @@ export function ThemeModeOptionRow({
       accessibilityLabel={`${content.title}. ${content.subtitle}`}
       accessibilityHint={`${platformHint}. Double tap to select ${content.title}`}
       onPress={onPress}
-      style={styles.row}
+      style={({ pressed }) => [
+        styles.row,
+        {
+          backgroundColor: selected
+            ? palette.surfaceMuted
+            : pressed
+              ? palette.backgroundSoft
+              : "transparent",
+          borderColor: selected ? palette.borderStrong : palette.border,
+          opacity: pressed && Platform.OS === "ios" ? 0.94 : 1,
+          transform: [{ scale: pressed ? 0.99 : 1 }],
+        },
+      ]}
     >
       <View
         style={[
@@ -120,7 +132,8 @@ const styles = StyleSheet.create({
     minHeight: 56,
     flexDirection: "row",
     alignItems: "center",
-    borderRadius: 8,
+    borderRadius: 14,
+    borderWidth: 1,
     paddingHorizontal: spacing.sm,
     paddingVertical: spacing.sm,
     gap: spacing.sm,
