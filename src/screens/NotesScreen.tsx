@@ -66,7 +66,7 @@ export default function NotesScreen() {
       </header>
 
       <div className="notes-layout">
-        <aside className="notes-sidebar">
+        <section className="notes-sidebar" aria-label="Notes list and filters">
           <div className="panel">
             <label className="search" htmlFor="note-search">
               <span className="sr-only">Search notes</span>
@@ -114,7 +114,7 @@ export default function NotesScreen() {
               )}
             </div>
           </div>
-        </aside>
+        </section>
 
         <div className="notes-editor">
           {activeNote ? (

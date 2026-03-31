@@ -53,7 +53,7 @@ export default function DashboardScreen() {
           </div>
         </div>
 
-        <aside className="panel" aria-label="Upcoming and recent activity">
+        <section className="panel" aria-label="Upcoming and recent activity">
           <div>
             <h2>Upcoming</h2>
             <p className="muted">Deadlines and events carried from the desktop view.</p>
@@ -76,7 +76,7 @@ export default function DashboardScreen() {
               ))}
             </div>
           </div>
-        </aside>
+        </section>
       </div>
     </section>
   );

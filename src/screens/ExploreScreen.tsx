@@ -52,7 +52,7 @@ export default function ExploreScreen() {
             ))}
           </div>
 
-          <aside className="detail-card">
+          <section className="detail-card" aria-label="Selected course details">
             <h2>Selected course</h2>
             {selectedItem ? (
               <>
@@ -69,7 +69,7 @@ export default function ExploreScreen() {
                 <p className="muted">Try another keyword or browse all recommendations.</p>
               </div>
             )}
-          </aside>
+          </section>
         </div>
       </div>
     </section>
