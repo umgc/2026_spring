@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1771645216376" clover="3.2.0">
-  <project timestamp="1771645216376" name="All files">
-    <metrics statements="226" coveredstatements="216" conditionals="129" coveredconditionals="94" methods="82" coveredmethods="79" elements="437" coveredelements="389" complexity="0" loc="226" ncloc="226" packages="9" files="23" classes="23"/>
+<coverage generated="1775044651451" clover="3.2.0">
+  <project timestamp="1775044651451" name="All files">
+    <metrics statements="228" coveredstatements="218" conditionals="161" coveredconditionals="113" methods="85" coveredmethods="82" elements="474" coveredelements="413" complexity="0" loc="228" ncloc="228" packages="9" files="23" classes="23"/>
     <package name="__tests__.mocks">
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="vector-icons.tsx" path="/Users/kwameduodu/EduLense/EduLense/edulence_rn/src/__tests__/mocks/vector-icons.tsx">
@@ -12,14 +12,14 @@
       </file>
     </package>
     <package name="components">
-      <metrics statements="30" coveredstatements="30" conditionals="22" coveredconditionals="18" methods="10" coveredmethods="10"/>
+      <metrics statements="33" coveredstatements="33" conditionals="54" coveredconditionals="37" methods="13" coveredmethods="13"/>
       <file name="ActionCard.tsx" path="/Users/kwameduodu/EduLense/EduLense/edulence_rn/src/components/ActionCard.tsx">
-        <metrics statements="5" coveredstatements="5" conditionals="4" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <metrics statements="5" coveredstatements="5" conditionals="10" coveredconditionals="5" methods="2" coveredmethods="2"/>
         <line num="14" count="4" type="stmt"/>
         <line num="19" count="18" type="stmt"/>
         <line num="21" count="18" type="stmt"/>
         <line num="29" count="18" type="stmt"/>
-        <line num="55" count="4" type="stmt"/>
+        <line num="57" count="4" type="stmt"/>
       </file>
       <file name="InfoChip.tsx" path="/Users/kwameduodu/EduLense/EduLense/edulence_rn/src/components/InfoChip.tsx">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
@@ -28,12 +28,12 @@
         <line num="27" count="5" type="stmt"/>
       </file>
       <file name="ScreenHeader.tsx" path="/Users/kwameduodu/EduLense/EduLense/edulence_rn/src/components/ScreenHeader.tsx">
-        <metrics statements="5" coveredstatements="5" conditionals="4" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <metrics statements="5" coveredstatements="5" conditionals="10" coveredconditionals="5" methods="2" coveredmethods="2"/>
         <line num="13" count="3" type="stmt"/>
         <line num="17" count="8" type="stmt"/>
         <line num="19" count="8" type="stmt"/>
         <line num="37" count="8" type="stmt"/>
-        <line num="50" count="3" type="stmt"/>
+        <line num="53" count="3" type="stmt"/>
       </file>
       <file name="SectionTitle.tsx" path="/Users/kwameduodu/EduLense/EduLense/edulence_rn/src/components/SectionTitle.tsx">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
@@ -42,19 +42,21 @@
         <line num="28" count="5" type="stmt"/>
       </file>
       <file name="SettingSwitchRow.tsx" path="/Users/kwameduodu/EduLense/EduLense/edulence_rn/src/components/SettingSwitchRow.tsx">
-        <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <metrics statements="5" coveredstatements="5" conditionals="10" coveredconditionals="7" methods="3" coveredmethods="3"/>
         <line num="20" count="23" type="stmt"/>
         <line num="22" count="23" type="stmt"/>
-        <line num="56" count="5" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="30" count="23" type="stmt"/>
+        <line num="70" count="5" type="stmt"/>
       </file>
       <file name="SurfaceCard.tsx" path="/Users/kwameduodu/EduLense/EduLense/edulence_rn/src/components/SurfaceCard.tsx">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="13" count="24" type="stmt"/>
         <line num="15" count="24" type="stmt"/>
-        <line num="28" count="5" type="stmt"/>
+        <line num="32" count="5" type="stmt"/>
       </file>
       <file name="ThemeModeOptionRow.tsx" path="/Users/kwameduodu/EduLense/EduLense/edulence_rn/src/components/ThemeModeOptionRow.tsx">
-        <metrics statements="8" coveredstatements="8" conditionals="12" coveredconditionals="12" methods="2" coveredmethods="2"/>
+        <metrics statements="9" coveredstatements="9" conditionals="24" coveredconditionals="20" methods="3" coveredmethods="3"/>
         <line num="24" count="23" type="cond" truecount="4" falsecount="0"/>
         <line num="26" count="7" type="stmt"/>
         <line num="32" count="9" type="stmt"/>
@@ -62,7 +64,8 @@
         <line num="53" count="23" type="stmt"/>
         <line num="54" count="23" type="stmt"/>
         <line num="56" count="23" type="stmt"/>
-        <line num="118" count="5" type="stmt"/>
+        <line num="64" count="23" type="stmt"/>
+        <line num="130" count="5" type="stmt"/>
       </file>
     </package>
     <package name="constants">
@@ -73,17 +76,16 @@
       </file>
     </package>
     <package name="hooks">
-      <metrics statements="8" coveredstatements="5" conditionals="4" coveredconditionals="1" methods="3" coveredmethods="2"/>
+      <metrics statements="7" coveredstatements="4" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="2"/>
       <file name="useAccessibilityAnnouncement.ts" path="/Users/kwameduodu/EduLense/EduLense/edulence_rn/src/hooks/useAccessibilityAnnouncement.ts">
-        <metrics statements="8" coveredstatements="5" conditionals="4" coveredconditionals="1" methods="3" coveredmethods="2"/>
+        <metrics statements="7" coveredstatements="4" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="2"/>
         <line num="5" count="28" type="stmt"/>
-        <line num="6" count="7" type="cond" truecount="1" falsecount="1"/>
-        <line num="7" count="7" type="stmt"/>
-        <line num="10" count="28" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="12" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="17" count="28" type="stmt"/>
+        <line num="6" count="7" type="stmt"/>
+        <line num="9" count="28" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="16" count="28" type="stmt"/>
       </file>
     </package>
     <package name="navigation">
@@ -276,7 +278,7 @@
       </file>
     </package>
     <package name="theme">
-      <metrics statements="11" coveredstatements="11" conditionals="18" coveredconditionals="15" methods="1" coveredmethods="1"/>
+      <metrics statements="11" coveredstatements="11" conditionals="20" coveredconditionals="16" methods="1" coveredmethods="1"/>
       <file name="colors.ts" path="/Users/kwameduodu/EduLense/EduLense/edulence_rn/src/theme/colors.ts">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="10" type="stmt"/>
@@ -286,16 +288,16 @@
         <line num="1" count="9" type="stmt"/>
       </file>
       <file name="useAppTheme.ts" path="/Users/kwameduodu/EduLense/EduLense/edulence_rn/src/theme/useAppTheme.ts">
-        <metrics statements="9" coveredstatements="9" conditionals="18" coveredconditionals="15" methods="1" coveredmethods="1"/>
-        <line num="18" count="9" type="stmt"/>
-        <line num="29" count="9" type="stmt"/>
-        <line num="41" count="182" type="stmt"/>
-        <line num="43" count="182" type="stmt"/>
-        <line num="46" count="182" type="cond" truecount="3" falsecount="1"/>
-        <line num="47" count="182" type="stmt"/>
-        <line num="49" count="182" type="cond" truecount="2" falsecount="0"/>
-        <line num="50" count="182" type="cond" truecount="2" falsecount="0"/>
+        <metrics statements="9" coveredstatements="9" conditionals="20" coveredconditionals="16" methods="1" coveredmethods="1"/>
+        <line num="23" count="9" type="stmt"/>
+        <line num="39" count="9" type="stmt"/>
+        <line num="56" count="182" type="stmt"/>
         <line num="58" count="182" type="stmt"/>
+        <line num="61" count="182" type="cond" truecount="3" falsecount="1"/>
+        <line num="62" count="182" type="stmt"/>
+        <line num="64" count="182" type="cond" truecount="2" falsecount="0"/>
+        <line num="65" count="182" type="cond" truecount="2" falsecount="0"/>
+        <line num="74" count="182" type="stmt"/>
       </file>
     </package>
     <package name="utils">
