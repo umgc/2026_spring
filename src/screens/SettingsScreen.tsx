@@ -25,6 +25,12 @@ function ToggleRow({
         onClick={() => onToggle(!value)}
         aria-pressed={value}
         aria-label={`${label} ${value ? 'enabled' : 'disabled'}`}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            onToggle(!value);
+          }
+        }}
       />
     </div>
   );

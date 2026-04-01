@@ -35,23 +35,38 @@ export function SettingSwitchRow({
           opacity: pressed && Platform.OS === "ios" ? 0.94 : 1,
         },
       ]}
-      hitSlop={4}
+      hitSlop={8}
     >
-      <Text
-        style={[
-          styles.title,
-          {
-            color: palette.textPrimary,
-            fontSize: 15 * fontScale,
-            textAlign,
-          },
-        ]}
-      >
-        {label}
-      </Text>
+      <View style={styles.labelContainer}>
+        <Text
+          style={[
+            styles.title,
+            {
+              color: palette.textPrimary,
+              fontSize: 15 * fontScale,
+              textAlign,
+            },
+          ]}
+        >
+          {label}
+        </Text>
+        <Text
+          style={[
+            styles.hint,
+            {
+              color: palette.textMuted,
+              fontSize: 13 * fontScale,
+              textAlign,
+            },
+          ]}
+        >
+          {hint}
+        </Text>
+      </View>
       <View
         accessible={false}
         importantForAccessibility="no-hide-descendants"
+        style={styles.switchContainer}
       >
         <Switch
           value={value}
@@ -69,16 +84,26 @@ export function SettingSwitchRow({
 
 const styles = StyleSheet.create({
   row: {
-    minHeight: 44,
+    minHeight: 56,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     borderRadius: 14,
     borderWidth: 1,
-    paddingHorizontal: spacing.sm,
-    paddingVertical: spacing.sm,
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.md,
+  },
+  labelContainer: {
+    flex: 1,
+    marginRight: spacing.md,
   },
   title: {
     fontWeight: "600",
+  },
+  hint: {
+    marginTop: spacing.xs,
+  },
+  switchContainer: {
+    pointerEvents: "auto",
   },
 });

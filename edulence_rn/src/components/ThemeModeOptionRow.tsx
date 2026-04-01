@@ -74,6 +74,7 @@ export function ThemeModeOptionRow({
           transform: [{ scale: pressed ? 0.99 : 1 }],
         },
       ]}
+      hitSlop={8}
     >
       <View
         style={[
@@ -86,7 +87,7 @@ export function ThemeModeOptionRow({
       >
         <MaterialIcons
           name={content.icon}
-          size={22}
+          size={24}
           color={selected ? palette.accent : palette.textSecondary}
         />
       </View>
@@ -120,7 +121,7 @@ export function ThemeModeOptionRow({
 
       <MaterialIcons
         name={selected ? "check-circle" : "radio-button-unchecked"}
-        size={20}
+        size={24}
         color={selected ? palette.accent : palette.textSecondary}
       />
     </Pressable>
